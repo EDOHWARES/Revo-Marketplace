@@ -71,3 +71,7 @@ Available Commands:
 - [PostCSS](https://postcss.org) (v8) - CSS tool for transforming styles
 - [Freighter API](https://github.com/stellar/freighter) - API for interacting with Stellar blockchain wallets
 - [Stellar SDK](https://stellar.github.io/js-stellar-sdk) (v12.3.0) - JavaScript library for Stellar blockchain
+
+## Split mono repo
+
+Migration from [Revolutionary_Farmers](https://github.com/Crypto-Jaguars/Revolutionary_Farmers) mono repository into a Frontend especific repo.
