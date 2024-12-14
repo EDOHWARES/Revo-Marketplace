@@ -4,7 +4,7 @@
 Provide a brief summary of what this PR accomplishes.
 
 ### 🪧 Related Issues
-- Closes #(issue number) Replace with actual issue number.
+- Closes #[issue-number]
 
 ### 🏁 Type of Change
 Mark with an `x` all the checkboxes that apply (like `[x]`).
