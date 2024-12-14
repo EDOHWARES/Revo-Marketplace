@@ -1,0 +1,41 @@
+name: Bug Report
+description: Use this template to report bugs or issues with the project.
+title: "[bug] Describe the issue"
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Thank you for reporting this bug! Please provide the details below to help us resolve the issue.**
+
+  - type: input
+    id: steps_to_reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: Provide a step-by-step guide on how to reproduce the issue.
+      placeholder: Write the steps here...
+
+  - type: textarea
+    id: actual_behavior
+    attributes:
+      label: Actual Behavior
+      description: What is happening currently?
+      placeholder: Describe the current behavior...
+
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen?
+      placeholder: Describe the expected behavior...
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity of the Issue
+      description: How critical is the problem?
+      options:
+        - High
+        - Medium
+        - Low
