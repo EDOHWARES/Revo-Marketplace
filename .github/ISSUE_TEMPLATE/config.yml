@@ -1,1 +1,9 @@
 blank_issues_enabled: true
+contact_links:
+  - name: General Issue
+    url: https://github.com/Crypto-Jaguars/Revo-Frontend/issues/new?assignees=&labels=&template=general_template.yml&title=
+    about: If your issue doesn't fit into a specific category, use this general template.
+  - name: Enhancement
+    url: https://github.com/Crypto-Jaguars/Revo-Frontend/issues/new?assignees=&labels=&template=enhancement.yml&title=
+    about: For enhancement issues.
+    
