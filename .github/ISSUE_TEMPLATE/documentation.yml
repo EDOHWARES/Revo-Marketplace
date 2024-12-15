@@ -14,7 +14,7 @@ body:
     attributes:
       label: Section to Update
       description: Specify which part of the documentation needs improvement.
-      placeholder: Example: Installation Guide, API Reference...
+      placeholder: "Example: Installation Guide, API Reference..."
 
   - type: textarea
     id: change_details
