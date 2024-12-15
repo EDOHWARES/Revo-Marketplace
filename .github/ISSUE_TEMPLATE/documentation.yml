@@ -21,11 +21,11 @@ body:
     attributes:
       label: Requested Changes
       description: Describe the changes or additions you are suggesting.
-      placeholder: Provide details about what should be added or clarified...
+      placeholder: "Provide details about what should be added or clarified..."
 
   - type: textarea
     id: benefit
     attributes:
       label: Benefits of the Change
       description: Explain how this change will improve the documentation.
-      placeholder: Example: It will make the API easier to understand for new users...
+      placeholder: "Example: It will make the API easier to understand for new users..."
