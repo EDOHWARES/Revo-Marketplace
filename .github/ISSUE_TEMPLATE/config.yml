@@ -1,5 +1,1 @@
-blank_issues_enabled: false
-contact_links:
-  - name: General Issue
-    url: https://github.com/Crypto-Jaguars/Revo-Frontend/issues/new?assignees=&labels=&template=general_template.yml&title=
-    about: If your issue doesn't fit into a specific category, use this general template.
+blank_issues_enabled: true
