@@ -1,0 +1,31 @@
+name: Documentation Request
+description: Use this template to request changes or additions to the documentation.
+title: "[docs] Describe the request"
+labels:
+  - documentation
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Is there something missing or unclear in the documentation? Please provide details.**
+
+  - type: input
+    id: section_to_update
+    attributes:
+      label: Section to Update
+      description: Specify which part of the documentation needs improvement.
+      placeholder: "Example: Installation Guide, API Reference..."
+
+  - type: textarea
+    id: change_details
+    attributes:
+      label: Requested Changes
+      description: Describe the changes or additions you are suggesting.
+      placeholder: "Provide details about what should be added or clarified..."
+
+  - type: textarea
+    id: benefit
+    attributes:
+      label: Benefits of the Change
+      description: Explain how this change will improve the documentation.
+      placeholder: "Example: It will make the API easier to understand for new users..."

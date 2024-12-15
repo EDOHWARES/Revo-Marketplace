@@ -1,0 +1,41 @@
+name: Enhancement Request
+description: Use this template to suggest improvements or new features for the project.
+title: "[enh]: Suggest an enhancement"
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Have an idea to improve the project? Please provide as much detail as possible.**
+
+  - type: input
+    id: feature_title
+    attributes:
+      label: Feature Title
+      description: Provide a short title for the enhancement.
+      placeholder: Example: Add dark mode support
+
+  - type: textarea
+    id: feature_description
+    attributes:
+      label: Feature Description
+      description: Explain the feature or improvement you are suggesting.
+      placeholder: Describe the enhancement here...
+
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Use Case
+      description: Describe how this feature will be used and who will benefit from it.
+      placeholder: Example: This feature will allow users to switch to dark mode at night...
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority Level
+      description: How important is this feature?
+      options:
+        - High
+        - Medium
+        - Low
