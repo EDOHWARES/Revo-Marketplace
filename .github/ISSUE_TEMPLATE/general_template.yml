@@ -22,7 +22,7 @@ body:
       label: Steps to Reproduce
       description: Provide step-by-step instructions to reproduce the issue.
       placeholder: |
-      Example:  
+        Example:  
         1. Open the app  
         2. Click on 'Submit'  
         3. Observe the error
