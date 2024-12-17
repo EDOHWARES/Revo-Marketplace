@@ -43,6 +43,8 @@ const Header = () => {
       if (disconnectWallet) {
         await disconnectWallet();
         setIsMenuOpen(false);
+        const basePath = `/${language}`;
+        router.push(basePath);
       }
     } catch (error) {
       console.error('Error disconnecting wallet:', error);
