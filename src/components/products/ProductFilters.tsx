@@ -48,7 +48,7 @@ export function ProductFilters({ onFilterChange, categories, farmingMethods }: P
         placeholder={t('search')}
         value={filters.search}
         onChange={(e) => handleFilterChange({ search: e.target.value })}
-        className="w-full"
+        className="w-full text-white"
       />
       
       <div className="space-y-2">
