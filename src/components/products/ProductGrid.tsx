@@ -12,6 +12,8 @@ interface ProductGridProps {
   onProductClick: (productId: string) => void;
   hasMore?: boolean;
   onLoadMore?: () => void;
+  isLoading?: boolean;
+  isFilterLoading?: boolean;
 }
 
 export function ProductGrid({ 
@@ -19,7 +21,9 @@ export function ProductGrid({
   viewMode, 
   onProductClick, 
   hasMore = false, 
-  onLoadMore 
+  onLoadMore,
+  isLoading = false,
+  isFilterLoading = false
 }: ProductGridProps) {
   const { ref, inView } = useInView({
     threshold: 0.5,
@@ -40,9 +44,19 @@ export function ProductGrid({
     ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'
     : 'flex flex-col gap-4';
 
+  if (isLoading) {
+    return (
+      <div className={gridClassName}>
+        {Array.from({ length: 8 }).map((_, index) => (
+          <ProductSkeleton key={index} />
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6">
-      <div className={gridClassName}>
+      <div className={`${gridClassName} ${isFilterLoading ? 'opacity-50' : ''}`}>
         {products.map((product) => (
           <ProductCard
             key={product.id}

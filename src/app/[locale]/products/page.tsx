@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo, useEffect } from 'react';
 import { ProductGrid } from '@/components/products/ProductGrid';
 import { productsMock } from '@/mocks/products';
 import { Button } from '@/components/ui/button';
@@ -29,6 +29,8 @@ export default function ProductsPage() {
   });
   const [sortBy, setSortBy] = useState<'price' | 'date' | 'stock'>('date');
   const ITEMS_PER_PAGE = 12;
+  const [isLoading, setIsLoading] = useState(true);
+  const [isFilterLoading, setIsFilterLoading] = useState(false);
 
   const handleProductClick = useCallback((productId: string) => {
     console.log('Product clicked:', productId);
@@ -90,8 +92,12 @@ export default function ProductsPage() {
     infinite: true
   });
 
-  const handleFilterChange = useCallback((newFilters: Partial<ProductFilters>) => {
+  const handleFilterChange = useCallback(async (newFilters: Partial<ProductFilters>) => {
+    setIsFilterLoading(true);
     setFilters(prev => ({ ...prev, ...newFilters }));
+    // Simulate API delay
+    await new Promise(resolve => setTimeout(resolve, 500));
+    setIsFilterLoading(false);
   }, []);
 
   const handleSortChange = useCallback((value: 'price' | 'date' | 'stock') => {
@@ -100,6 +106,15 @@ export default function ProductsPage() {
 
   const handleViewModeChange = useCallback((mode: 'grid' | 'list') => {
     setViewMode(mode);
+  }, []);
+
+  useEffect(() => {
+    // Simulate initial data loading
+    const loadInitialData = async () => {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      setIsLoading(false);
+    };
+    loadInitialData();
   }, []);
 
   return (
@@ -153,6 +168,8 @@ export default function ProductsPage() {
             onProductClick={handleProductClick}
             hasMore={hasMore}
             onLoadMore={loadMore}
+            isLoading={isLoading}
+            isFilterLoading={isFilterLoading}
           />
         </main>
       </div>
