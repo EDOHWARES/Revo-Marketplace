@@ -68,7 +68,7 @@ export function ProductFilters({ onFilterChange, categories, farmingMethods }: P
       </div>
 
       <div className="space-y-2">
-        <label className="text-sm font-medium">{t('farmingMethod')}</label>
+        <label className="text-sm font-medium text-white">{t('farmingMethod')}</label>
         <Select value={filters.farmingMethod} onValueChange={(value) => handleFilterChange({ farmingMethod: value })}>
           <SelectTrigger>
             <SelectValue placeholder="All Methods" />
@@ -83,17 +83,17 @@ export function ProductFilters({ onFilterChange, categories, farmingMethods }: P
         </Select>
       </div>
 
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2 ">
         <Badge
           variant="outline"
-          className={`cursor-pointer ${filters.deliveryOnly ? 'bg-primary text-primary-foreground' : ''}`}
+          className={`cursor-pointer ${filters.deliveryOnly ? 'bg-primary text-white' : 'text-white'}`}
           onClick={() => handleFilterChange({ deliveryOnly: !filters.deliveryOnly })}
         >
           {t('delivery')}
         </Badge>
         <Badge
           variant="outline"
-          className={`cursor-pointer ${filters.pickupOnly ? 'bg-primary text-primary-foreground' : ''}`}
+          className={`cursor-pointer ${filters.pickupOnly ? 'bg-primary text-white' : 'text-white'}`}
           onClick={() => handleFilterChange({ pickupOnly: !filters.pickupOnly })}
         >
           {t('pickup')}

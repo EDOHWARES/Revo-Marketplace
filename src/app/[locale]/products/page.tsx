@@ -72,7 +72,7 @@ export default function ProductsPage() {
     <Bounded>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <aside className="md:col-span-1">
-          <ProductFilters
+          <ProductFilters 
             onFilterChange={(newFilters) => setFilters({ ...filters, ...newFilters })}
             categories={categories}
             farmingMethods={farmingMethods}
@@ -81,7 +81,7 @@ export default function ProductsPage() {
 
         <main className="md:col-span-3">
           <div className="flex justify-between items-center mb-6">
-            <h1 className="text-3xl font-bold">{t('title')}</h1>
+            <h1 className="text-3xl font-bol text-white">{t('title')}</h1>
             <div className="flex gap-4">
               <Select value={sortBy} onValueChange={(value: any) => setSortBy(value)}>
                 <SelectTrigger className="w-[180px]">
