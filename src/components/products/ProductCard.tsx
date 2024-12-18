@@ -1,10 +1,10 @@
 'use client';
 
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+
 import { Product } from "@/types/product";
 import Image from "next/image";
 import { Badge } from "../ui/badge";
-
 
 interface ProductCardProps {
   product: Product;
@@ -53,9 +53,9 @@ export function ProductCard({ product, viewMode, onClick }: ProductCardProps) {
               </Badge>
             ))}
           </div>
-          <p className="text-sm mt-2">
+          <div className="mt-2 text-sm break-words">
             Harvest Date: {product.harvestDate.toLocaleDateString()}
-          </p>
+          </div>
         </CardContent>
       </div>
     </Card>

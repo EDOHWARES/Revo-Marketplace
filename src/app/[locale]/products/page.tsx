@@ -1,13 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { ProductGrid } from '@/components/products/ProductGrid';
-
 import { productsMock } from '@/mocks/products';
 import { Button } from '@/components/ui/button';
 import { LayoutGrid, List } from 'lucide-react';
 import Bounded from '@/components/Bounded';
 import { useTranslations } from 'next-intl';
+import { usePagination } from '@/hooks/usePagination';
 import {
   Select,
   SelectContent,
@@ -28,62 +28,96 @@ export default function ProductsPage() {
     pickupOnly: false,
   });
   const [sortBy, setSortBy] = useState<'price' | 'date' | 'stock'>('date');
+  const ITEMS_PER_PAGE = 12;
 
-  const handleProductClick = (productId: string) => {
+  const handleProductClick = useCallback((productId: string) => {
     console.log('Product clicked:', productId);
-  };
+  }, []);
 
-  const filteredProducts = productsMock.filter((product) => {
-    if (filters.search && !product.name.toLowerCase().includes(filters.search.toLowerCase())) {
-      return false;
-    }
-    if (filters.category && product.category !== filters.category) {
-      return false;
-    }
-    if (filters.farmingMethod && product.farmingMethod !== filters.farmingMethod) {
-      return false;
-    }
-    if (filters.deliveryOnly && !product.availableForDelivery) {
-      return false;
-    }
-    if (filters.pickupOnly && !product.pickupAvailable) {
-      return false;
-    }
-    return true;
+  const filteredProducts = useMemo(() => {
+    return productsMock.filter((product) => {
+      if (filters.search && !product.name.toLowerCase().includes(filters.search.toLowerCase())) {
+        return false;
+      }
+      if (filters.category && product.category !== filters.category) {
+        return false;
+      }
+      if (filters.farmingMethod && product.farmingMethod !== filters.farmingMethod) {
+        return false;
+      }
+      if (filters.deliveryOnly && !product.availableForDelivery) {
+        return false;
+      }
+      if (filters.pickupOnly && !product.pickupAvailable) {
+        return false;
+      }
+      return true;
+    });
+  }, [filters]);
+
+  const sortedProducts = useMemo(() => {
+    return [...filteredProducts].sort((a, b) => {
+      switch (sortBy) {
+        case 'price':
+          return a.price.amount - b.price.amount;
+        case 'date':
+          return b.harvestDate.getTime() - a.harvestDate.getTime();
+        case 'stock':
+          return b.stockQuantity - a.stockQuantity;
+        default:
+          return 0;
+      }
+    });
+  }, [filteredProducts, sortBy]);
+
+  const categories = useMemo(() => 
+    Array.from(new Set(productsMock.map((p) => p.category))),
+    []
+  );
+  
+  const farmingMethods = useMemo(() => 
+    Array.from(new Set(productsMock.map((p) => p.farmingMethod))),
+    []
+  );
+
+  const { 
+    items: paginatedProducts, 
+    hasMore, 
+    loadMore 
+  } = usePagination({
+    items: sortedProducts,
+    itemsPerPage: ITEMS_PER_PAGE,
+    infinite: true
   });
 
-  const sortedProducts = [...filteredProducts].sort((a, b) => {
-    switch (sortBy) {
-      case 'price':
-        return a.price.amount - b.price.amount;
-      case 'date':
-        return b.harvestDate.getTime() - a.harvestDate.getTime();
-      case 'stock':
-        return b.stockQuantity - a.stockQuantity;
-      default:
-        return 0;
-    }
-  });
+  const handleFilterChange = useCallback((newFilters: Partial<ProductFilters>) => {
+    setFilters(prev => ({ ...prev, ...newFilters }));
+  }, []);
 
-  const categories = Array.from(new Set(productsMock.map((p) => p.category)));
-  const farmingMethods = Array.from(new Set(productsMock.map((p) => p.farmingMethod)));
+  const handleSortChange = useCallback((value: 'price' | 'date' | 'stock') => {
+    setSortBy(value);
+  }, []);
+
+  const handleViewModeChange = useCallback((mode: 'grid' | 'list') => {
+    setViewMode(mode);
+  }, []);
 
   return (
     <Bounded>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <aside className="md:col-span-1">
           <ProductFilters 
-            onFilterChange={(newFilters) => setFilters({ ...filters, ...newFilters })}
+            onFilterChange={handleFilterChange}
             categories={categories}
             farmingMethods={farmingMethods}
           />
         </aside>
 
         <main className="md:col-span-3">
-          <div className="flex justify-between items-center mb-6">
-            <h1 className="text-3xl font-bol text-white">{t('title')}</h1>
-            <div className="flex gap-4">
-              <Select value={sortBy} onValueChange={(value: any) => setSortBy(value)}>
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+            <h1 className="text-3xl font-bold text-white">{t('title')}</h1>
+            <div className="flex flex-wrap gap-4 w-full sm:w-auto">
+              <Select value={sortBy} onValueChange={handleSortChange}>
                 <SelectTrigger className="w-[180px]">
                   <SelectValue placeholder={t('sortBy.label')} />
                 </SelectTrigger>
@@ -97,14 +131,14 @@ export default function ProductsPage() {
               <div className="flex gap-2">
                 <Button
                   variant={viewMode === 'grid' ? 'default' : 'outline'}
-                  onClick={() => setViewMode('grid')}
+                  onClick={() => handleViewModeChange('grid')}
                   title={t('viewMode.grid')}
                 >
                   <LayoutGrid className="h-4 w-4" />
                 </Button>
                 <Button
                   variant={viewMode === 'list' ? 'default' : 'outline'}
-                  onClick={() => setViewMode('list')}
+                  onClick={() => handleViewModeChange('list')}
                   title={t('viewMode.list')}
                 >
                   <List className="h-4 w-4" />
@@ -114,9 +148,11 @@ export default function ProductsPage() {
           </div>
 
           <ProductGrid
-            products={sortedProducts}
+            products={paginatedProducts}
             viewMode={viewMode}
             onProductClick={handleProductClick}
+            hasMore={hasMore}
+            onLoadMore={loadMore}
           />
         </main>
       </div>
