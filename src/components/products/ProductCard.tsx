@@ -23,8 +23,13 @@ export function ProductCard({ product, viewMode, onClick }: ProductCardProps) {
         <Image
           src={`/images/${product.images[0]}`}
           alt={product.name}
-          width={300}
-          height={200}
+          width={viewMode === 'grid' ? 300 : 200}
+          height={viewMode === 'grid' ? 200 : 150}
+          onError={(e) => {
+            e.currentTarget.src = '/placeholder.jpg';
+          }}
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRg..."
           className="object-cover w-full h-48 rounded-t-lg"
         />
       </div>
@@ -78,14 +83,14 @@ export function ProductCard({ product, viewMode, onClick }: ProductCardProps) {
           <div className="flex gap-2">
             {product.availableForDelivery && (
               <Badge variant="outline" className="text-xs">
-                <Truck className="h-3 w-3 mr-1" />
-                Delivery
+                <Truck className="h-3 w-3 mr-1" aria-hidden="true" />
+                <span aria-label="Delivery available">Delivery</span>
               </Badge>
             )}
             {product.pickupAvailable && (
               <Badge variant="outline" className="text-xs">
-                <Package2 className="h-3 w-3 mr-1" />
-                Pickup
+                <Package2 className="h-3 w-3 mr-1" aria-hidden="true" />
+                <span aria-label="Pickup available">Pickup</span>
               </Badge>
             )}
           </div>

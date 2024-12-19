@@ -5,6 +5,8 @@ import { ProductCard } from "./ProductCard";
 import { useInView } from 'react-intersection-observer';
 import { useEffect, useCallback } from 'react';
 import { ProductSkeleton } from "./ProductSkeleton";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { AlertCircle } from "lucide-react";
 
 interface ProductGridProps {
   products: Product[];
@@ -14,6 +16,7 @@ interface ProductGridProps {
   onLoadMore?: () => void;
   isLoading?: boolean;
   isFilterLoading?: boolean;
+  error?: Error | null;
 }
 
 export function ProductGrid({ 
@@ -23,7 +26,8 @@ export function ProductGrid({
   hasMore = false, 
   onLoadMore,
   isLoading = false,
-  isFilterLoading = false
+  isFilterLoading = false,
+  error = null
 }: ProductGridProps) {
   const { ref, inView } = useInView({
     threshold: 0.5,
@@ -31,10 +35,10 @@ export function ProductGrid({
   });
 
   const handleInView = useCallback(() => {
-    if (inView && hasMore && onLoadMore) {
+    if (inView && hasMore && onLoadMore && !isLoading && !isFilterLoading) {
       onLoadMore();
     }
-  }, [inView, hasMore, onLoadMore]);
+  }, [inView, hasMore, onLoadMore, isLoading, isFilterLoading]);
 
   useEffect(() => {
     handleInView();
@@ -44,9 +48,25 @@ export function ProductGrid({
     ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'
     : 'flex flex-col gap-4';
 
+  if (error) {
+    return (
+      <Alert variant="destructive">
+        <AlertCircle className="h-4 w-4" />
+        <AlertDescription>
+          {error.message || 'An error occurred while loading products'}
+        </AlertDescription>
+      </Alert>
+    );
+  }
+
   if (isLoading) {
     return (
-      <div className={gridClassName}>
+      <div 
+        className={gridClassName} 
+        aria-busy="true" 
+        role="grid"
+        aria-label="Loading products"
+      >
         {Array.from({ length: 8 }).map((_, index) => (
           <ProductSkeleton key={index} />
         ))}
@@ -54,20 +74,42 @@ export function ProductGrid({
     );
   }
 
+  if (!products.length) {
+    return (
+      <div 
+        className="text-center py-8 text-muted-foreground"
+        role="status"
+        aria-label="No products found"
+      >
+        No products found
+      </div>
+    );
+  }
+
   return (
-    <div className="space-y-6">
-      <div className={`${gridClassName} ${isFilterLoading ? 'opacity-50' : ''}`}>
-        {products.map((product) => (
+    <div className="space-y-6" role="region" aria-label="Products grid">
+      <div 
+        className={`${gridClassName} ${isFilterLoading ? 'opacity-50' : ''}`}
+        role={viewMode === 'grid' ? 'grid' : 'list'}
+        aria-busy={isFilterLoading}
+      >
+        {products.map((product, index) => (
           <ProductCard
             key={product.id}
             product={product}
             viewMode={viewMode}
             onClick={onProductClick}
+            aria-setsize={products.length}
+            aria-posinset={index + 1}
           />
         ))}
       </div>
       {hasMore && (
-        <div ref={ref} className="w-full flex justify-center">
+        <div 
+          ref={ref} 
+          className="w-full flex justify-center"
+          aria-hidden="true"
+        >
           <ProductSkeleton />
         </div>
       )}

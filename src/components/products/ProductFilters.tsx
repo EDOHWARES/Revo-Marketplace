@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
+import { debounce } from 'lodash';
 import {
   Select,
   SelectContent,
@@ -36,24 +37,53 @@ export function ProductFilters({ onFilterChange, categories, farmingMethods }: P
     pickupOnly: false,
   });
 
+  // Debounced search handler
+  const debouncedSearch = useCallback(
+    debounce((searchValue: string) => {
+      const updatedFilters = { ...filters, search: searchValue };
+      onFilterChange(updatedFilters);
+    }, 300),
+    [filters, onFilterChange]
+  );
+
   const handleFilterChange = (newFilters: Partial<ProductFilters>) => {
     const updatedFilters = { ...filters, ...newFilters };
     setFilters(updatedFilters);
-    onFilterChange(updatedFilters);
+    
+    // If it's a search update, use debounce
+    if ('search' in newFilters) {
+      debouncedSearch(newFilters.search || '');
+    } else {
+      // For other filters, update immediately
+      onFilterChange(updatedFilters);
+    }
   };
 
   return (
-    <div className="space-y-4 sticky top-4">
-      <Input
-        placeholder={t('search')}
-        value={filters.search}
-        onChange={(e) => handleFilterChange({ search: e.target.value })}
-        className="w-full text-white"
-      />
-      
+    <div className="space-y-4">
       <div className="space-y-2">
-        <label className="text-sm font-medium">{t('category')}</label>
-        <Select value={filters.category} onValueChange={(value) => handleFilterChange({ category: value })}>
+        <label id="search-label" className="text-sm font-medium text-white">
+          {t('search')}
+        </label>
+        <Input
+          placeholder={t('search')}
+          value={filters.search}
+          onChange={(e) => handleFilterChange({ search: e.target.value })}
+          className="w-full text-white"
+          aria-labelledby="search-label"
+        />
+      </div>
+
+      <div className="space-y-2">
+        <label id="category-label" className="text-sm font-medium text-white">
+          {t('category')}
+        </label>
+        <Select 
+          value={filters.category} 
+          onValueChange={(value) => handleFilterChange({ category: value })}
+          aria-labelledby="category-label"
+          aria-expanded="false"
+        >
           <SelectTrigger>
             <SelectValue placeholder="All Categories" />
           </SelectTrigger>
@@ -68,8 +98,15 @@ export function ProductFilters({ onFilterChange, categories, farmingMethods }: P
       </div>
 
       <div className="space-y-2">
-        <label className="text-sm font-medium text-white">{t('farmingMethod')}</label>
-        <Select value={filters.farmingMethod} onValueChange={(value) => handleFilterChange({ farmingMethod: value })}>
+        <label id="farming-method-label" className="text-sm font-medium text-white">
+          {t('farmingMethod')}
+        </label>
+        <Select 
+          value={filters.farmingMethod} 
+          onValueChange={(value) => handleFilterChange({ farmingMethod: value })}
+          aria-labelledby="farming-method-label"
+          aria-expanded="false"
+        >
           <SelectTrigger>
             <SelectValue placeholder="All Methods" />
           </SelectTrigger>
@@ -81,23 +118,6 @@ export function ProductFilters({ onFilterChange, categories, farmingMethods }: P
             ))}
           </SelectContent>
         </Select>
-      </div>
-
-      <div className="flex flex-wrap gap-2 ">
-        <Badge
-          variant="outline"
-          className={`cursor-pointer ${filters.deliveryOnly ? 'bg-primary text-white' : 'text-white'}`}
-          onClick={() => handleFilterChange({ deliveryOnly: !filters.deliveryOnly })}
-        >
-          {t('delivery')}
-        </Badge>
-        <Badge
-          variant="outline"
-          className={`cursor-pointer ${filters.pickupOnly ? 'bg-primary text-white' : 'text-white'}`}
-          onClick={() => handleFilterChange({ pickupOnly: !filters.pickupOnly })}
-        >
-          {t('pickup')}
-        </Badge>
       </div>
     </div>
   );
