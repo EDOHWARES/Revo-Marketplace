@@ -5,20 +5,56 @@ import { Product } from "@/types/product";
 import Image from "next/image";
 import { Badge } from "../ui/badge";
 import { CalendarDays, Package2, Truck } from "lucide-react";
+import { useCallback } from "react";
+import { cn } from "@/lib/utils";
 
 interface ProductCardProps {
   product: Product;
   viewMode: 'grid' | 'list';
   onClick: (productId: string) => void;
+  locale?: string;
 }
 
-export function ProductCard({ product, viewMode, onClick }: ProductCardProps) {
-  const cardClassName = viewMode === 'grid' 
-    ? 'w-full cursor-pointer hover:shadow-lg transition-shadow'
-    : 'w-full flex flex-row cursor-pointer hover:shadow-lg transition-shadow';
+export function ProductCard({ product, viewMode, onClick, locale = 'en' }: ProductCardProps) {
+  const formatPrice = useCallback((amount: number) => {
+    return new Intl.NumberFormat(locale, {
+      style: 'currency',
+      currency: 'USD'
+    }).format(amount);
+  }, [locale]);
+
+  const formatDate = useCallback((date: Date) => {
+    return new Intl.DateTimeFormat(locale, {
+      dateStyle: 'medium'
+    }).format(date);
+  }, [locale]);
+
+  const cardClassName = cn(
+    'w-full cursor-pointer transition-all',
+    'hover:shadow-lg focus-visible:shadow-lg',
+    'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+    'focus-visible:ring-offset-2',
+    {
+      'flex flex-row': viewMode === 'list'
+    }
+  );
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onClick(product.id);
+    }
+  };
 
   return (
-    <Card className={cardClassName} onClick={() => onClick(product.id)}>
+    <div
+      role="button"
+      tabIndex={0}
+      className={cardClassName}
+      onClick={() => onClick(product.id)}
+      onKeyDown={handleKeyDown}
+      aria-label={`View details for ${product.name}`}
+    >
       <div className={viewMode === 'grid' ? 'w-full' : 'w-1/4'}>
         <Image
           src={`/images/${product.images[0]}`}
@@ -53,7 +89,8 @@ export function ProductCard({ product, viewMode, onClick }: ProductCardProps) {
             <h3 className="text-lg font-semibold">{product.name}</h3>
             <div className="text-right">
               <p className="text-lg font-bold">
-                ${product.price.amount} <span className="text-sm text-gray-500">{product.price.unit}</span>
+                {formatPrice(product.price.amount)}
+                <span className="text-sm text-gray-500">{product.price.unit}</span>
               </p>
             </div>
           </div>
@@ -75,7 +112,7 @@ export function ProductCard({ product, viewMode, onClick }: ProductCardProps) {
             </div>
             <div className="flex items-center gap-1">
               <CalendarDays className="h-4 w-4" />
-              <span>{product.harvestDate.toLocaleDateString()}</span>
+              <span>{formatDate(product.harvestDate)}</span>
             </div>
           </div>
 
@@ -96,6 +133,6 @@ export function ProductCard({ product, viewMode, onClick }: ProductCardProps) {
           </div>
         </div>
       </div>
-    </Card>
+    </div>
   );
 } 

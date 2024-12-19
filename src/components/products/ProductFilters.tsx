@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
-import { debounce } from 'lodash';
+import { debounce, DebouncedFunc } from 'lodash';
 import {
   Select,
   SelectContent,
@@ -37,26 +37,29 @@ export function ProductFilters({ onFilterChange, categories, farmingMethods }: P
     pickupOnly: false,
   });
 
-  // Debounced search handler
-  const debouncedSearch = useCallback(
-    debounce((searchValue: string) => {
-      const updatedFilters = { ...filters, search: searchValue };
-      onFilterChange(updatedFilters);
-    }, 300),
-    [filters, onFilterChange]
-  );
+  const debouncedFilterChange = useRef<DebouncedFunc<() => void>>();
+
+  useEffect(() => {
+    return () => {
+      if (debouncedFilterChange.current) {
+        debouncedFilterChange.current.cancel();
+      }
+    };
+  }, []);
 
   const handleFilterChange = (newFilters: Partial<ProductFilters>) => {
     const updatedFilters = { ...filters, ...newFilters };
     setFilters(updatedFilters);
     
-    // If it's a search update, use debounce
-    if ('search' in newFilters) {
-      debouncedSearch(newFilters.search || '');
-    } else {
-      // For other filters, update immediately
-      onFilterChange(updatedFilters);
+    if (debouncedFilterChange.current) {
+      debouncedFilterChange.current.cancel();
     }
+    
+    debouncedFilterChange.current = debounce(() => {
+      onFilterChange(updatedFilters);
+    }, 300);
+    
+    debouncedFilterChange.current();
   };
 
   return (
