@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useRef, useEffect } from 'react';
+import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
@@ -37,29 +37,25 @@ export function ProductFilters({ onFilterChange, categories, farmingMethods }: P
     pickupOnly: false,
   });
 
-  const debouncedFilterChange = useRef<DebouncedFunc<() => void>>();
+  // Create a memoized debounced function
+  const debouncedFilterChange = useMemo(
+    () => debounce((updatedFilters: ProductFilters) => {
+      onFilterChange(updatedFilters);
+    }, 300),
+    [onFilterChange]
+  );
 
+  // Cleanup on unmount
   useEffect(() => {
     return () => {
-      if (debouncedFilterChange.current) {
-        debouncedFilterChange.current.cancel();
-      }
+      debouncedFilterChange.cancel();
     };
-  }, []);
+  }, [debouncedFilterChange]);
 
   const handleFilterChange = (newFilters: Partial<ProductFilters>) => {
     const updatedFilters = { ...filters, ...newFilters };
     setFilters(updatedFilters);
-    
-    if (debouncedFilterChange.current) {
-      debouncedFilterChange.current.cancel();
-    }
-    
-    debouncedFilterChange.current = debounce(() => {
-      onFilterChange(updatedFilters);
-    }, 300);
-    
-    debouncedFilterChange.current();
+    debouncedFilterChange(updatedFilters);
   };
 
   return (
@@ -85,10 +81,9 @@ export function ProductFilters({ onFilterChange, categories, farmingMethods }: P
           value={filters.category} 
           onValueChange={(value) => handleFilterChange({ category: value })}
           aria-labelledby="category-label"
-          aria-expanded="false"
         >
           <SelectTrigger>
-            <SelectValue placeholder="All Categories" />
+            <SelectValue placeholder={t('allCategories')} />
           </SelectTrigger>
           <SelectContent>
             {categories.map((category) => (
@@ -108,10 +103,9 @@ export function ProductFilters({ onFilterChange, categories, farmingMethods }: P
           value={filters.farmingMethod} 
           onValueChange={(value) => handleFilterChange({ farmingMethod: value })}
           aria-labelledby="farming-method-label"
-          aria-expanded="false"
         >
           <SelectTrigger>
-            <SelectValue placeholder="All Methods" />
+            <SelectValue placeholder={t('allMethods')} />
           </SelectTrigger>
           <SelectContent>
             {farmingMethods.map((method) => (
