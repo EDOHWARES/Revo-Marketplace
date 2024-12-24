@@ -9,6 +9,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+
+      textColor: {
+        'white-light': 'rgb(0 0 0)', // For light mode
+        'white-dark': 'rgb(255 255 255)', // For dark mode
+      },
+      
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
