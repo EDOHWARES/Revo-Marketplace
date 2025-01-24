@@ -69,5 +69,10 @@
       "grid": "Grid view",
       "list": "List view"
     }
+  },
+  "notFound": {
+    "title": "404 Not Found",
+    "description": "The page you visited was not found. You may go to the home page.",
+    "buttonText": "Back to home page"
   }
 }
