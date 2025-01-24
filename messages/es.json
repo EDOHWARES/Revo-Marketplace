@@ -50,5 +50,11 @@
       }
     },
     "submitButtonText": "Financiar fideicomiso"
+  },
+  "notFound": {
+    "title": "404 No Encontrada",
+    "description": "La página que visitaste no fue encontrada. Puedes ir a la página de inicio.",
+    "buttonText": "Volver al inicio"
   }
 }
+
