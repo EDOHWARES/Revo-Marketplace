@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 
 interface BreadcrumbProps {
-  items: { label: string; href: string; isCurrent?: boolean }[]; // Agregamos `isCurrent` para la página actual
+  items: { label: string; href: string; isCurrent?: boolean }[]; 
 }
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
@@ -14,7 +14,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
         {items.map((item, index) => (
           <li key={index} className="flex items-center">
             {item.isCurrent ? (
-              <span className="text-black">{item.label}</span> // Estilo para la página actual
+              <span className="text-black">{item.label}</span> 
             ) : (
               <Link href={item.href} className="hover:underline">
                 {item.label}
