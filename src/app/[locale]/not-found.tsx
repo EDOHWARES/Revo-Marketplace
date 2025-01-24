@@ -17,7 +17,7 @@ const NotFoundPage = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-background"> {/* Cambiamos bg-white por bg-background */}
+    <div className="flex flex-col min-h-screen bg-background"> {/* bg-background */}
       <div className="mt-32 pl-60 w-full max-w-5xl">
         <Breadcrumb
           items={[
@@ -32,11 +32,11 @@ const NotFoundPage = () => {
         <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-[10rem] font-light text-[#375B42] tracking-wide mb-4">
           {t('title')}
         </h1>
-        {/* Description */}
+        {/* Description responsive */}
         <p className="text-base sm:text-lg text-gray-600 font-bold mb-8">
           {t('description')}
         </p>
-        {/* Button */}
+        {/* Button color #2e4a36*/}
         <button
           className="mt-6 bg-[#375B42] hover:bg-[#2e4a36] font-medium text-lg px-8 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#375B42]"
           style={{ color: 'white' }}
