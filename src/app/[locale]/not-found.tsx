@@ -3,26 +3,26 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import Breadcrumb from '@/components/shared/Breadcrumb'; 
-import useAnalytics from '@/hooks/useAnalytics'; 
+import Breadcrumb from '@/components/shared/Breadcrumb';
+import useAnalytics from '@/hooks/useAnalytics';
 
 const NotFoundPage = () => {
   const router = useRouter();
-  const t = useTranslations('notFound'); 
-  const { trackEvent } = useAnalytics(); 
+  const t = useTranslations('notFound');
+  const { trackEvent } = useAnalytics();
 
   const handleHomeRedirect = () => {
-    trackEvent('404_error_navigated_home', { from: '404 page' }); 
-    router.push('/'); 
+    trackEvent('404_error_navigated_home', { from: '404 page' });
+    router.push('/');
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-white">
+    <div className="flex flex-col min-h-screen bg-background"> {/* Cambiamos bg-white por bg-background */}
       <div className="mt-32 pl-60 w-full max-w-5xl">
         <Breadcrumb
           items={[
             { label: "Home", href: "/" },
-            { label: "404 Error", href: "/404", isCurrent: true }, 
+            { label: "404 Error", href: "/404", isCurrent: true },
           ]}
         />
       </div>
@@ -36,7 +36,7 @@ const NotFoundPage = () => {
         <p className="text-base sm:text-lg text-gray-600 font-bold mb-8">
           {t('description')}
         </p>
-        {/* Botton */}
+        {/* Button */}
         <button
           className="mt-6 bg-[#375B42] hover:bg-[#2e4a36] font-medium text-lg px-8 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#375B42]"
           style={{ color: 'white' }}
