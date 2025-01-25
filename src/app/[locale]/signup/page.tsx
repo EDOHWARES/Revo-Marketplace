@@ -76,9 +76,9 @@ export default function SignUpPage() {
 
   return (
     <div className="flex flex-col md:flex-row min-h-screen">
-      <div className="w-full md:w-1/2 p-4 flex items-start justify-center pt-20">
-        <div className="bg-slate-100 p-8 md:p-16 rounded-2xl">
-          <div className="w-48 h-48 md:w-80 md:h-80">
+      <div className="w-full md:w-1/2 p-4 flex items-center md:items-start justify-center pt-8 md:pt-20 md:pr-20">
+        <div className="bg-slate-100 p-6 md:p-8 lg:p-16 rounded-2xl">
+          <div className="w-40 h-40 md:w-48 md:h-48 lg:w-80 lg:h-80">
             <img 
               src="/logo.svg" 
               alt="Revolutionary Farmers Logo" 
@@ -88,8 +88,8 @@ export default function SignUpPage() {
         </div>
       </div>
 
-      <div className="w-full md:w-1/2 flex items-start justify-center p-4 pt-20">
-        <div className="w-full max-w-sm px-4 md:px-8">
+      <div className="w-full md:w-1/2 flex items-center md:items-start justify-center md:justify-start p-4 pt-8 md:pt-20 md:pl-32">
+        <div className="w-full max-w-sm">
           <h1 className="text-xl md:text-2xl font-semibold mb-2">{t('title')}</h1>
           <p className="text-gray-600 mb-6">{t('subtitle')}</p>
           
