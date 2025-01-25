@@ -55,6 +55,21 @@
     "title": "404 No Encontrada",
     "description": "La página que visitaste no fue encontrada. Puedes ir a la página de inicio.",
     "buttonText": "Volver al inicio"
+  },
+  "SignUp": {
+    "title": "Crear una cuenta",
+    "subtitle": "Ingresa tus datos a continuación",
+    "nameLabel": "Nombre",
+    "emailLabel": "Correo electrónico",
+    "passwordLabel": "Contraseña",
+    "submit": "Crear Cuenta",
+    "submitting": "Creando...",
+    "successTitle": "¡Éxito!",
+    "successMessage": "Tu cuenta ha sido creada. Redirigiendo al inicio de sesión...",
+    "errorTitle": "Error",
+    "errorMessage": "Algo salió mal. Por favor, inténtalo de nuevo.",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "login": "Iniciar sesión"
   }
 }
 

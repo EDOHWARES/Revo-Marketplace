@@ -74,5 +74,20 @@
     "title": "404 Not Found",
     "description": "The page you visited was not found. You may go to the home page.",
     "buttonText": "Back to home page"
+  },
+  "SignUp": {
+    "title": "Create an account",
+    "subtitle": "Enter your details below",
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "submit": "Create Account",
+    "submitting": "Creating...",
+    "successTitle": "Success!",
+    "successMessage": "Your account has been created. Redirecting to login...",
+    "errorTitle": "Error",
+    "errorMessage": "Something went wrong. Please try again.",
+    "alreadyHaveAccount": "Already have an account?",
+    "login": "Log in"
   }
 }
