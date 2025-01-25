@@ -51,6 +51,25 @@
     },
     "submitButtonText": "Financiar fideicomiso"
   },
+  "Products": {
+    "title": "Productos",
+    "filters": {
+      "category": "Categoría",
+      "farmingMethod": "Método de Cultivo",
+      "delivery": "Opciones de Entrega",
+      "search": "Buscar productos..."
+    },
+    "sortBy": {
+      "label": "Ordenar por",
+      "price": "Precio",
+      "date": "Fecha de Cosecha",
+      "stock": "Stock"
+    },
+    "viewMode": {
+      "grid": "Vista de Grilla",
+      "list": "Vista de Lista"
+    }
+  },
   "notFound": {
     "title": "404 No Encontrada",
     "description": "La página que visitaste no fue encontrada. Puedes ir a la página de inicio.",

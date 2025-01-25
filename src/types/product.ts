@@ -26,4 +26,5 @@ export interface Product {
     farmingMethod: string;
     availableForDelivery: boolean;
     pickupAvailable: boolean;
+    rating: number;
   } 

@@ -7,6 +7,7 @@ import { useEffect, useCallback } from 'react';
 import { ProductSkeleton } from "./ProductSkeleton";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface ProductGridProps {
   products: Product[];
@@ -45,7 +46,7 @@ export function ProductGrid({
   }, [handleInView]);
 
   const gridClassName = viewMode === 'grid'
-    ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'
+    ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'
     : 'flex flex-col gap-4';
 
   if (error) {
@@ -87,9 +88,16 @@ export function ProductGrid({
   }
 
   return (
-    <div className="space-y-6" role="region" aria-label="Products grid">
+    <div className="space-y-6 max-w-[1440px] mx-auto" role="region" aria-label="Products grid">
       <div 
-        className={`${gridClassName} ${isFilterLoading ? 'opacity-50' : ''}`}
+        className={cn(
+          "grid gap-8",
+          "grid-cols-1",
+          "sm:grid-cols-2",
+          "lg:grid-cols-3",
+          "justify-items-center",
+          isFilterLoading ? 'opacity-50' : ''
+        )}
         role={viewMode === 'grid' ? 'grid' : 'list'}
         aria-busy={isFilterLoading}
       >
@@ -113,6 +121,21 @@ export function ProductGrid({
           <ProductSkeleton />
         </div>
       )}
+    </div>
+  );
+}
+
+export function ProductGridTable({ children }: { children: React.ReactNode }) {
+  return (
+    <div className={cn(
+      "grid gap-4 w-full",
+      "grid-cols-1",
+      "sm:grid-cols-2",
+      "md:grid-cols-3",
+      "lg:grid-cols-4",
+      "xl:grid-cols-5"
+    )}>
+      {children}
     </div>
   );
 } 

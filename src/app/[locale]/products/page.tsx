@@ -26,6 +26,7 @@ export default function ProductsPage() {
     farmingMethod: '',
     deliveryOnly: false,
     pickupOnly: false,
+    priceRange: [0, 1000],
   });
   const [sortBy, setSortBy] = useState<'price' | 'date' | 'stock'>('date');
   const ITEMS_PER_PAGE = 12;
