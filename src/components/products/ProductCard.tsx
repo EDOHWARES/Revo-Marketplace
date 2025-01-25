@@ -53,8 +53,8 @@ export function ProductCard({ product, viewMode, onClick, locale = 'en' }: Produ
   return (
     <div 
       className={cn(
-        "w-screen max-w-[295px] ",
-        "bg-white rounded-lg overflow-hidden",
+        "w-screen max-w-[295px]",
+        "bg-white overflow-hidden",
         "transition-all duration-200 hover:scale-[1.02]",
         "mx-auto"
       )}
@@ -66,7 +66,7 @@ export function ProductCard({ product, viewMode, onClick, locale = 'en' }: Produ
       <div 
         className={cn(
           "flex justify-center items-center",
-          "bg-[#F5F5F5] rounded-lg",
+          "bg-[#F5F5F5] rounded-[20px]",
           "w-full aspect-square",
           "p-4"
         )}

@@ -18,6 +18,9 @@ interface ProductGridProps {
   isLoading?: boolean;
   isFilterLoading?: boolean;
   error?: Error | null;
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
 }
 
 export function ProductGrid({ 
@@ -28,7 +31,10 @@ export function ProductGrid({
   onLoadMore,
   isLoading = false,
   isFilterLoading = false,
-  error = null
+  error = null,
+  currentPage,
+  totalPages,
+  onPageChange
 }: ProductGridProps) {
   const { ref, inView } = useInView({
     threshold: 0.5,
@@ -48,6 +54,140 @@ export function ProductGrid({
   const gridClassName = viewMode === 'grid'
     ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'
     : 'flex flex-col gap-4';
+
+  const renderPagination = () => {
+    const pages = [];
+    const maxVisiblePages = 5;
+    
+    // Siempre mostrar la primera página
+    pages.push(
+      <button
+        key={1}
+        onClick={() => onPageChange(1)}
+        className={cn(
+          "w-8 h-8 flex items-center justify-center rounded",
+          currentPage === 1 ? "text-black bg-black/10" : "text-gray-500"
+        )}
+      >
+        1
+      </button>
+    );
+
+    let startPage = Math.max(2, currentPage - 1);
+    let endPage = Math.min(totalPages - 1, currentPage + 1);
+
+    if (startPage > 2) {
+      pages.push(<span key="start-ellipsis">...</span>);
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+      pages.push(
+        <button
+          key={i}
+          onClick={() => onPageChange(i)}
+          className={cn(
+            "w-8 h-8 flex items-center justify-center rounded",
+            currentPage === i ? "text-black bg-black/10" : "text-gray-500"
+          )}
+        >
+          {i}
+        </button>
+      );
+    }
+
+    if (endPage < totalPages - 1) {
+      pages.push(<span key="end-ellipsis">...</span>);
+    }
+
+    // Siempre mostrar la última página si hay más de una página
+    if (totalPages > 1) {
+      pages.push(
+        <button
+          key={totalPages}
+          onClick={() => onPageChange(totalPages)}
+          className={cn(
+            "w-8 h-8 flex items-center justify-center rounded",
+            currentPage === totalPages ? "text-black bg-black/10" : "text-gray-500"
+          )}
+        >
+          {totalPages}
+        </button>
+      );
+    }
+
+    return (
+      <div className="flex items-center justify-between gap-2 mt-8">
+        <button
+          onClick={() => onPageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+          className={cn(
+            "flex items-center justify-between gap-2 p-2 rounded-[8px] w-[120px]",
+            currentPage === 1 
+              ? "text-gray-300 border border-gray-300 cursor-not-allowed" 
+              : "text-gray-500 border border-black/10 hover:text-black hover:border hover:border-black",
+            
+          )}
+        >
+          <svg 
+            width="20" 
+            height="20" 
+            viewBox="0 0 20 20" 
+            fill="none" 
+            className={cn(
+              "w-5 h-5",
+              currentPage === 1 
+                ? "stroke-gray-300 " 
+                : "stroke-gray-500"
+            )}
+          >
+            <path 
+              d="M15.8334 10H4.16675M4.16675 10L10.0001 15.8333M4.16675 10L10.0001 4.16667"
+              strokeWidth="1.67" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            />
+          </svg>
+          Previous
+        </button>
+
+        <div className="flex items-center gap-2 ">
+          {pages}
+        </div>
+
+        <button
+          onClick={() => onPageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+          className={cn(
+            "flex items-center justify-between gap-2 p-2 rounded-[8px] w-[120px]",
+            currentPage === totalPages 
+              ? "text-gray-300 border border-gray-300 cursor-not-allowed" 
+              : "text-gray-500 border border-black/10 hover:text-black hover:border hover:border-black",
+          )}
+        >
+          Next
+          <svg 
+            width="20" 
+            height="20" 
+            viewBox="0 0 20 20" 
+            fill="none" 
+            className={cn(
+              "w-5 h-5",
+              currentPage === totalPages 
+                ? "stroke-gray-300" 
+                : "stroke-gray-500"
+            )}
+          >
+            <path 
+              d="M4.16675 10H15.8334M15.8334 10L10.0001 4.16667M15.8334 10L10.0001 15.8333"
+              strokeWidth="1.67" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
+    );
+  };
 
   if (error) {
     return (
@@ -112,6 +252,9 @@ export function ProductGrid({
           />
         ))}
       </div>
+
+      {renderPagination()}
+
       {hasMore && (
         <div 
           ref={ref} 
