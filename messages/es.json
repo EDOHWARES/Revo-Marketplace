@@ -55,6 +55,27 @@
     "title": "404 No Encontrada",
     "description": "La página que visitaste no fue encontrada. Puedes ir a la página de inicio.",
     "buttonText": "Volver al inicio"
+  },
+  "footer": {
+    "copyright": "© Copyright Revolutionary Farmer {year}. Todos los derechos reservados.",
+    "Support": "Soporte",
+    "Account": "Cuenta",
+    "Quick Links": "Enlaces Rápidos",
+    "Download App": "Descargar App",
+    "My Account": "Mi Cuenta",
+    "Login / Register": "Iniciar Sesión / Registrarse",
+    "Cart": "Carrito",
+    "Wishlist": "Lista de Deseos",
+    "Shop": "Tienda",
+    "Privacy Policy": "Política de Privacidad",
+    "Terms of Use": "Términos de Uso",
+    "FAQ": "Preguntas Frecuentes",
+    "Contact": "Contacto",
+    "Documentation": "Documentación",
+    "Barcode": "Código QR",
+    "Play store": "Descargar en Play Store",
+    "Twitter": "Twitter",
+    "LinkedIn": "LinkedIn",
+    "Github": "GitHub"
   }
 }
-
