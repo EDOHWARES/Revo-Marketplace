@@ -150,36 +150,64 @@ export default function ProductsPage() {
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <h1 className="text-3xl font-bold text-white">{t('title')}</h1>
               </div>
-              <div className="flex items-center">
-                <div className="text-black/50 text-sm mr-4">
-                  Showing {(currentPage - 1) * itemsPerPage + 1}-
-                  {Math.min(currentPage * itemsPerPage, sortedProducts.length)} of{' '}
-                  {sortedProducts.length} Products
-              </div>
-                <span className="text-black/50 text-sm font-medium">Sort by:</span>
-                <Select value={sortBy} onValueChange={handleSortChange}>
-                  <SelectTrigger className="w-[180px] border-0 active:border-0">
-                    <SelectValue placeholder={t('sortBy.label')} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="price">{t('sortBy.price')}</SelectItem>
-                    <SelectItem value="date">{t('sortBy.date')}</SelectItem>
-                    <SelectItem value="stock">{t('sortBy.stock')}</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+              {sortedProducts.length > 0 && (
+                <div className="flex items-center">
+                  <div className="text-black/50 text-sm mr-4">
+                    Showing {(currentPage - 1) * itemsPerPage + 1}-
+                    {Math.min(currentPage * itemsPerPage, sortedProducts.length)} of{' '}
+                    {sortedProducts.length} Products
+                  </div>
+                  <span className="text-black/50 text-sm font-medium">Sort by:</span>
+                  <Select value={sortBy} onValueChange={handleSortChange}>
+                    <SelectTrigger className="w-[180px] border-0 active:border-0">
+                      <SelectValue placeholder={t('sortBy.label')} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="price">{t('sortBy.price')}</SelectItem>
+                      <SelectItem value="date">{t('sortBy.date')}</SelectItem>
+                      <SelectItem value="stock">{t('sortBy.stock')}</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              )}
             </div>
 
-            <ProductGrid
-              products={currentProducts}
-              viewMode={viewMode}
-              onProductClick={handleProductClick}
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={handlePageChange}
-              isLoading={isLoading}
-              isFilterLoading={isFilterLoading}
-            />
+            {sortedProducts.length === 0 ? (
+              <div className="flex flex-col items-center justify-center py-12 px-4 bg-white rounded-lg">
+                <div className="text-center">
+                  <h3 className="mt-2 text-lg font-medium text-gray-900">No products found</h3>
+                  <p className="mt-1 text-sm text-gray-500">
+                    Try adjusting your filters or search criteria to find what you're looking for.
+                  </p>
+                  <button
+                    onClick={() => {
+                      setFilters({
+                        search: '',
+                        category: '',
+                        farmingMethod: '',
+                        deliveryOnly: false,
+                        pickupOnly: false,
+                        priceRange: [priceRange.min, priceRange.max],
+                      });
+                    }}
+                    className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-black hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
+                  >
+                    Clear all filters
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <ProductGrid
+                products={currentProducts}
+                viewMode={viewMode}
+                onProductClick={handleProductClick}
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+                isLoading={isLoading}
+                isFilterLoading={isFilterLoading}
+              />
+            )}
           </div>
         </main>
       </div>
