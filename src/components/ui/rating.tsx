@@ -2,13 +2,24 @@ import React from 'react';
 import { Star, StarHalf } from 'lucide-react';
 
 interface RatingProps {
-  value: number;
+  value: number & { __brand: 'ValidRating' };
   max?: number;
   readOnly?: boolean;
   onChange?: (value: number) => void;
 }
 
+function isValidRating(value: number, max: number = 5): value is number & { __brand: 'ValidRating' } { return value >= 0 && value <= max; }
+
 export function Rating({ value, max = 5, readOnly = false, onChange }: RatingProps) {
+  if (max <= 0) {
+    console.error('Rating: max prop must be greater than 0');
+    return null;
+  }
+  if (value < 0 || value > max) {
+    console.error(`Rating: value must be between 0 and ${max}`);
+    return null;
+  }
+ 
   const [hoveredValue, setHoveredValue] = React.useState<number | null>(null);
   const stars = Array.from({ length: max }, (_, i) => {
     const filled = value >= i + 1;

@@ -283,7 +283,7 @@ export const productsMock: Product[] = [
   },
   {
     id: '11',
-    name: 'Organic Quail Eggs',
+    name: 'Eggs 1',
     description: 'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
     price: { amount: 225, unit: 'per dozen' },
     discount: isValidDiscount(20) ? 20 : 0,
@@ -311,7 +311,7 @@ export const productsMock: Product[] = [
   },
   {
     id: '12',
-    name: 'Organic Quail Eggs',
+    name: 'Eggs 2',
     description: 'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
     price: { amount: 225, unit: 'per dozen' },
     discount: isValidDiscount(20) ? 20 : 0,
@@ -479,7 +479,7 @@ export const productsMock: Product[] = [
   },
   {
     id: '18',
-    name: 'Organic Quail Eggs',
+    name: 'Eggs 3',
     description: 'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
     price: { amount: 225, unit: 'per dozen' },
     discount: isValidDiscount(20) ? 20 : 0,
@@ -619,7 +619,7 @@ export const productsMock: Product[] = [
   },
   {
     id: '23',
-    name: 'Organic Quail Eggs',
+    name: 'Eggs 4',
     description: 'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
     price: { amount: 225, unit: 'per dozen' },
     discount: isValidDiscount(20) ? 20 : 0,
@@ -647,7 +647,7 @@ export const productsMock: Product[] = [
   },
   {
     id: '24',
-    name: 'Organic Quail Eggs',
+    name: 'Eggs 5',
     description: 'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
     price: { amount: 225, unit: 'per dozen' },
     discount: isValidDiscount(20) ? 20 : 0,
@@ -815,7 +815,7 @@ export const productsMock: Product[] = [
   },
   {
     id: '30',
-    name: 'Organic Quail Eggs',
+    name: 'Eggs 6',
     description: 'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
     price: { amount: 225, unit: 'per dozen' },
     discount: isValidDiscount(20) ? 20 : 0,
