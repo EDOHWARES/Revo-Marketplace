@@ -105,7 +105,7 @@ export default function SignUpPage() {
                       <Input 
                         {...field} 
                         disabled={isLoading}
-                        className="border-0 border-b border-gray-300 rounded-none focus:border-b-2 focus:border-green-800 focus:ring-0 px-0" 
+                        className="!border-0 !border-b !border-gray-300 !rounded-none focus:!border-b-2 focus:!border-green-800 !ring-0 !ring-offset-0 !px-0 focus:!ring-0 focus:!ring-offset-0" 
                       />
                     </FormControl>
                     <FormMessage />
@@ -124,7 +124,7 @@ export default function SignUpPage() {
                         type="email" 
                         {...field} 
                         disabled={isLoading}
-                        className="border-0 border-b border-gray-300 rounded-none focus:border-b-2 focus:border-green-800 focus:ring-0 px-0" 
+                        className="!border-0 !border-b !border-gray-300 !rounded-none focus:!border-b-2 focus:!border-green-800 !ring-0 !ring-offset-0 !px-0 focus:!ring-0 focus:!ring-offset-0" 
                       />
                     </FormControl>
                     <FormMessage />
@@ -143,7 +143,7 @@ export default function SignUpPage() {
                         type="password" 
                         {...field} 
                         disabled={isLoading}
-                        className="border-0 border-b border-gray-300 rounded-none focus:border-b-2 focus:border-green-800 focus:ring-0 px-0" 
+                        className="!border-0 !border-b !border-gray-300 !rounded-none focus:!border-b-2 focus:!border-green-800 !ring-0 !ring-offset-0 !px-0 focus:!ring-0 focus:!ring-offset-0" 
                       />
                     </FormControl>
                     <FormMessage />
