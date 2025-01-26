@@ -1303,6 +1303,10 @@ video {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
 }
+.px-10 {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -1318,10 +1322,6 @@ video {
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
-}
-.px-40 {
-  padding-left: 10rem;
-  padding-right: 10rem;
 }
 .px-5 {
   padding-left: 1.25rem;
@@ -1374,10 +1374,6 @@ video {
 .py-\[0\.2rem\] {
   padding-top: 0.2rem;
   padding-bottom: 0.2rem;
-}
-.px-10 {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
 }
 .pb-4 {
   padding-bottom: 1rem;
@@ -1490,10 +1486,6 @@ video {
 .text-\[\#FF3333\] {
   --tw-text-opacity: 1;
   color: rgb(255 51 51 / var(--tw-text-opacity, 1));
-}
-.text-\[\#ffffff\] {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 .text-black {
   --tw-text-opacity: 1;

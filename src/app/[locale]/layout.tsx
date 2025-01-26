@@ -63,7 +63,6 @@ export default function RootLayout({
           <NextIntlClientProvider locale={currentLocale} messages={messages}>
             <Header />
             {children}
-            <footer></footer>
             <Footer />
             <Toaster />
           </NextIntlClientProvider>

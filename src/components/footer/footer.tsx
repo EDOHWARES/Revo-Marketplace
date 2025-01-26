@@ -7,82 +7,83 @@ import { useTranslations } from 'next-intl';
 
 interface FooterLink {
   title: string;
-  items: string[] | { label: string; href: string }[];
+  items: string[] | { label: string; href: string; img?: string }[];
+  social?: { label: string; href?: string; component: JSX.Element }[];
 }
+
+const footerLinks: FooterLink[] = [
+  {
+    title: 'Support',
+    items: ['San Jose, Costa Rica', 'Revolutionaryfarmer@gmail.com'],
+  },
+  {
+    title: 'Account',
+    items: [
+      { label: 'My Account', href: '#' },
+      { label: 'Login / Register', href: '#' },
+      { label: 'Cart', href: '#' },
+      { label: 'Wishlist', href: '#' },
+      { label: 'Shop', href: '/products' },
+    ],
+  },
+  {
+    title: 'Quick Links',
+    items: [
+      { label: 'Privacy Policy', href: '#' },
+      { label: 'Terms of Use', href: '#' },
+      { label: 'FAQ', href: '#' },
+      { label: 'Contact', href: '#' },
+      {
+        label: 'Documentation',
+        href: 'https://revolutionary-farmers.gitbook.io/revolutionary-farmers',
+      },
+    ],
+  },
+  {
+    title: 'Download App',
+    items: [
+      {
+        label: 'Barcode',
+        img: '/qrcode.png',
+      },
+      {
+        label: 'Play store',
+        href: '#',
+        img: '/googleplay.png',
+      },
+    ],
+
+    social: [
+      {
+        label: 'Twitter',
+        href: 'https://x.com/revofarmers',
+        component: <RiTwitterLine size={20} />,
+      },
+      {
+        label: 'LinkedIn',
+        href: 'https://www.linkedin.com/company/revofarmers/',
+        component: <RiLinkedinLine size={20} />,
+      },
+      {
+        label: 'Github',
+        href: 'https://github.com/Crypto-Jaguars',
+        component: <RiGithubLine size={20} />,
+      },
+    ],
+  },
+];
 
 const Footer = () => {
   const t = useTranslations('footer');
   const currentYear = new Date().getFullYear();
-  const footerLinks = [
-    {
-      title: 'Support',
-      items: ['San Jose, Costa Rica', 'Revolutionaryfarmer@gmail.com'],
-    },
-    {
-      title: 'Account',
-      items: [
-        { label: 'My Account', href: '#' },
-        { label: 'Login / Register', href: '#' },
-        { label: 'Cart', href: '#' },
-        { label: 'Wishlist', href: '#' },
-        { label: 'Shop', href: '#' },
-      ],
-    },
-    {
-      title: 'Quick Links',
-      items: [
-        { label: 'Privacy Policy', href: '#' },
-        { label: 'Terms of Use', href: '#' },
-        { label: 'FAQ', href: '#' },
-        { label: 'Contact', href: '#' },
-        {
-          label: 'Documentation',
-          href: 'https://revolutionary-farmers.gitbook.io/revolutionary-farmers',
-        },
-      ],
-    },
-    {
-      title: 'Download App',
-      items: [
-        {
-          label: 'Barcode',
-          img: '/qrcode.png',
-        },
-        {
-          label: 'Play store',
-          href: '#',
-          img: '/googleplay.png',
-        },
-      ],
-
-      social: [
-        {
-          label: 'Twitter',
-          href: 'https://x.com/revofarmers',
-          component: <RiTwitterLine size={20} />,
-        },
-        {
-          label: 'LinkedIn',
-          href: 'https://www.linkedin.com/company/revofarmers/',
-          className: 'fab fa-linkedin',
-          component: <RiLinkedinLine size={20} />,
-        },
-        {
-          label: 'Github',
-          href: 'https://github.com/Crypto-Jaguars',
-          component: <RiGithubLine size={20} />,
-        },
-      ],
-    },
-  ];
 
   return (
-    <div className="bg-[#375B42] text-[#ffffff] dark:bg-background-dark h-auto w-full font-[family-name:var(--font-geist-sans)] ">
+    <div className="bg-[#375B42] dark:bg-background-dark h-auto w-full ">
       <div className="py-16 px-10 md:px-40">
         <div className="flex flex-col md:flex-row justify-between">
           {footerLinks.map(({ title, items, social }) => (
             <div key={title} className="flex text-base flex-col gap-4 w-full md:w-1/6">
-              <h3 className="text-white font-bold">{t(title)}</h3>
+              <h3 className="text-white-dark font-bold">{t(title)}</h3>
               <ul
                 className={`flex ${
                   title === 'Download App' ? 'flex-row ' : 'flex-col'
@@ -91,15 +92,21 @@ const Footer = () => {
                 {items.map((item, index) => (
                   <li key={index}>
                     {typeof item === 'string' && title === 'Support' ? (
-                      <span className="text-white">{item}</span>
+                      <span className="text-white-dark">{item}</span>
                     ) : (
-                      <a href={item.href} target="_blank" className="text-white hover:underline">
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white-dark hover:underline"
+                      >
                         {item.img && (
                           <Image
                             src={item.img}
                             alt={t(item.label)}
-                            width={60}
-                            height={60}
+                            width={120}
+                            height={40}
+                            quality={75}
                             className="w-full h-full object-contain"
                           />
                         )}
@@ -120,7 +127,7 @@ const Footer = () => {
                         href={href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-white hover:text-primary"
+                        className="text-white-dark hover:text-primary"
                         aria-label={label}
                       >
                         {component}
@@ -134,7 +141,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="flex items-center justify-center border-t border-white border-opacity-5 py-5">
-        <p className="text-white text-opacity-95 opacity-85 font-normal text-sm">
+        <p className="text-white-dark text-opacity-95 opacity-85 font-normal text-sm">
           {t('copyright', { year: currentYear })}
         </p>
       </div>
