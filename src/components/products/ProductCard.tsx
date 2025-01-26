@@ -1,14 +1,12 @@
 'use client';
 
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Product } from "@/types/product";
 import Image from "next/image";
-import { Badge } from "../ui/badge";
-import { CalendarDays, Package2, Truck } from "lucide-react";
 import { useCallback } from "react";
 import { cn } from "@/lib/utils";
 import { useTranslations } from 'next-intl';
 import { Rating } from '@/components/ui/rating';
+import { calculateDiscountedPrice } from "@/constants/helpers/CalculateDiscountedPrice";
 
 interface ProductCardProps {
   product: Product;
@@ -51,19 +49,19 @@ export function ProductCard({ product, viewMode, onClick, locale = 'en' }: Produ
   };
 
   return (
-    <div 
+    <div
       className={cn(
         "w-screen max-w-[295px]",
         "bg-white overflow-hidden",
         "transition-all duration-200 hover:scale-[1.02]",
         "mx-auto"
       )}
-      onClick={() => onClick(product.id)} 
+      onClick={() => onClick(product.id)}
       onKeyDown={handleKeyDown}
       role="button"
       tabIndex={0}
     >
-      <div 
+      <div
         className={cn(
           "flex justify-center items-center",
           "bg-[#F5F5F5] rounded-[20px]",
@@ -80,7 +78,7 @@ export function ProductCard({ product, viewMode, onClick, locale = 'en' }: Produ
           sizes="(max-width: 295px) 100vw, 295px"
         />
       </div>
-      
+
       <div className="py-4 space-y-2">
         <div className="flex flex-col justify-between items-start gap-1">
           <h3 className="text-base font-medium line-clamp-2">{product.name}</h3>
@@ -89,11 +87,21 @@ export function ProductCard({ product, viewMode, onClick, locale = 'en' }: Produ
             <span className="text-sm text-gray-600">{product.rating}/5</span>
           </div>
         </div>
-        
-        <div className="flex items-center justify-between">
-          <p className="text-base font-semibold">
-            {formatPrice(product.price.amount)}
+
+        <div className="flex items-center justify-start gap-2">
+          <p className="text-base font-semibold text-black">
+            {formatPrice(calculateDiscountedPrice(product.price.amount, product.discount))}
           </p>
+          {product.discount > 0 && (
+            <>
+              <p className={cn("text-base font-semibold", product.discount > 0 && "line-through text-black/40")}>
+                {formatPrice(product.price.amount)}
+              </p>
+              <p className="text-sm text-[#FF3333] bg-[#FF3333]/10 px-2 py-1 rounded-[62px]">
+                -{product.discount}%
+              </p>
+            </>
+          )}
         </div>
       </div>
     </div>

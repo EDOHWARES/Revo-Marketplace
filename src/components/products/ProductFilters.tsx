@@ -2,17 +2,8 @@
 
 import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
-import { Badge } from '@/components/ui/badge';
-import { Input } from '@/components/ui/input';
-import { debounce, DebouncedFunc } from 'lodash';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 import { productsMock } from '@/mocks/products';
+import { calculateDiscountedPrice } from '@/constants/helpers/CalculateDiscountedPrice';
 
 interface ProductFiltersProps {
   onFilterChange: (filters: ProductFilters) => void;
@@ -33,7 +24,7 @@ export function ProductFilters({ onFilterChange, categories, farmingMethods }: P
   const t = useTranslations('Products');
 
   const { maxPrice } = useMemo(() => {
-    const prices = productsMock.map(product => product.price.amount);
+    const prices = productsMock.map(product => calculateDiscountedPrice(product.price.amount, product.discount));
     return {
       maxPrice: Math.ceil(Math.max(...prices))
     };
@@ -65,7 +56,7 @@ export function ProductFilters({ onFilterChange, categories, farmingMethods }: P
     const rect = slider.getBoundingClientRect();
     const offsetX = event.clientX - rect.left;
     const percent = Math.min(Math.max(offsetX / rect.width, 0), 1);
-    const value = Math.round(percent * maxPrice);
+    const value = parseFloat((percent * maxPrice).toFixed(2));
 
     setLocalFilters(prev => {
       const [min, max] = prev.priceRange;

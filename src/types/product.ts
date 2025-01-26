@@ -6,6 +6,7 @@ export interface Product {
       amount: number;
       unit: string;
     };
+    discount: number;
     farmer: {
       id: string;
       name: string;

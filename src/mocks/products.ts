@@ -6,6 +6,7 @@ export const productsMock: Product[] = [
     name: 'Organic Tomatoes',
     description: 'Fresh organic tomatoes from local farms.',
     price: { amount: 3.5, unit: 'per kg' },
+    discount: 0,
     farmer: {
       id: 'f1',
       name: 'John Doe',
@@ -33,6 +34,7 @@ export const productsMock: Product[] = [
     name: 'Fresh Eggs',
     description: 'Free-range eggs from happy hens.',
     price: { amount: 4.0, unit: 'per dozen' },
+    discount: 60,
     farmer: {
       id: 'f2',
       name: 'Jane Smith',
@@ -60,6 +62,7 @@ export const productsMock: Product[] = [
     name: 'Organic Roma Tomatoes',
     description: 'Fresh Roma tomatoes grown using organic farming methods. Perfect for sauces and salads.',
     price: { amount: 145, unit: 'per kg' },
+    discount: 0,
     farmer: {
       id: 'f3',
       name: 'Maria Garcia',
@@ -87,6 +90,7 @@ export const productsMock: Product[] = [
     name: 'Free-Range Brown Eggs',
     description: 'Farm-fresh brown eggs from free-range chickens. Rich in nutrients and flavor.',
     price: { amount: 185, unit: 'per dozen' },
+    discount: 15,
     farmer: {
       id: 'f4',
       name: 'Robert Wilson',
@@ -114,6 +118,7 @@ export const productsMock: Product[] = [
     name: 'Heirloom Cherry Tomatoes',
     description: 'Sweet and colorful cherry tomatoes from heirloom varieties. Great for snacking.',
     price: { amount: 165, unit: 'per kg' },
+    discount: 10,
     farmer: {
       id: 'f5',
       name: 'Sarah Brown',
@@ -141,6 +146,7 @@ export const productsMock: Product[] = [
     name: 'Organic Quail Eggs',
     description: 'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
     price: { amount: 225, unit: 'per dozen' },
+    discount: 0,
     farmer: {
       id: 'f6',
       name: 'David Lee',
@@ -168,6 +174,7 @@ export const productsMock: Product[] = [
     name: 'Beefsteak Tomatoes',
     description: 'Large, juicy beefsteak tomatoes perfect for sandwiches and burgers.',
     price: { amount: 155, unit: 'per kg' },
+    discount: 5,
     farmer: {
       id: 'f7',
       name: 'Michael Chen',
@@ -195,6 +202,7 @@ export const productsMock: Product[] = [
     name: 'Duck Eggs Premium',
     description: 'Large, rich duck eggs ideal for baking and gourmet cooking.',
     price: { amount: 245, unit: 'per dozen' },
+    discount: 25,
     farmer: {
       id: 'f8',
       name: 'Emma Davis',
@@ -222,6 +230,7 @@ export const productsMock: Product[] = [
     name: 'Vine Ripened Tomatoes',
     description: 'Naturally ripened tomatoes on the vine for maximum flavor.',
     price: { amount: 175, unit: 'per kg' },
+    discount: 10,
     farmer: {
       id: 'f9',
       name: 'Thomas Anderson',
@@ -249,6 +258,7 @@ export const productsMock: Product[] = [
     name: 'Heritage Breed Eggs',
     description: 'Eggs from rare heritage breed chickens with rich, orange yolks.',
     price: { amount: 195, unit: 'per dozen' },
+    discount: 0,
     farmer: {
       id: 'f10',
       name: 'Laura Martinez',
@@ -276,6 +286,7 @@ export const productsMock: Product[] = [
     name: 'Organic Quail Eggs',
     description: 'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
     price: { amount: 225, unit: 'per dozen' },
+    discount: 20,
     farmer: {
       id: 'f11',
       name: 'John Doe',
@@ -303,6 +314,7 @@ export const productsMock: Product[] = [
     name: 'Organic Quail Eggs',
     description: 'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
     price: { amount: 225, unit: 'per dozen' },
+    discount: 20,
     farmer: {
       id: 'f12',
       name: 'John Doe',
@@ -330,6 +342,7 @@ export const productsMock: Product[] = [
     name: 'Greenhouse Tomatoes',
     description: 'Premium tomatoes grown in controlled environment for consistent quality.',
     price: { amount: 185, unit: 'per kg' },
+    discount: 15,
     farmer: {
       id: 'f13',
       name: 'Alex Thompson',
@@ -357,6 +370,7 @@ export const productsMock: Product[] = [
     name: 'Jumbo Farm Eggs',
     description: 'Extra large eggs from well-cared hens, perfect for family meals.',
     price: { amount: 210, unit: 'per dozen' },
+    discount: 0,
     farmer: {
       id: 'f14',
       name: 'Patricia White',
@@ -384,6 +398,7 @@ export const productsMock: Product[] = [
     name: 'Organic Roma Tomatoes',
     description: 'Fresh Roma tomatoes grown using organic farming methods. Perfect for sauces and salads.',
     price: { amount: 145, unit: 'per kg' },
+    discount: 5,
     farmer: {
       id: 'f15',
       name: 'Maria Garcia',
@@ -411,6 +426,7 @@ export const productsMock: Product[] = [
     name: 'Free-Range Brown Eggs',
     description: 'Farm-fresh brown eggs from free-range chickens. Rich in nutrients and flavor.',
     price: { amount: 185, unit: 'per dozen' },
+    discount: 15,
     farmer: {
       id: 'f16',
       name: 'Robert Wilson',
@@ -438,6 +454,7 @@ export const productsMock: Product[] = [
     name: 'Heirloom Cherry Tomatoes',
     description: 'Sweet and colorful cherry tomatoes from heirloom varieties. Great for snacking.',
     price: { amount: 165, unit: 'per kg' },
+    discount: 10,
     farmer: {
       id: 'f17',
       name: 'Sarah Brown',
@@ -465,6 +482,7 @@ export const productsMock: Product[] = [
     name: 'Organic Quail Eggs',
     description: 'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
     price: { amount: 225, unit: 'per dozen' },
+    discount: 20,
     farmer: {
       id: 'f18',
       name: 'David Lee',
@@ -492,6 +510,7 @@ export const productsMock: Product[] = [
     name: 'Beefsteak Tomatoes',
     description: 'Large, juicy beefsteak tomatoes perfect for sandwiches and burgers.',
     price: { amount: 155, unit: 'per kg' },
+    discount: 5,
     farmer: {
       id: 'f19',
       name: 'Michael Chen',
@@ -519,6 +538,7 @@ export const productsMock: Product[] = [
     name: 'Duck Eggs Premium',
     description: 'Large, rich duck eggs ideal for baking and gourmet cooking.',
     price: { amount: 245, unit: 'per dozen' },
+    discount: 0,
     farmer: {
       id: 'f20',
       name: 'Emma Davis',
@@ -546,6 +566,7 @@ export const productsMock: Product[] = [
     name: 'Vine Ripened Tomatoes',
     description: 'Naturally ripened tomatoes on the vine for maximum flavor.',
     price: { amount: 175, unit: 'per kg' },
+    discount: 10,
     farmer: {
       id: 'f21',
       name: 'Thomas Anderson',
@@ -573,6 +594,7 @@ export const productsMock: Product[] = [
     name: 'Heritage Breed Eggs',
     description: 'Eggs from rare heritage breed chickens with rich, orange yolks.',
     price: { amount: 195, unit: 'per dozen' },
+    discount: 30,
     farmer: {
       id: 'f22',
       name: 'Laura Martinez',
@@ -600,6 +622,7 @@ export const productsMock: Product[] = [
     name: 'Organic Quail Eggs',
     description: 'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
     price: { amount: 225, unit: 'per dozen' },
+    discount: 20,
     farmer: {
       id: 'f23',
       name: 'John Doe',
@@ -627,6 +650,7 @@ export const productsMock: Product[] = [
     name: 'Organic Quail Eggs',
     description: 'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
     price: { amount: 225, unit: 'per dozen' },
+    discount: 20,
     farmer: {
       id: 'f24',
       name: 'John Doe',
@@ -654,6 +678,7 @@ export const productsMock: Product[] = [
     name: 'Greenhouse Tomatoes',
     description: 'Premium tomatoes grown in controlled environment for consistent quality.',
     price: { amount: 185, unit: 'per kg' },
+    discount: 15,
     farmer: {
       id: 'f25',
       name: 'Alex Thompson',
@@ -681,6 +706,7 @@ export const productsMock: Product[] = [
     name: 'Jumbo Farm Eggs',
     description: 'Extra large eggs from well-cared hens, perfect for family meals.',
     price: { amount: 210, unit: 'per dozen' },
+    discount: 10,
     farmer: {
       id: 'f26',
       name: 'Patricia White',
@@ -708,6 +734,7 @@ export const productsMock: Product[] = [
     name: 'Organic Roma Tomatoes',
     description: 'Fresh Roma tomatoes grown using organic farming methods. Perfect for sauces and salads.',
     price: { amount: 145, unit: 'per kg' },
+    discount: 0,
     farmer: {
       id: 'f27',
       name: 'Maria Garcia',
@@ -735,6 +762,7 @@ export const productsMock: Product[] = [
     name: 'Free-Range Brown Eggs',
     description: 'Farm-fresh brown eggs from free-range chickens. Rich in nutrients and flavor.',
     price: { amount: 185, unit: 'per dozen' },
+    discount: 15,
     farmer: {
       id: 'f28',
       name: 'Robert Wilson',
@@ -762,6 +790,7 @@ export const productsMock: Product[] = [
     name: 'Heirloom Cherry Tomatoes',
     description: 'Sweet and colorful cherry tomatoes from heirloom varieties. Great for snacking.',
     price: { amount: 165, unit: 'per kg' },
+    discount: 0,
     farmer: {
       id: 'f29',
       name: 'Sarah Brown',
@@ -789,6 +818,7 @@ export const productsMock: Product[] = [
     name: 'Organic Quail Eggs',
     description: 'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
     price: { amount: 225, unit: 'per dozen' },
+    discount: 20,
     farmer: {
       id: 'f30',
       name: 'David Lee',
@@ -816,6 +846,7 @@ export const productsMock: Product[] = [
     name: 'Beefsteak Tomatoes',
     description: 'Large, juicy beefsteak tomatoes perfect for sandwiches and burgers.',
     price: { amount: 155, unit: 'per kg' },
+    discount: 5,
     farmer: {
       id: 'f31',
       name: 'Michael Chen',
@@ -843,6 +874,7 @@ export const productsMock: Product[] = [
     name: 'Specialty Quail Eggs',
     description: 'Premium quail eggs from specialty breeds, known for rich flavor.',
     price: { amount: 280, unit: 'per dozen' },
+    discount: 10,
     farmer: {
       id: 'f32',
       name: 'Rachel Green',
