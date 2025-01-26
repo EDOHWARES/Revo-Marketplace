@@ -12,12 +12,10 @@ function isValidRating(value: number, max: number = 5): value is number & { __br
 
 export function Rating({ value, max = 5, readOnly = false, onChange }: RatingProps) {
   if (max <= 0) {
-    console.error('Rating: max prop must be greater than 0');
-    return null;
+    throw new Error('Rating: max prop must be greater than 0');
   }
   if (value < 0 || value > max) {
-    console.error(`Rating: value must be between 0 and ${max}`);
-    return null;
+    throw new Error(`Rating: value must be between 0 and ${max}`);
   }
  
   const [hoveredValue, setHoveredValue] = React.useState<number | null>(null);
