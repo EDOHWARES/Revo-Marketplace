@@ -77,11 +77,11 @@ const Footer = () => {
   ];
 
   return (
-    <div className="bg-[#375B42] h-auto w-full font-[family-name:var(--font-geist-sans)] text-white-light">
-      <div className="py-16 px-40">
+    <div className="bg-[#375B42] text-[#ffffff] dark:bg-background-dark h-auto w-full font-[family-name:var(--font-geist-sans)] ">
+      <div className="py-16 px-10 md:px-40">
         <div className="flex flex-col md:flex-row justify-between">
           {footerLinks.map(({ title, items, social }) => (
-            <div key={title} className="flex text-base flex-col gap-4 w-1/6">
+            <div key={title} className="flex text-base flex-col gap-4 w-full md:w-1/6">
               <h3 className="text-white font-bold">{t(title)}</h3>
               <ul
                 className={`flex ${
