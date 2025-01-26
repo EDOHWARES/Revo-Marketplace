@@ -51,6 +51,37 @@
     },
     "submitButtonText": "Financiar fideicomiso"
   },
+  "Products": {
+    "title": "Productos",
+    "description": "Explora nuestra amplia gama de productos, cuidadosamente seleccionados para satisfacer tus necesidades y preferencias.",
+    "filters": {
+      "label": "Filtros",
+      "price": "Precio",
+      "category": "Categoría",
+      "farmingMethod": "Método de Cultivo",
+      "delivery": "Opciones de Entrega",
+      "search": "Buscar productos...",
+      "apply": "Aplicar Filtro",
+      "clear": "Limpiar Filtros"
+    },
+    "sortBy": {
+      "showing": "Mostrando",
+      "of": "de",
+      "products": "Productos",
+      "label": "Ordenar por",
+      "price": "Precio",
+      "date": "Fecha de Cosecha",
+      "stock": "Stock"
+    },
+    "empty": {
+      "title": "No se encontraron productos",
+      "description": "Intenta ajustar tus filtros o criterios de búsqueda para encontrar lo que buscas."
+    },
+    "pagination": {
+      "previous": "Anterior",
+      "next": "Siguiente"
+    }
+  },
   "notFound": {
     "title": "404 No Encontrada",
     "description": "La página que visitaste no fue encontrada. Puedes ir a la página de inicio.",
@@ -77,5 +108,20 @@
     "Twitter": "Twitter",
     "LinkedIn": "LinkedIn",
     "Github": "GitHub"
+  },
+  "SignUp": {
+    "title": "Crear una cuenta",
+    "subtitle": "Ingresa tus datos a continuación",
+    "nameLabel": "Nombre",
+    "emailLabel": "Correo electrónico",
+    "passwordLabel": "Contraseña",
+    "submit": "Crear Cuenta",
+    "submitting": "Creando...",
+    "successTitle": "¡Éxito!",
+    "successMessage": "Tu cuenta ha sido creada. Redirigiendo al inicio de sesión...",
+    "errorTitle": "Error",
+    "errorMessage": "Algo salió mal. Por favor, inténtalo de nuevo.",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "login": "Iniciar sesión"
   }
 }

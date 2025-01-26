@@ -53,21 +53,33 @@
   },
   "Products": {
     "title": "Products",
+    "description": "Explore our wide range of products, carefully curated to meet your needs and preferences.",
     "filters": {
+      "label": "Filters",
+      "price": "Price",
       "category": "Category",
       "farmingMethod": "Farming Method",
       "delivery": "Delivery Options",
-      "search": "Search products..."
+      "search": "Search products...",
+      "apply": "Apply Filter",
+      "clear": "Clear filters"
     },
     "sortBy": {
+      "showing": "Showing",
+      "of": "of",
+      "products": "Products",
       "label": "Sort by",
       "price": "Price",
       "date": "Harvest Date",
       "stock": "Stock"
     },
-    "viewMode": {
-      "grid": "Grid view",
-      "list": "List view"
+    "empty": {
+      "title": "No products found",
+      "description": "Try adjusting your filters or search criteria to find what you're looking for."
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
     }
   },
   "notFound": {
@@ -96,5 +108,20 @@
     "Twitter": "Twitter",
     "LinkedIn": "LinkedIn",
     "Github": "GitHub"
+  },
+  "SignUp": {
+    "title": "Create an account",
+    "subtitle": "Enter your details below",
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "submit": "Create Account",
+    "submitting": "Creating...",
+    "successTitle": "Success!",
+    "successMessage": "Your account has been created. Redirecting to login...",
+    "errorTitle": "Error",
+    "errorMessage": "Something went wrong. Please try again.",
+    "alreadyHaveAccount": "Already have an account?",
+    "login": "Log in"
   }
 }
