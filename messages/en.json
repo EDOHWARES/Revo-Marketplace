@@ -87,6 +87,28 @@
     "description": "The page you visited was not found. You may go to the home page.",
     "buttonText": "Back to home page"
   },
+  "footer": {
+    "copyright": "© Copyright Revolutionary Farmer {year}. All rights reserved.",
+    "Support": "Support",
+    "Account": "Account",
+    "Quick Links": "Quick Links",
+    "Download App": "Download App",
+    "My Account": "My Account",
+    "Login / Register": "Login / Register",
+    "Cart": "Cart",
+    "Wishlist": "Wishlist",
+    "Shop": "Shop",
+    "Privacy Policy": "Privacy Policy",
+    "Terms of Use": "Terms of Use",
+    "FAQ": "FAQ",
+    "Contact": "Contact",
+    "Documentation": "Documentation",
+    "Barcode": "QR Code",
+    "Play store": "Get on Play Store",
+    "Twitter": "Twitter",
+    "LinkedIn": "LinkedIn",
+    "Github": "GitHub"
+  },
   "SignUp": {
     "title": "Create an account",
     "subtitle": "Enter your details below",

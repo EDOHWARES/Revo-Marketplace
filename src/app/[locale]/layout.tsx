@@ -7,6 +7,7 @@ import localFont from 'next/font/local';
 import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/header/Header';
 import './globals.css';
+import Footer from '@/components/footer/footer';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -56,13 +57,13 @@ export default function RootLayout({
   return (
     <html lang={currentLocale}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased p-5 bg-home-background bg-no-repeat bg-cover min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-home-background bg-no-repeat bg-cover min-h-screen`}
       >
         {messages ? (
           <NextIntlClientProvider locale={currentLocale} messages={messages}>
             <Header />
             {children}
-            <footer></footer>
+            <Footer />
             <Toaster />
           </NextIntlClientProvider>
         ) : (
