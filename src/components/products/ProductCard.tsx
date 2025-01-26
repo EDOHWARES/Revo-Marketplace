@@ -1,12 +1,12 @@
 'use client';
 
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Product } from "@/types/product";
 import Image from "next/image";
-import { Badge } from "../ui/badge";
-import { CalendarDays, Package2, Truck } from "lucide-react";
 import { useCallback } from "react";
 import { cn } from "@/lib/utils";
+import { useTranslations } from 'next-intl';
+import { Rating } from '@/components/ui/rating';
+import { calculateDiscountedPrice } from "@/constants/helpers/CalculateDiscountedPrice";
 
 interface ProductCardProps {
   product: Product;
@@ -16,6 +16,8 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, viewMode, onClick, locale = 'en' }: ProductCardProps) {
+  const t = useTranslations('Products');
+
   const formatPrice = useCallback((amount: number) => {
     return new Intl.NumberFormat(locale, {
       style: 'currency',
@@ -48,89 +50,63 @@ export function ProductCard({ product, viewMode, onClick, locale = 'en' }: Produ
 
   return (
     <div
-      role="button"
-      tabIndex={0}
-      className={cardClassName}
+      className={cn(
+        "w-screen max-w-[295px]",
+        "bg-white overflow-hidden",
+        "transition-all duration-200 hover:scale-[1.02]",
+        "mx-auto"
+      )}
       onClick={() => onClick(product.id)}
       onKeyDown={handleKeyDown}
-      aria-label={`View details for ${product.name}`}
+      role="button"
+      tabIndex={0}
     >
-      <div className={viewMode === 'grid' ? 'w-full' : 'w-1/4'}>
+      <div
+        className={cn(
+          "flex justify-center items-center",
+          "bg-[#F5F5F5] rounded-[20px]",
+          "w-full aspect-square",
+          "p-4"
+        )}
+      >
         <Image
           src={`/images/${product.images[0]}`}
           alt={product.name}
-          width={viewMode === 'grid' ? 300 : 200}
-          height={viewMode === 'grid' ? 200 : 150}
-          onError={(e) => {
-            e.currentTarget.src = '/placeholder.jpg';
-          }}
-          placeholder="blur"
-          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRg..."
-          className="object-cover w-full h-48 rounded-t-lg"
+          className="object-contain"
+          width={200}
+          height={200}
+          sizes="(max-width: 295px) 100vw, 295px"
         />
       </div>
-      <div className={viewMode === 'grid' ? 'p-4' : 'w-3/4 p-4'}>
-        {/* Farm Info Section */}
-        <div className="flex items-center gap-2 mb-3">
-          <div className="relative w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
-            <Image
-              src="/logo.jpeg"
-              alt={`${product.farmer.farmName} logo`}
-              fill
-              className="object-cover"
+
+      <div className="py-4 space-y-2">
+        <div className="flex flex-col justify-between items-start gap-1">
+          <h3 className="text-base font-medium line-clamp-2">{product.name}</h3>
+          <div className="flex items-center gap-1">
+            <Rating
+              value={product.rating}
+              max={5}
+              readOnly
+              aria-label={`Product rated ${product.rating} out of 5 stars`}
             />
+            <span className="text-sm text-gray-600">{product.rating}/5</span>
           </div>
-          <p className="text-sm text-gray-500">{product.farmer.farmName}</p>
         </div>
 
-        {/* Product Info Section */}
-        <div className="space-y-3">
-          <div className="flex justify-between items-start">
-            <h3 className="text-lg font-semibold">{product.name}</h3>
-            <div className="text-right">
-              <p className="text-lg font-bold">
+        <div className="flex items-center justify-start gap-2">
+          <p className="text-base font-semibold text-black">
+            {formatPrice(calculateDiscountedPrice(product.price.amount, product.discount))}
+          </p>
+          {product.discount > 0 && (
+            <>
+              <p className={cn("text-base font-semibold", product.discount > 0 && "line-through text-black/40")}>
                 {formatPrice(product.price.amount)}
-                <span className="text-sm text-gray-500">{product.price.unit}</span>
               </p>
-            </div>
-          </div>
-
-          {/* Certifications */}
-          <div className="flex flex-wrap gap-1.5">
-            {product.certifications.map((cert) => (
-              <Badge key={cert} variant="secondary" className="text-xs">
-                {cert}
-              </Badge>
-            ))}
-          </div>
-
-          {/* Product Details */}
-          <div className="grid grid-cols-2 gap-2 text-sm text-gray-500">
-            <div className="flex items-center gap-1">
-              <Package2 className="h-4 w-4" />
-              <span>Stock: {product.stockQuantity}</span>
-            </div>
-            <div className="flex items-center gap-1">
-              <CalendarDays className="h-4 w-4" />
-              <span>{formatDate(product.harvestDate)}</span>
-            </div>
-          </div>
-
-          {/* Delivery Options */}
-          <div className="flex gap-2">
-            {product.availableForDelivery && (
-              <Badge variant="outline" className="text-xs">
-                <Truck className="h-3 w-3 mr-1" aria-hidden="true" />
-                <span aria-label="Delivery available">Delivery</span>
-              </Badge>
-            )}
-            {product.pickupAvailable && (
-              <Badge variant="outline" className="text-xs">
-                <Package2 className="h-3 w-3 mr-1" aria-hidden="true" />
-                <span aria-label="Pickup available">Pickup</span>
-              </Badge>
-            )}
-          </div>
+              <p className="text-sm text-[#FF3333] bg-[#FF3333]/10 px-2 py-1 rounded-[62px]">
+                -{product.discount}%
+              </p>
+            </>
+          )}
         </div>
       </div>
     </div>
