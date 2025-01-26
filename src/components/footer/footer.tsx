@@ -93,7 +93,7 @@ const Footer = () => {
                     {typeof item === 'string' && title === 'Support' ? (
                       <span className="text-white">{item}</span>
                     ) : (
-                      <a href={item.href} target="_blank" className="text-white hover:text-primary">
+                      <a href={item.href} target="_blank" className="text-white hover:underline">
                         {item.img && (
                           <Image
                             src={item.img}
