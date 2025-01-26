@@ -13,6 +13,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { ProductFilters } from '@/components/products/ProductFilters';
+import { calculateDiscountedPrice } from '@/constants/helpers/CalculateDiscountedPrice';
 
 export default function ProductsPage() {
   const t = useTranslations('Products');
@@ -62,8 +63,8 @@ export default function ProductsPage() {
         product.pickupAvailable;
       
       const priceMatch = !filters.priceRange || (
-        product.price.amount >= filters.priceRange[0] && 
-        product.price.amount <= filters.priceRange[1]
+        calculateDiscountedPrice(product.price.amount, product.discount) >= filters.priceRange[0] && 
+        calculateDiscountedPrice(product.price.amount, product.discount) <= filters.priceRange[1]
       );
       
       return searchMatch && categoryMatch && methodMatch && 
@@ -75,7 +76,7 @@ export default function ProductsPage() {
     return [...filteredProducts].sort((a, b) => {
       switch (sortBy) {
         case 'price':
-          return a.price.amount - b.price.amount;
+          return calculateDiscountedPrice(a.price.amount, a.discount) - calculateDiscountedPrice(b.price.amount, b.discount);
         case 'date':
           return b.harvestDate.getTime() - a.harvestDate.getTime();
         case 'stock':
@@ -152,7 +153,7 @@ export default function ProductsPage() {
                     {Math.min(currentPage * itemsPerPage, sortedProducts.length)} {t('sortBy.of')}
                     {sortedProducts.length} {t('sortBy.products')}
                   </div>
-                  <span className="text-black/50 text-sm font-medium">{t('sortBy.label')}:</span>
+                  <span className="text-black/50 text-sm font-medium mr-2">{t('sortBy.label')}:</span>
                   <Select value={sortBy} onValueChange={handleSortChange}>
                     <SelectTrigger className="w-[180px] border-0 active:border-0">
                       <SelectValue placeholder={t('sortBy.label')} />

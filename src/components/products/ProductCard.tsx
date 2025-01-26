@@ -83,7 +83,12 @@ export function ProductCard({ product, viewMode, onClick, locale = 'en' }: Produ
         <div className="flex flex-col justify-between items-start gap-1">
           <h3 className="text-base font-medium line-clamp-2">{product.name}</h3>
           <div className="flex items-center gap-1">
-            <Rating value={product.rating} max={5} readOnly />
+            <Rating
+              value={product.rating}
+              max={5}
+              readOnly
+              aria-label={`Product rated ${product.rating} out of 5 stars`}
+            />
             <span className="text-sm text-gray-600">{product.rating}/5</span>
           </div>
         </div>

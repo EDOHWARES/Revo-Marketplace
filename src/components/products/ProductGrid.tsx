@@ -9,6 +9,8 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
+import { ArrowLeft } from "../icons/ArrowLeft";
+import { ArrowRight } from "../icons/ArrowRight";
 
 interface ProductGridProps {
   products: Product[];
@@ -24,11 +26,11 @@ interface ProductGridProps {
   onPageChange: (page: number) => void;
 }
 
-export function ProductGrid({ 
-  products, 
-  viewMode, 
-  onProductClick, 
-  hasMore = false, 
+export function ProductGrid({
+  products,
+  viewMode,
+  onProductClick,
+  hasMore = false,
   onLoadMore,
   isLoading = false,
   isFilterLoading = false,
@@ -60,7 +62,7 @@ export function ProductGrid({
   const renderPagination = () => {
     const pages = [];
     const maxVisiblePages = 5;
-    
+
     // Siempre mostrar la primera página
     pages.push(
       <button
@@ -118,76 +120,52 @@ export function ProductGrid({
     }
 
     return (
-      <div className="flex items-center justify-between gap-2 mt-8">
+      <nav className="flex items-center justify-between gap-2 mt-8" aria-label="Pagination">
         <button
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
+          aria-label="Previous page"
           className={cn(
             "flex items-center justify-between gap-2 p-2 rounded-[8px] w-[120px]",
-            currentPage === 1 
-              ? "text-gray-300 border border-gray-300 cursor-not-allowed" 
+            currentPage === 1
+              ? "text-gray-300 border border-gray-300 cursor-not-allowed"
               : "text-gray-500 border border-black/10 hover:text-black hover:border hover:border-black",
-            
+
           )}
         >
-          <svg 
-            width="20" 
-            height="20" 
-            viewBox="0 0 20 20" 
-            fill="none" 
-            className={cn(
-              "w-5 h-5",
-              currentPage === 1 
-                ? "stroke-gray-300 " 
-                : "stroke-gray-500"
-            )}
-          >
-            <path 
-              d="M15.8334 10H4.16675M4.16675 10L10.0001 15.8333M4.16675 10L10.0001 4.16667"
-              strokeWidth="1.67" 
-              strokeLinecap="round" 
-              strokeLinejoin="round"
-            />
-          </svg>
+          <ArrowLeft className={cn(
+            "w-5 h-5",
+            currentPage === 1
+              ? "stroke-gray-300 "
+              : "stroke-gray-500"
+          )} />
           {t('pagination.previous')}
         </button>
 
-        <div className="flex items-center gap-2 ">
+        <div className="flex items-center gap-2" role="list">
           {pages}
         </div>
 
         <button
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
+          aria-label="Next page"
           className={cn(
             "flex items-center justify-between gap-2 p-2 rounded-[8px] w-[120px]",
-            currentPage === totalPages 
-              ? "text-gray-300 border border-gray-300 cursor-not-allowed" 
+            currentPage === totalPages
+              ? "text-gray-300 border border-gray-300 cursor-not-allowed"
               : "text-gray-500 border border-black/10 hover:text-black hover:border hover:border-black",
           )}
         >
           {t('pagination.next')}
-          <svg 
-            width="20" 
-            height="20" 
-            viewBox="0 0 20 20" 
-            fill="none" 
-            className={cn(
-              "w-5 h-5",
-              currentPage === totalPages 
-                ? "stroke-gray-300" 
-                : "stroke-gray-500"
-            )}
-          >
-            <path 
-              d="M4.16675 10H15.8334M15.8334 10L10.0001 4.16667M15.8334 10L10.0001 15.8333"
-              strokeWidth="1.67" 
-              strokeLinecap="round" 
-              strokeLinejoin="round"
-            />
-          </svg>
+          <ArrowRight className={cn(
+            "w-5 h-5",
+            currentPage === totalPages
+              ? "stroke-gray-300 "
+              : "stroke-gray-500"
+          )} />
         </button>
-      </div>
+      </nav>
     );
   };
 
@@ -204,9 +182,9 @@ export function ProductGrid({
 
   if (isLoading) {
     return (
-      <div 
-        className={gridClassName} 
-        aria-busy="true" 
+      <div
+        className={gridClassName}
+        aria-busy="true"
         role="grid"
         aria-label="Loading products"
       >
@@ -234,7 +212,7 @@ export function ProductGrid({
 
   return (
     <div className="space-y-6 max-w-[1440px] mx-auto" role="region" aria-label="Products grid">
-      <div 
+      <div
         className={cn(
           "grid gap-8",
           "grid-cols-1",
@@ -261,8 +239,8 @@ export function ProductGrid({
       {renderPagination()}
 
       {hasMore && (
-        <div 
-          ref={ref} 
+        <div
+          ref={ref}
           className="w-full flex justify-center"
           aria-hidden="true"
         >
