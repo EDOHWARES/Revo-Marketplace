@@ -8,6 +8,7 @@ import { ProductSkeleton } from "./ProductSkeleton";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 interface ProductGridProps {
   products: Product[];
@@ -36,6 +37,7 @@ export function ProductGrid({
   totalPages,
   onPageChange
 }: ProductGridProps) {
+  const t = useTranslations('Products');
   const { ref, inView } = useInView({
     threshold: 0.5,
     delay: 100
@@ -147,7 +149,7 @@ export function ProductGrid({
               strokeLinejoin="round"
             />
           </svg>
-          Previous
+          {t('pagination.previous')}
         </button>
 
         <div className="flex items-center gap-2 ">
@@ -164,7 +166,7 @@ export function ProductGrid({
               : "text-gray-500 border border-black/10 hover:text-black hover:border hover:border-black",
           )}
         >
-          Next
+          {t('pagination.next')}
           <svg 
             width="20" 
             height="20" 
@@ -217,12 +219,15 @@ export function ProductGrid({
 
   if (!products.length) {
     return (
-      <div 
-        className="text-center py-8 text-muted-foreground"
-        role="status"
-        aria-label="No products found"
-      >
-        No products found
+      <div className="h-[calc(100vh-300px)] flex flex-col items-center justify-center bg-white rounded-lg p-8">
+        <div className="max-w-md text-center">
+          <h3 className="text-xl font-semibold text-gray-900 mb-2">
+            {t('empty.title')}
+          </h3>
+          <p className="text-gray-500 mb-6">
+            {t('empty.description')}
+          </p>
+        </div>
       </div>
     );
   }
