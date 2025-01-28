@@ -135,6 +135,9 @@
     "successMessage": "Se ha Iniciado Sesión. Redirigiendo a la página principal...",
     "errorTitle": "Error",
     "errorMessage": "Algo salió mal. Por favor intente de nuevo.",
-    "forgetPassword": "Olvidaste tu Contraseña?"
+    "forgetPassword": "Olvidaste tu Contraseña?",
+    "emailValidation": "Por favor ingrese un correo válido.",
+    "passwordLength": "La contraseña debe tener al menos 8 caracteres.",
+    "passwordPattern": "La contraseña debe conterner una letra mayúscula, una minúscula y números."
   }
 }

@@ -18,27 +18,30 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { toast } from '@/hooks/use-toast'
+import { useLanguageStore } from '@/store/languageStore';
 
-const signInSchema = z.object({
-  email: z.string().email({
-    message: 'Please enter a valid email address.',
-  }),
-  password: z
-    .string()
-    .min(8, {
-      message: 'Password must be at least 8 characters.',
-    })
-    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/, {
-      message: 'Password must contain uppercase, lowercase and numbers.',
-    }),
-})
-
-type SignInFormValues = z.infer<typeof signInSchema>
 
 export default function SignInPage() {
   const t = useTranslations('SignIn')
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
+  const { language } = useLanguageStore();
+
+  const signInSchema = z.object({
+    email: z.string().email({
+      message: t('emailValidation'),
+    }),
+    password: z
+      .string()
+      .min(8, {
+        message: t('passwordLength'),
+      })
+      .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/, {
+        message: t('passwordPattern'),
+      }),
+  })
+  
+  type SignInFormValues = z.infer<typeof signInSchema>
 
   const form = useForm<SignInFormValues>({
     resolver: zodResolver(signInSchema),
@@ -58,7 +61,7 @@ export default function SignInPage() {
         description: t('successMessage'),
       })
       
-      router.push('en/products')
+      router.push(`/${language}/products`)
     } catch (error) {
       toast({
         title: t('errorTitle'),
@@ -140,7 +143,7 @@ export default function SignInPage() {
                 </Button>
 
                 <div className="text-center mt-4 ml-auto">
-                  <a href="es/forgetPassword" className="text-green-800 hover:underline font-medium">{t('forgetPassword')}</a>
+                  <a href={`/${language}/forgetPassword`} className="text-green-800 hover:underline font-medium">{t('forgetPassword')}</a>
                 </div>
               </div>
             </form>

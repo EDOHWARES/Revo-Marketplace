@@ -135,6 +135,9 @@
     "successMessage": "Loged In. Redirecting to main page...",
     "errorTitle": "Error",
     "errorMessage": "Something went wrong. Please try again.",
-    "forgetPassword": "Forget Password?"
+    "forgetPassword": "Forget Password?",
+    "emailValidation": "Please enter a valid email address.",
+    "passwordLength": "Password must be at least 8 characters.",
+    "passwordPattern": "Password must contain uppercase, lowercase and numbers."
   }
 }
