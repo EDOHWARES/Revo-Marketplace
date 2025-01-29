@@ -1,4 +1,4 @@
-import { isValidRating, isValidDiscount, Product } from "@/types/product";
+import { isValidRating, isValidDiscount, Product } from '@/types/product';
 
 export const productsMock: Product[] = [
   {
@@ -60,7 +60,8 @@ export const productsMock: Product[] = [
   {
     id: '3',
     name: 'Organic Roma Tomatoes',
-    description: 'Fresh Roma tomatoes grown using organic farming methods. Perfect for sauces and salads.',
+    description:
+      'Fresh Roma tomatoes grown using organic farming methods. Perfect for sauces and salads.',
     price: { amount: 145, unit: 'per kg' },
     discount: isValidDiscount(0) ? 0 : 0,
     farmer: {
@@ -144,7 +145,8 @@ export const productsMock: Product[] = [
   {
     id: '6',
     name: 'Organic Quail Eggs',
-    description: 'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
+    description:
+      'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
     price: { amount: 225, unit: 'per dozen' },
     discount: isValidDiscount(0) ? 0 : 0,
     farmer: {
@@ -236,8 +238,8 @@ export const productsMock: Product[] = [
       name: 'Thomas Anderson',
       farmName: 'Vine Valley',
       location: {
-        latitude: 33.7490,
-        longitude: -84.3880,
+        latitude: 33.749,
+        longitude: -84.388,
         address: '234 Vine Street, GA',
       },
     },
@@ -284,7 +286,8 @@ export const productsMock: Product[] = [
   {
     id: '11',
     name: 'Eggs 1',
-    description: 'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
+    description:
+      'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
     price: { amount: 225, unit: 'per dozen' },
     discount: isValidDiscount(20) ? 20 : 0,
     farmer: {
@@ -312,7 +315,8 @@ export const productsMock: Product[] = [
   {
     id: '12',
     name: 'Eggs 2',
-    description: 'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
+    description:
+      'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
     price: { amount: 225, unit: 'per dozen' },
     discount: isValidDiscount(20) ? 20 : 0,
     farmer: {
@@ -377,7 +381,7 @@ export const productsMock: Product[] = [
       farmName: 'Sunrise Poultry',
       location: {
         latitude: 39.1031,
-        longitude: -84.5120,
+        longitude: -84.512,
         address: '891 Farm View, OH',
       },
     },
@@ -396,7 +400,8 @@ export const productsMock: Product[] = [
   {
     id: '15',
     name: 'Organic Roma Tomatoes',
-    description: 'Fresh Roma tomatoes grown using organic farming methods. Perfect for sauces and salads.',
+    description:
+      'Fresh Roma tomatoes grown using organic farming methods. Perfect for sauces and salads.',
     price: { amount: 145, unit: 'per kg' },
     discount: isValidDiscount(5) ? 5 : 0,
     farmer: {
@@ -480,7 +485,8 @@ export const productsMock: Product[] = [
   {
     id: '18',
     name: 'Eggs 3',
-    description: 'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
+    description:
+      'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
     price: { amount: 225, unit: 'per dozen' },
     discount: isValidDiscount(20) ? 20 : 0,
     farmer: {
@@ -572,8 +578,8 @@ export const productsMock: Product[] = [
       name: 'Thomas Anderson',
       farmName: 'Vine Valley',
       location: {
-        latitude: 33.7490,
-        longitude: -84.3880,
+        latitude: 33.749,
+        longitude: -84.388,
         address: '234 Vine Street, GA',
       },
     },
@@ -620,7 +626,8 @@ export const productsMock: Product[] = [
   {
     id: '23',
     name: 'Eggs 4',
-    description: 'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
+    description:
+      'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
     price: { amount: 225, unit: 'per dozen' },
     discount: isValidDiscount(20) ? 20 : 0,
     farmer: {
@@ -648,7 +655,8 @@ export const productsMock: Product[] = [
   {
     id: '24',
     name: 'Eggs 5',
-    description: 'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
+    description:
+      'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
     price: { amount: 225, unit: 'per dozen' },
     discount: isValidDiscount(20) ? 20 : 0,
     farmer: {
@@ -713,7 +721,7 @@ export const productsMock: Product[] = [
       farmName: 'Sunrise Poultry',
       location: {
         latitude: 39.1031,
-        longitude: -84.5120,
+        longitude: -84.512,
         address: '891 Farm View, OH',
       },
     },
@@ -732,7 +740,8 @@ export const productsMock: Product[] = [
   {
     id: '27',
     name: 'Organic Roma Tomatoes',
-    description: 'Fresh Roma tomatoes grown using organic farming methods. Perfect for sauces and salads.',
+    description:
+      'Fresh Roma tomatoes grown using organic farming methods. Perfect for sauces and salads.',
     price: { amount: 145, unit: 'per kg' },
     discount: isValidDiscount(0) ? 0 : 0,
     farmer: {
@@ -816,7 +825,8 @@ export const productsMock: Product[] = [
   {
     id: '30',
     name: 'Eggs 6',
-    description: 'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
+    description:
+      'Delicate and nutritious quail eggs from organic farms. Perfect for gourmet dishes.',
     price: { amount: 225, unit: 'per dozen' },
     discount: isValidDiscount(20) ? 20 : 0,
     farmer: {
@@ -881,7 +891,7 @@ export const productsMock: Product[] = [
       farmName: 'Specialty Farm',
       location: {
         latitude: 44.9778,
-        longitude: -93.2650,
+        longitude: -93.265,
         address: '456 Specialty Lane, MN',
       },
     },
@@ -896,5 +906,5 @@ export const productsMock: Product[] = [
     availableForDelivery: true,
     pickupAvailable: true,
     rating: isValidRating(4.7) ? 4.7 : 0,
-  }
+  },
 ];
