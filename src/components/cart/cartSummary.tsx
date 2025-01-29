@@ -8,7 +8,7 @@ import { useCartStore } from "@/store/cartStore/store";
 const CartSummary = () => {
   const { subtotal, shipping, total, calculateSummary } = useCartStore();
 
-  // Ensure the summary is recalculated when the component loads
+  // TO Ensure the summary is recalculated when the component loads
   React.useEffect(() => {
     calculateSummary();
   }, [calculateSummary]);

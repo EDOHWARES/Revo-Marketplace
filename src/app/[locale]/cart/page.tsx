@@ -3,7 +3,7 @@
  import { Card, CardContent } from "@/components/ui/card"; // shadcn UI components
  import CartItem from "@/components/cart/cartItem";
  import CartSummary from "@/components/cart/cartSummary";
- import { useCartStore } from "@/store/cartStore/store"; // Assuming Zustand store is implemented in the store folder
+ import { useCartStore } from "@/store/cartStore/store"; // Zustand store is implemented in the store folder
  
  const CartPage = () => {
    //const {} = useCartStore();
