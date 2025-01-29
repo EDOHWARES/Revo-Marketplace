@@ -1,66 +1,103 @@
+'use client';
 // CartItem.tsx
+
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardFooter, } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import Image from "next/image";
+import { useCartStore } from "@/store/cartStore/store";
+import { IncrementalCache } from "next/dist/server/lib/incremental-cache";
 
-interface CartItemProps {
-  productName: string;
-  productImage: string;
-  price: number;
+
+interface  CartItem {
   quantity: number;
-  onQuantityChange: (quantity: number) => void;
-  onRemove: () => void;
+  id: number;
+  name: string;
+  price: {
+    amount: number;
+    unit: string;
+  },
+  images:string;
 }
 
-export function CartItem({
-  productName,
-  productImage,
-  price,
-  quantity,
-  onQuantityChange,
-  onRemove,
-}: CartItemProps) {
+
+
+const CartItem = () => {
+  const {Items,  updateQuantity} = useCartStore((state) => state)
+  const handleQuantityChange = (id: number, quantity: number) => {
+    updateQuantity(id, quantity); // Call the store's updateQuantity method
+  };
+
   return (
-    <div className="flex items-center justify-between py-4 border-b">
-      {/* Product Details */}
-      <div className="flex items-center space-x-4">
-        <img
-          src={productImage}
-          alt={productName}
-          className="h-16 w-16 rounded-md object-cover"
-        />
-        <div>
-          <p className="text-sm font-medium">{productName}</p>
+    <div className="border-0">
+
+      <Card className="flex items-center justify-between px-10 py-4 mb-4 ">
+        <div className=''>
+          <h1>Products</h1>
         </div>
+        <div className='md:ml-10 sm:ml-0'>
+          <h1>Price</h1>
+        </div>
+        <div className=''>
+          <h1>Quantity</h1>
+        </div>
+        <div className=''>
+          <h1>Sutotal</h1>
+        </div>
+  
+
+      </Card>
+
+
+      <div>
+        {Items.length > 0 ? (Items.map((item) => (
+              <Card className="flex items-center justify-between px-8 py-4 mb-4">
+                <div className="flex md:flex-row items-center">
+                    <img src={item.images} alt='product image'  className="h-16 w-16 rounded-md object-cover"/>
+                    <p>{item.name}</p>
+
+                </div>
+                <div className="flex items-center ">
+                  <p>{item.price.unit}</p>
+                  <p>{item.price.amount}</p>
+                </div>
+                <div>
+                  <Select
+                  defaultValue={item.quantity.toString()}
+                  onValueChange={(value) => handleQuantityChange(item.id, parseInt(value))}
+                >
+                  <SelectTrigger className="w-20">
+                    <SelectValue placeholder="Qty" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {[...Array(10)].map((_, i) => (
+                      <SelectItem key={i} value={(i + 1).toString()}>
+                        {i + 1}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                    <p>{item.price.amount * item.quantity}</p>
+                </div>
+               
+               
+        
+              </Card>
+        ))) : null}
+
       </div>
-
-      {/* Price */}
-      <p className="text-sm">${price.toFixed(2)}</p>
-
-      {/* Quantity */}
-      <Select
-        value={quantity.toString()}
-        onValueChange={(value) => onQuantityChange(Number(value))}
-      >
-        <SelectTrigger className="w-16">
-          <SelectValue placeholder="Qty" />
-        </SelectTrigger>
-        <SelectContent>
-          {[...Array(10)].map((_, index) => (
-            <SelectItem key={index} value={(index + 1).toString()}>
-              {index + 1}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-
-      {/* Subtotal */}
-      <p className="text-sm font-medium">${(price * quantity).toFixed(2)}</p>
-
-      {/* Remove Button */}
-      <Button variant="ghost" size="sm" onClick={onRemove}>
-        Remove
-      </Button>
+      <div className='flex justify-between'>
+      <Button variant="outline" className="px-10 py-6">Return to shop</Button>
+      <Button variant="outline" className="px-10 py-6">Update Cart</Button>
+      </div>
     </div>
   );
-}
+};
+
+export default CartItem;
+
+

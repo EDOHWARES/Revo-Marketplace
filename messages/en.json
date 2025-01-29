@@ -59,6 +59,15 @@
       "delivery": "Delivery Options",
       "search": "Search products..."
     },
+    "cart": {
+        "title": "Shopping Cart",
+        "subtotal": "Subtotal",
+        "shipping": "Shipping",
+        "total": "Total",
+        "clear": "Clear Cart",
+        "remove": "Remove Item",
+        "checkout": "Proceed to Checkout"
+      },
     "sortBy": {
       "label": "Sort by",
       "price": "Price",

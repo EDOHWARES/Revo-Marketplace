@@ -1,72 +1,49 @@
+ 'use client';
  // page.tsx
- import { CartItem } from "@/components/cart/cartItem";
- import { CartSummary } from "@/components/cart/cartSummary";
- import { useState } from "react";
+ import { Card, CardContent } from "@/components/ui/card"; // shadcn UI components
+ import CartItem from "@/components/cart/cartItem";
+ import CartSummary from "@/components/cart/cartSummary";
+ import { useCartStore } from "@/store/cartStore/store"; // Assuming Zustand store is implemented in the store folder
  
- export default function CartPage() {
-   const [cartItems, setCartItems] = useState([
-     {
-       id: 1,
-       name: "Cafe",
-       image: "/cafe.jpg",
-       price: 100,
-       quantity: 1,
-     },
-     {
-       id: 2,
-       name: "Cafe",
-       image: "/cafe.jpg",
-       price: 100,
-       quantity: 2,
-     },
-   ]);
+ const CartPage = () => {
+   //const {} = useCartStore();
  
-   const handleQuantityChange = (id: number, quantity: number) => {
-     setCartItems((prev) =>
-       prev.map((item) =>
-         item.id === id ? { ...item, quantity } : item
-       )
-     );
+   const handleCheckout = () => {
+     // Logic for handling checkout
+     console.log("Proceeding to checkout");
    };
- 
-   const handleRemove = (id: number) => {
-     setCartItems((prev) => prev.filter((item) => item.id !== id));
-   };
- 
-   const subtotal = cartItems.reduce(
-     (total, item) => total + item.price * item.quantity,
-     0
-   );
-   const shipping = 0; // Replace with actual calculation if needed
-   const total = subtotal + shipping;
  
    return (
-     <div className="container mx-auto px-4 py-8 space-y-8">
-       {/* Cart Items */}
-       <div className="space-y-4">
-         {cartItems.map((item) => (
-           <CartItem
-             key={item.id}
-             productName={item.name}
-             productImage={item.image}
-             price={item.price}
-             quantity={item.quantity}
-             onQuantityChange={(quantity) =>
-               handleQuantityChange(item.id, quantity)
-             }
-             onRemove={() => handleRemove(item.id)}
-           />
-         ))}
-       </div>
+     <div className="container mx-auto p-6 space-y-6">
+       <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
  
-       {/* Cart Summary */}
-       <CartSummary
-         subtotal={subtotal}
-         shipping={shipping}
-         total={total}
-         onCheckout={() => alert("Proceeding to checkout...")}
-       />
+       {/* Cart Section */}
+       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 w-full">
+         {/* Cart Items Section */}
+         <div className="col-span-4">
+           
+             <CartItem />
+           
+         </div>
+ 
+         {/* Cart Summary Section */}
+         <div>
+           
+             <CartSummary />
+          
+         </div>
+       </div>
      </div>
    );
- }
+ };
+ 
+ export default CartPage;
+
+
+
+
+
+
+
+
  

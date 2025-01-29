@@ -47,6 +47,15 @@
       "engagementId": {
         "label": "Compromiso",
         "placeholder": "Ingresa el compromiso"
+      },
+      "cart": {
+        "title": "Carrito de Compras",
+        "subtotal": "Subtotal",
+        "shipping": "Envío",
+        "total": "Total",
+        "clear": "Vaciar Carrito",
+        "remove": "Eliminar Artículo",
+        "checkout": "Proceder al Pago"
       }
     },
     "submitButtonText": "Financiar fideicomiso"
@@ -56,5 +65,7 @@
     "description": "La página que visitaste no fue encontrada. Puedes ir a la página de inicio.",
     "buttonText": "Volver al inicio"
   }
+
+  
 }
 
