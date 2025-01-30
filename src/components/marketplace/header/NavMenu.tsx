@@ -33,7 +33,7 @@ const NavMenu = ({ className }: NavMenuProps) => {
           )}
         >
           {item.label}
-          {/* Línea verde que aparece en hover y cuando está activo */}
+        
           <span
             className={cn(
               'absolute bottom-0 left-0 w-full h-0.5 transform scale-x-0 transition-transform duration-200',
