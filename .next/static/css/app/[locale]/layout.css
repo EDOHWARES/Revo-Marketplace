@@ -1684,6 +1684,21 @@ video {
   --tw-text-opacity: 1;
   color: rgb(161 98 7 / var(--tw-text-opacity, 1));
 }
+.text-blue-600 {
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity, 1));
+}
+.text-orange-600 {
+  --tw-text-opacity: 1;
+  color: rgb(234 88 12 / var(--tw-text-opacity, 1));
+}
+.text-\[\#00000000\] {
+  color: #00000000;
+}
+.text-\[\#FFFFFF\] {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
 .text-opacity-95 {
   --tw-text-opacity: 0.95;
 }
@@ -1908,6 +1923,11 @@ body {
   background-color: rgb(46 74 54 / var(--tw-bg-opacity, 1));
 }
 
+.hover\:bg-\[\#375B42\]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(55 91 66 / var(--tw-bg-opacity, 1));
+}
+
 .hover\:bg-accent:hover {
   background-color: hsl(var(--accent));
 }
@@ -1967,11 +1987,6 @@ body {
 
 .hover\:bg-white\/90:hover {
   background-color: rgb(255 255 255 / 0.9);
-}
-
-.hover\:bg-\[\#375B42\]:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(55 91 66 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:text-accent-foreground:hover {
@@ -2515,6 +2530,11 @@ body {
 
 .dark\:border-destructive:is(.dark *) {
   border-color: hsl(var(--destructive));
+}
+
+.dark\:text-sky-400:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(56 189 248 / var(--tw-text-opacity, 1));
 }
 
 .dark\:hover\:bg-\[\#2C4733\]:hover:is(.dark *) {
