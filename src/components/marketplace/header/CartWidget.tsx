@@ -42,7 +42,7 @@ const CartWidget = ({ className }: CartWidgetProps) => {
           size="icon"
           className={cn("relative", className)}
         >
-          <ShoppingCart className="h-6 w-6 text-gray-600" />
+          <ShoppingCart className="h-6 w-6 text-[#375B42] dark:bg-background-dark" />
           {cartCount > 0 && (
             <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
               {cartCount}

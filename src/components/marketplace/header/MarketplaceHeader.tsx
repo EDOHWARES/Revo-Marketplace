@@ -39,9 +39,9 @@ const MarketplaceHeader = () => {
 
             <NavMenu className="flex-none" />
 
-            <SearchBar className="flex-1 max-w-2xl" />
+            <SearchBar className="mx-auto flex-1 items-center" />
 
-            <div className="flex items-center gap-4">
+            <div className='ml-auto flex items-center'>
               <CartWidget />
               <UserMenu />
             </div>

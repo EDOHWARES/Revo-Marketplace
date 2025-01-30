@@ -37,7 +37,7 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative z-50" ref={dropdownRef}>
       <button
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         className="flex items-center gap-2 text-white hover:text-white/90 transition-colors"
