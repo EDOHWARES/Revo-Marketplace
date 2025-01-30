@@ -78,7 +78,7 @@ const CartWidget = ({ className }: CartWidgetProps) => {
                 <span className="font-medium">{t('cart.total')}</span>
                 <span className="font-medium">${total.toFixed(2)}</span>
               </div>
-              <Button className="w-full">
+              <Button className="w-full bg-[#375B42] dark:bg-background-dark hover:bg-[#375B42] dark:hover:bg-[#2C4733]">
                 {t('cart.checkout')}
               </Button>
             </div>
