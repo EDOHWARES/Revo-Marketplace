@@ -2087,6 +2087,10 @@ body {
   --tw-ring-color: rgb(55 91 66 / var(--tw-ring-opacity, 1));
 }
 
+.focus\:ring-filter_active\/50:focus {
+  --tw-ring-color: rgb(55 91 66 / 0.5);
+}
+
 .focus\:ring-primary:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(0 107 228 / var(--tw-ring-opacity, 1));
@@ -2094,10 +2098,6 @@ body {
 
 .focus\:ring-primary\/50:focus {
   --tw-ring-color: rgb(0 107 228 / 0.5);
-}
-
-.focus\:ring-revolutionary_green\/50:focus {
-  --tw-ring-color: rgb(160 217 17 / 0.5);
 }
 
 .focus\:ring-ring:focus {
