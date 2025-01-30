@@ -5,7 +5,8 @@ import { useRouter } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import localFont from 'next/font/local';
 import { Toaster } from '@/components/ui/toaster';
-import Header from '@/components/header/Header';
+// import Header from '@/components/header/Header';
+import Header from '@/components/marketplace/header/MarketplaceHeader';
 import './globals.css';
 import Footer from '@/components/footer/footer';
 

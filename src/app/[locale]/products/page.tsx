@@ -14,9 +14,11 @@ import {
 } from '@/components/ui/select';
 import { ProductFilters } from '@/components/products/ProductFilters';
 import { calculateDiscountedPrice } from '@/constants/helpers/CalculateDiscountedPrice';
+import { useSearchStore } from '@/store/searchStore';
 
 export default function ProductsPage() {
   const t = useTranslations('Products');
+  const { searchTerm } = useSearchStore();
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [sortBy, setSortBy] = useState<'price' | 'date' | 'stock'>('date');
   const [isLoading, setIsLoading] = useState(true);
@@ -33,13 +35,21 @@ export default function ProductsPage() {
   }, []);
 
   const [filters, setFilters] = useState<ProductFilters>({
-    search: '',
+    search: searchTerm,
     category: '',
     farmingMethod: '',
     deliveryOnly: false,
     pickupOnly: false,
     priceRange: [priceRange.min, priceRange.max],
   });
+
+  // Update search term in filters when it changes
+  useEffect(() => {
+    setFilters(prev => ({
+      ...prev,
+      search: searchTerm
+    }));
+  }, [searchTerm]);
 
   const handleProductClick = useCallback((productId: string) => {
     console.log('Product clicked:', productId);
