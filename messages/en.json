@@ -82,6 +82,30 @@
       "next": "Next"
     }
   },
+  "Marketplace": {
+    "navigation": {
+      "home": "Home",
+      "products": "Products"
+    },
+    "search": {
+      "placeholder": "Search for products..."
+    },
+    "cart": {
+      "title": "Shopping Cart",
+      "empty": "Your cart is empty",
+      "quantity": "Qty: {count}",
+      "total": "Total",
+      "checkout": "Checkout"
+    },
+    "user": {
+      "connect": "Connect Wallet",
+      "disconnect": "Disconnect",
+      "wallet": "Connected Wallet",
+      "profile": "Profile",
+      "orders": "My Orders",
+      "settings": "Settings"
+    }
+  },
   "notFound": {
     "title": "404 Not Found",
     "description": "The page you visited was not found. You may go to the home page.",

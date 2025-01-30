@@ -6,13 +6,7 @@ import SearchBar from './SearchBar';
 import NavMenu from './NavMenu';
 import CartWidget from './CartWidget';
 import UserMenu from './UserMenu';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import LanguageSwitcher from '@/components/header/LanguageSwitcher';
 
 const MarketplaceHeader = () => {
   const { language, setLanguage } = useLanguageStore();
@@ -23,17 +17,9 @@ const MarketplaceHeader = () => {
 
   return (
     <header className="w-full bg-white">
-      <div className="w-full bg-revolutionary_green">
+      <div className="w-full bg-[#375B42] dark:bg-background-dark">
         <div className="max-w-7xl mx-auto px-4 py-2 flex justify-end">
-          <Select value={language} onValueChange={handleLanguageChange}>
-            <SelectTrigger className="w-[120px] bg-transparent border-0 text-white focus:ring-0">
-              <SelectValue>{language === 'en' ? 'English' : 'Español'}</SelectValue>
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="en">English</SelectItem>
-              <SelectItem value="es">Español</SelectItem>
-            </SelectContent>
-          </Select>
+        <LanguageSwitcher />
         </div>
       </div>
 
