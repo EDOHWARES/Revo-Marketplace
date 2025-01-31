@@ -36,7 +36,7 @@ const products: Product[] = [
   },
   {
     id: "prod_2",
-    name: "huevos",
+    name: "Huevos",
     description: "Fresas dulces cultivadas en invernadero sostenible",
     price: {
       amount: 4.50,
