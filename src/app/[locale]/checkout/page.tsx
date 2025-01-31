@@ -8,9 +8,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import Image from 'next/image';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
+import { cartMock } from '@/mocks/products';
 import { Button } from '@/components/ui/button';
 import { useTranslations } from 'next-intl';
 import { Checkbox } from '@/components/ui/checkbox';
+import { useState } from 'react';
 
 const createBillingSchema = (t: (key: string) => string) =>
   z.object({
@@ -19,27 +21,15 @@ const createBillingSchema = (t: (key: string) => string) =>
     streetAddress: z.string().min(1, t('form.errors.streetAddress')),
     apartment: z.string().optional(),
     town: z.string().min(1, t('form.errors.town')),
-    phoneNumber: z.string().min(9, t('form.errors.phoneNumber')),
+    phoneNumber: z.string().regex(/^\+?[1-9]\d{1,14}$/, t('form.errors.phoneNumberFormat')),
     email: z.string().email(t('form.errors.email')),
   });
 
 type BillingDetails = z.infer<ReturnType<typeof createBillingSchema>>;
 
-const products = [
-  {
-    image: 'cart-small',
-    name: 'Café',
-    price: 100,
-  },
-  {
-    image: 'cart-small',
-    name: 'Café',
-    price: 200,
-  },
-];
-
 export default function CheckoutPage() {
   const t = useTranslations('Checkout');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const {
     register,
     handleSubmit,
@@ -49,7 +39,7 @@ export default function CheckoutPage() {
   });
 
   const getTotalAmount = () => {
-    return products.reduce((sum, item) => sum + item.price, 0);
+    return cartMock.reduce((sum, item) => sum + item.price.amount, 0);
   };
 
   const onSubmit = (data: BillingDetails) => {
@@ -171,11 +161,11 @@ export default function CheckoutPage() {
             </div>
             <div className="flex flex-col w-full max-w-[426px] mt-20">
               <div className="flex flex-col gap-8">
-                {products.map((product, index) => (
+                {cartMock.map((product, index) => (
                   <div key={index} className="flex items-center justify-between pr-[60px]">
                     <div className="flex items-center gap-6">
                       <Image
-                        src={`/images/${product.image}.png`}
+                        src={`/images/${product.images[0]}`}
                         alt={product.name}
                         width={54}
                         height={54}
@@ -183,7 +173,7 @@ export default function CheckoutPage() {
                       />
                       <span className="tracking-[0.32px]">{product.name}</span>
                     </div>
-                    <span className="tracking-[0.32px]">${product.price}</span>
+                    <span className="tracking-[0.32px]">${product.price.amount}</span>
                   </div>
                 ))}
                 <div className="mt-8 flex flex-col gap-4">
@@ -222,9 +212,10 @@ export default function CheckoutPage() {
                 <div className="">
                   <Button
                     type="submit"
+                    disabled={isSubmitting}
                     className="bg-[#375B42] hover:bg-[#245842] px-12 py-4 rounded-lg h-14 text-base font-medium"
                   >
-                    {t('placeOrder')}
+                    {isSubmitting ? t('processing') : t('placeOrder')}
                   </Button>
                 </div>
               </div>

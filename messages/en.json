@@ -186,6 +186,7 @@
     "shipping": "Shipping:",
     "free": "Free",
     "total": "Total:",
+    "processing": "Processing",
     "placeOrder": "Place Order"
   }
 }

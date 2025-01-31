@@ -186,6 +186,7 @@
     "shipping": "Envío",
     "free": "Gratis",
     "total": "Total",
+    "processing": "Procesando",
     "placeOrder": "Realizar Pedido"
   }
 }
