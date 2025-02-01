@@ -8,9 +8,9 @@ const ProductPage = () => {
   const t = useTranslations('Products');
   
   const breadcrumbItems = [
-    { label: 'Home', href: '/' },
+    { label: t('breadcrumb.home'), href: '/' },
     { label: t('title'), href: '/products' },
-    { label: 'cafe', href: '', isCurrent: true }
+    { label: t('productName'), href: '', isCurrent: true }
   ];
 
   return (

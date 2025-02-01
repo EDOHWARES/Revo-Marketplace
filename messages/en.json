@@ -81,6 +81,34 @@
     "pagination": {
       "previous": "Previous",
       "next": "Next"
+    },
+    "breadcrumb": {
+      "home": "Home"
+    },
+    "productName": "Coffee",
+    "rating": {
+      "aria": "Product rated 4 out of 5 stars",
+      "reviews": "({count} Reviews)"
+    },
+    "stock": {
+      "inStock": "In Stock",
+      "outOfStock": "Out of Stock"
+    },
+    "buttons": {
+      "buyNow": "Buy Now",
+      "addToCart": "Add to Cart"
+    },
+    "delivery": {
+      "free": "Free Delivery",
+      "checkPostalCode": "Enter your postal code for Delivery Availability"
+    },
+    "returns": {
+      "title": "Return Delivery",
+      "description": "Free 30 Days Delivery Returns.",
+      "details": "Details"
+    },
+    "quantity": {
+      "label": "Quantity"
     }
   },
   "notFound": {

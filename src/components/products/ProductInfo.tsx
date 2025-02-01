@@ -4,16 +4,18 @@ import { useState } from 'react';
 import { Rating } from '../ui/rating';
 import { HeartIcon, UpdateIcon } from '@radix-ui/react-icons';
 import { TruckIcon } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 const ProductInfo = () => {
     const [quantity, setQuantity] = useState(1);
     const [isWishlist, setIsWishlist] = useState(false);
     const [isHover, setIsHover] = useState(false);
+    const t = useTranslations('Products');
 
     return (
         <div className="space-y-4">
             {/* Title */}
-            <h1 className="text-2xl font-medium text-black">Café</h1>
+            <h1 className="text-2xl font-medium text-black">{t('productName')}</h1>
 
             {/* Rating and Stock Status */}
             <div className="flex items-center gap-3 text-sm">
@@ -22,12 +24,12 @@ const ProductInfo = () => {
                         value={4 as number & { __brand: 'ValidRating' }}
                         max={5}
                         readOnly
-                        aria-label="Product rated 4 out of 5 stars"
+                        aria-label={t('rating.aria')}
                     />
-                    <span className="text-gray-500">(150 Reviews)</span>
+                    <span className="text-gray-500">{t('rating.reviews', { count: 150 })}</span>
                 </div>
                 <span className="text-gray-300">|</span>
-                <span className="text-gray-500">In Stock</span>
+                <span className="text-gray-500">{t('stock.inStock')}</span>
             </div>
 
             {/* Price */}
@@ -80,7 +82,7 @@ const ProductInfo = () => {
 
                 {/* Buy Now Button */}
                 <button className="mt-[8rem] flex-1 h-10 bg-[#375B42] text-white-dark rounded hover:bg-[#375B42]/90 transition-colors">
-                    Buy Now
+                    {t('buttons.buyNow')}
                 </button>
 
                 {/* Wishlist Button */}
@@ -120,28 +122,20 @@ const ProductInfo = () => {
             <div className="">
     {/* Free Delivery */}
     <div className="border border-gray-200 rounded-lg p-4 mt-12">
-        <div className="flex items-center gap-4">
-            <TruckIcon className="w-10 h-10 ml-1" />
-            <div className='flex flex-col gap-1'>
-                <h3 className="font-medium text-black">Free Delivery</h3>
-                <button className="text-black text-left underline hover:no-underline text-xs">
-                    Enter your postal code for Delivery Availability
-                </button>
-            </div>
-        </div>
+        <h3 className="font-medium text-black">{t('delivery.free')}</h3>
+        <button className="text-black text-left underline hover:no-underline text-xs">
+            {t('delivery.checkPostalCode')}
+        </button>
     </div>
 
     {/* Return Delivery */}
     <div className="border border-gray-200 rounded-lg p-4">
-        <div className="flex items-center gap-4">
-            <UpdateIcon className="w-10 h-10 ml-1" />
-            <div className='flex flex-col gap-1'>
-                <h3 className="font-medium text-black">Return Delivery</h3>
-                <div className="text-sm">
-                    <span className="text-gray-500">Free 30 Days Delivery Returns. </span>
-                    <button className="text-black underline hover:no-underline text-xs">Details</button>
-                </div>
-            </div>
+        <h3 className="font-medium text-black">{t('returns.title')}</h3>
+        <div className="text-sm">
+            <span className="text-gray-500">{t('returns.description')} </span>
+            <button className="text-black underline hover:no-underline text-xs">
+                {t('returns.details')}
+            </button>
         </div>
     </div>
 </div>

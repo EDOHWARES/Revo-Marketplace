@@ -5,6 +5,7 @@ import { EyeOpenIcon, HeartIcon } from '@radix-ui/react-icons';
 import Image from 'next/image'
 import { useState } from 'react'
 import { Rating } from '../ui/rating';
+import { useTranslations } from 'next-intl';
 
 const products: Product[] = [
   {
@@ -140,6 +141,7 @@ const ProductCard = ({ product }: { product: Product }) => {
   const [isViewed, setIsViewed] = useState(false);
   const [isHoveredHeart, setIsHoveredHeart] = useState(false);
   const [isHoveredEye, setIsHoveredEye] = useState(false);
+  const t = useTranslations('Products');
 
   const ICONS = [
     {
@@ -242,7 +244,7 @@ const ProductCard = ({ product }: { product: Product }) => {
           ${isHovered ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}
         `}>
           <button className="w-full bg-[#375B42] text-white-dark py-2 hover:bg-[#375B42]/80 transition-colors duration-200">
-            Add To Cart
+            {t('buttons.addToCart')}
           </button>
         </div>
       </div>
