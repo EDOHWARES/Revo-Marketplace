@@ -1,8 +1,10 @@
 'use client';
 
 import { Product } from '@/types/product'
+import { EyeOpenIcon, HeartIcon } from '@radix-ui/react-icons';
 import Image from 'next/image'
 import { useState } from 'react'
+import { Rating } from '../ui/rating';
 
 const products: Product[] = [
   {
@@ -133,71 +135,87 @@ const products: Product[] = [
 
 const ProductCard = ({ product }: { product: Product }) => {
   const [isHovered, setIsHovered] = useState(false);
-  
+
   return (
-    <div 
-      className="relative bg-gray-50 rounded-lg overflow-hidden group"
+    <div
+      className="relative"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Discount Badge */}
       {product.discount > 0 && (
-        <div className="absolute top-3 left-3 z-10">
-          <span className="bg-green-700 text-white text-xs px-2 py-1 rounded">
+        <div className="absolute top-3 left-3 z-10 w-[56px] h-[26px] bg-[#375B42] flex justify-center items-center rounded">
+
+          <p className="text-white-dark text-xs font-normal px-2 py-1 rounded">
             -{product.discount}%
-          </span>
+          </p>
         </div>
       )}
-      
-      {/* Wishlist & Quick View */}
-      <div className="absolute top-3 right-3 z-10 flex flex-col gap-2">
-        <button className="bg-white p-2 rounded-full shadow-md hover:bg-gray-50">
-          ♡
+
+      <div className="absolute top-3 right-10 z-10 flex flex-col gap-2">
+        <button className="flex justify-center items-center bg-white rounded-full shadow-md hover:bg-gray-50 w-[24px] h-[24px]">
+
+          <HeartIcon className='w-[16px] h-[14px]' />
         </button>
-        <button className="bg-white p-2 rounded-full shadow-md hover:bg-gray-50">
-          👁
+        <button className="flex justify-center items-center bg-white rounded-full shadow-md hover:bg-gray-50 w-[24px] h-[24px]">
+          <EyeOpenIcon className='w-[19.23px] h-[14px]' />
         </button>
       </div>
 
-      {/* Product Image */}
-      <div className="aspect-square relative">
-        <Image 
-          src={product.images[0]} 
-          alt={product.name}
-          fill
-          className="object-cover"
-        />
+
+      <div className='relative flex flex-col justify-center items-center max-h-[250px] max-w-[270px] w-full h-full bg-[#F5F5F5] rounded'>
+
+        <div className="aspect-square relative max-h-[152px] max-w-[172px] w-full h-full">
+          <Image
+            src={product.images[0]}
+
+
+            alt={product.name}
+            fill
+            className="object-cover"
+          />
+        </div>
+
+        {
+          isHovered && (
+            <div className={`
+              absolute bottom-0 left-1/2 -translate-x-1/2 transition-all duration-300 ease-in-out w-full
+              ${isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}
+            `}>
+
+              <button className="w-full bg-[#375B42] text-white-dark py-2 rounded-br-md rounded-bl-md mt-3 hover:bg-[#375B42]/80">
+                Add To Cart
+              </button>
+            </div>
+
+          )
+        }
       </div>
 
-      {/* Product Info */}
-      <div className="p-4">
-        <h3 className="font-medium">{product.name}</h3>
-        
+      <div className="py-4">
+        <h3 className="text-base font-medium text-black">{product.name}</h3>
+
+
         <div className="flex items-center gap-2 mt-2">
-          <span className="text-lg font-semibold">${product.price.amount}</span>
+          <span className="text-base font-medium text-[#375B42]">${product.price.amount}</span>
           {product.discount > 0 && (
-            <span className="text-gray-400 line-through text-sm">
-              ${(product.price.amount * (1 + product.discount/100)).toFixed(2)}
+            <span className="opacity-50 line-through text-base font-medium text-[#000000]">
+              ${(product.price.amount * (1 + product.discount / 100)).toFixed(2)}
             </span>
           )}
+
         </div>
 
         <div className="flex items-center gap-1 mt-2">
           <div className="flex text-yellow-400">
-            {'★'.repeat(Math.floor(product.rating))}
-            {'☆'.repeat(5 - Math.floor(product.rating))}
-          </div>
-          <span className="text-gray-500 text-sm">({product.rating})</span>
-        </div>
+          <Rating
+              value={product.rating as number & { __brand: 'ValidRating' }}
+              max={5}
+              readOnly
+              aria-label={`Product rated ${product.rating} out of 5 stars`}
 
-        {/* Add to Cart Button - Hidden by default, shown on hover */}
-        <div className={`
-          transition-all duration-300 ease-in-out
-          ${isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}
-        `}>
-          <button className="w-full bg-green-700 text-white py-2 rounded-md mt-3 hover:bg-green-800">
-            Add To Cart
-          </button>
+            />
+          </div>
+          <span className="opacity-50 text-black text-sm font-semibold">({product.rating})</span>
         </div>
       </div>
     </div>

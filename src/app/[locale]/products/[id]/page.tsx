@@ -4,7 +4,7 @@ import RelatedProducts from "@/components/products/RelatedProducts";
 
 const ProductPage = () => {
   return (
-    <div className="container mx-auto px-4 py-8 max-w-7xl">
+    <div className="container mx-auto px-4 py-8 max-w-7xl font-sans">
       {/* Breadcrumb */}
       <div className="text-gray-600 text-sm mb-6">
         <span className="hover:text-gray-900 cursor-pointer">Home</span> 
@@ -14,25 +14,27 @@ const ProductPage = () => {
         <span className="text-gray-900">Café</span>
       </div>
 
-      {/* Product Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        {/* Left Column - Product Images */}
         <div className="w-full">
           <ProductGallery />
         </div>
 
-        {/* Right Column - Product Info */}
         <div className="w-full">
           <ProductInfo />
         </div>
       </div>
 
-      {/* Related Items Section */}
-      <div className="mt-16">
-        <h2 className="text-2xl font-semibold mb-8">Related Products</h2>
+      <div className="mt-16 mb-32">
+        <div className="flex justify-start items-center gap-4 mb-[4rem]">
+          <div className="w-[20px] h-[40px] rounded bg-[#375B42]"></div>
+          <h2 className="text-base font-semibold text-[#375B42]">Related item</h2>
+        </div>
         <RelatedProducts />
+
       </div>
+
     </div>
+
   );
 };
 
