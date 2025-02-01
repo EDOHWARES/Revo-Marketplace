@@ -11,6 +11,8 @@ import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { ArrowLeft } from "../icons/ArrowLeft";
 import { ArrowRight } from "../icons/ArrowRight";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface ProductGridProps {
   products: Product[];
@@ -40,6 +42,8 @@ export function ProductGrid({
   onPageChange
 }: ProductGridProps) {
   const t = useTranslations('Products');
+  const pathname = usePathname();
+
   const { ref, inView } = useInView({
     threshold: 0.5,
     delay: 100
@@ -225,14 +229,16 @@ export function ProductGrid({
         aria-busy={isFilterLoading}
       >
         {products.map((product, index) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            viewMode={viewMode}
-            onClick={onProductClick}
-            aria-setsize={products.length}
-            aria-posinset={index + 1}
-          />
+          <Link href={`${pathname}/${product.id}`} key={product.id}>
+            <ProductCard
+              product={product}
+              viewMode={viewMode}
+              onClick={onProductClick}
+              aria-setsize={products.length}
+              aria-posinset={index + 1}
+
+            />
+          </Link>
         ))}
       </div>
 
