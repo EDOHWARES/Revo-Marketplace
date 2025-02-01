@@ -54,6 +54,7 @@
   "Products": {
     "title": "Products",
     "description": "Explore our wide range of products, carefully curated to meet your needs and preferences.",
+    "relatedItems": "Related items",
     "filters": {
       "label": "Filters",
       "price": "Price",

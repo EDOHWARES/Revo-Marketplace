@@ -54,6 +54,7 @@
   "Products": {
     "title": "Productos",
     "description": "Explora nuestra amplia gama de productos, cuidadosamente seleccionados para satisfacer tus necesidades y preferencias.",
+    "relatedItems": "Productos Relacionados",
     "filters": {
       "label": "Filtros",
       "price": "Precio",

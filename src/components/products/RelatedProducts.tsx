@@ -133,12 +133,44 @@ const products: Product[] = [
   }
 ];
 
+
 const ProductCard = ({ product }: { product: Product }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isHoveredHeart, setIsHoveredHeart] = useState(false);
+  const [isHoveredEye, setIsHoveredEye] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+  const [isViewed, setIsViewed] = useState(false);
+
+  const ICONS = [
+    {
+      id: 'like',
+      icon: <HeartIcon className={`w-[16px] h-[16px] transition-colors duration-200 ${
+        isHoveredHeart ? 'text-white-dark' : isLiked ? 'text-white-dark' : 'text-black'
+      }`} />,
+      isActive: isLiked,
+      isHovered: isHoveredHeart,
+      onClick: () => setIsLiked(!isLiked),
+      onMouseEnter: () => setIsHoveredHeart(true),
+      onMouseLeave: () => setIsHoveredHeart(false),
+      ariaLabel: isLiked ? 'Remove from favorites' : 'Add to favorites'
+    },
+    {
+      id: 'view',
+      icon: <EyeOpenIcon className={`w-[16px] h-[16px] transition-colors duration-200 ${
+        isHoveredEye ? 'text-white-dark' : isViewed ? 'text-white-dark' : 'text-black'
+      }`} />,
+      isActive: isViewed,
+      isHovered: isHoveredEye,
+      onClick: () => setIsViewed(!isViewed),
+      onMouseEnter: () => setIsHoveredEye(true),
+      onMouseLeave: () => setIsHoveredEye(false),
+      ariaLabel: isViewed ? 'Mark as unviewed' : 'Mark as viewed'
+    }
+  ];
 
   return (
     <div
-      className="relative"
+      className="relative w-full"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -151,44 +183,52 @@ const ProductCard = ({ product }: { product: Product }) => {
         </div>
       )}
 
-      <div className="absolute top-3 right-10 z-10 flex flex-col gap-2">
-        <button className="flex justify-center items-center bg-white rounded-full shadow-md hover:bg-gray-50 w-[24px] h-[24px]">
-
-          <HeartIcon className='w-[16px] h-[14px]' />
-        </button>
-        <button className="flex justify-center items-center bg-white rounded-full shadow-md hover:bg-gray-50 w-[24px] h-[24px]">
-          <EyeOpenIcon className='w-[19.23px] h-[14px]' />
-        </button>
+      <div className="absolute top-3 right-2 z-10 flex flex-col gap-2">
+        {ICONS.map((icon) => (
+          <button
+            key={icon.id}
+            onClick={icon.onClick}
+            aria-label={icon.ariaLabel}
+            className={`
+              flex justify-center items-center rounded-full shadow-md
+              w-[34px] h-[34px] transition-all duration-200
+              ${icon.isActive || icon.isHovered
+                ? 'bg-[#375B42]' 
+                : 'bg-white hover:bg-[#375B42]'
+              }
+            `}
+            onMouseEnter={icon.onMouseEnter}
+            onMouseLeave={icon.onMouseLeave}
+          >
+            {icon.icon}
+          </button>
+        ))}
       </div>
 
 
-      <div className='relative flex flex-col justify-center items-center max-h-[250px] max-w-[270px] w-full h-full bg-[#F5F5F5] rounded'>
 
-        <div className="aspect-square relative max-h-[152px] max-w-[172px] w-full h-full">
+      <div className='relative flex flex-col justify-center items-center 
+          w-full h-[250px] sm:h-[220px] md:h-[250px] 
+          bg-[#F5F5F5] rounded overflow-hidden'>
+
+        <div className="relative w-full h-[152px] max-w-[172px]">
           <Image
             src={product.images[0]}
-
-
             alt={product.name}
             fill
-            className="object-cover"
+            className="object-contain"
           />
         </div>
 
-        {
-          isHovered && (
-            <div className={`
-              absolute bottom-0 left-1/2 -translate-x-1/2 transition-all duration-300 ease-in-out w-full
-              ${isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}
-            `}>
-
-              <button className="w-full bg-[#375B42] text-white-dark py-2 rounded-br-md rounded-bl-md mt-3 hover:bg-[#375B42]/80">
-                Add To Cart
-              </button>
-            </div>
-
-          )
-        }
+        <div className={`
+          absolute bottom-0 left-0 right-0
+          transform transition-all duration-300 ease-in-out
+          ${isHovered ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}
+        `}>
+          <button className="w-full bg-[#375B42] text-white-dark py-2 hover:bg-[#375B42]/80 transition-colors duration-200">
+            Add To Cart
+          </button>
+        </div>
       </div>
 
       <div className="py-4">
@@ -224,7 +264,7 @@ const ProductCard = ({ product }: { product: Product }) => {
 
 const RelatedProducts = () => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
       {products.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}

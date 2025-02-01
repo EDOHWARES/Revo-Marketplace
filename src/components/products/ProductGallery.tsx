@@ -1,50 +1,73 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 const ProductGallery = () => {
   const [selectedImage, setSelectedImage] = useState(0);
+  const [isChanging, setIsChanging] = useState(false);
+  
   const images = [
-    '/images/product-1.jpg',
-    '/images/product-2.jpg',
-    '/images/product-3.jpg',
-    '/images/product-4.jpg',
+    '/images/tomatoes.jpg',
+    '/images/eggs.jpg',
+    '/images/tomatoes.jpg',
+    '/images/eggs.jpg',
   ];
 
+  const handleImageChange = useCallback((index: number) => {
+    if (index === selectedImage) return;
+    
+    setIsChanging(true);
+    setTimeout(() => {
+      setSelectedImage(index);
+      setIsChanging(false);
+    }, 150); // Mitad de la duración de la transición
+  }, [selectedImage]);
+
   return (
-    <div className="flex gap-4">
-      {/* Thumbnails Column */}
-      <div className="flex flex-col gap-3">
+    <div className="flex flex-col-reverse md:flex-row gap-4 lg:gap-8">
+      {/* Thumbnails - Horizontal en móvil, vertical en desktop */}
+      <div className="flex md:flex-col gap-3 overflow-x-auto md:overflow-x-visible">
         {images.map((image, index) => (
           <button
             key={index}
-            onClick={() => setSelectedImage(index)}
+            onClick={() => handleImageChange(index)}
             className={`
-              relative w-16 h-16 border rounded-lg overflow-hidden
-              ${selectedImage === index ? 'border-green-600' : 'border-gray-200'}
-              hover:border-green-600 transition-colors
+              flex-shrink-0 flex justify-center items-center bg-[#F5F5F5]
+              relative w-[100px] h-[80px] md:w-[173px] md:h-[141px] 
+              border rounded overflow-hidden
+              ${selectedImage === index ? 'border-[#375B42]' : 'border-[#E0E0E0]'}
+              hover:border-[#375B42] transition-colors
             `}
           >
-            <Image
-              src={image}
-              alt={`Product view ${index + 1}`}
-              fill
-              className="object-cover"
-            />
+            <div className='relative w-[80px] h-[60px] md:w-[133px] md:h-[91px]'>
+              <Image
+                src={image}
+                alt={`Product view ${index + 1}`}
+                fill
+                className="object-cover"
+              />
+            </div>
           </button>
         ))}
       </div>
 
       {/* Main Image */}
-      <div className="flex-1 relative aspect-square bg-gray-50 rounded-lg overflow-hidden">
-        <Image
-          src={images[selectedImage]}
-          alt="Product main view"
-          fill
-          className="object-cover"
-          priority
-        />
+      <div className="flex flex-1 justify-center items-center relative bg-[#F5F5F5] rounded-lg overflow-hidden
+           aspect-square w-full h-auto max-h-[600px]">
+        <div className={`
+          relative w-full h-full max-w-[400px] max-h-[500px] aspect-square
+          transition-all duration-300 ease-in-out
+          ${isChanging ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}
+        `}>
+          <Image
+            src={images[selectedImage]}
+            alt="Product main view"
+            fill
+            className="object-contain"
+            priority
+          />
+        </div>
       </div>
     </div>
   );

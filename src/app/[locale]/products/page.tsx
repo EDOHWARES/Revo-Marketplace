@@ -17,7 +17,6 @@ import { calculateDiscountedPrice } from '@/constants/helpers/CalculateDiscounte
 
 export default function ProductsPage() {
   const t = useTranslations('Products');
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [sortBy, setSortBy] = useState<'price' | 'date' | 'stock'>('date');
   const [isLoading, setIsLoading] = useState(true);
   const [isFilterLoading, setIsFilterLoading] = useState(false);
@@ -173,7 +172,7 @@ export default function ProductsPage() {
                 <div className="bg-white rounded-lg shadow-sm h-full">
                   <ProductGrid
                     products={currentProducts}
-                    viewMode={viewMode}
+                    viewMode={'grid'}
                     onProductClick={handleProductClick}
                     currentPage={currentPage}
                     totalPages={totalPages}
@@ -185,7 +184,7 @@ export default function ProductsPage() {
               ) : (
                 <ProductGrid
                   products={currentProducts}
-                  viewMode={viewMode}
+                  viewMode={'grid'}
                   onProductClick={handleProductClick}
                   currentPage={currentPage}
                   totalPages={totalPages}
