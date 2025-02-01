@@ -4,23 +4,34 @@ import RelatedProducts from "@/components/products/RelatedProducts";
 
 const ProductPage = () => {
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto px-4 py-8 max-w-7xl">
       {/* Breadcrumb */}
-      <div className="text-gray-500 text-sm mb-4">
-        <span>Account</span> / <span>Organic Products</span> / <span className="text-black font-medium">Café</span>
+      <div className="text-gray-600 text-sm mb-6">
+        <span className="hover:text-gray-900 cursor-pointer">Home</span> 
+        <span className="mx-2">/</span> 
+        <span className="hover:text-gray-900 cursor-pointer">Products</span>
+        <span className="mx-2">/</span>
+        <span className="text-gray-900">Café</span>
       </div>
 
       {/* Product Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Product Images */}
-        <ProductGallery/>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        {/* Left Column - Product Images */}
+        <div className="w-full">
+          <ProductGallery />
+        </div>
 
-        {/* Product Details */}
-        <ProductInfo/>
+        {/* Right Column - Product Info */}
+        <div className="w-full">
+          <ProductInfo />
+        </div>
       </div>
 
-      {/* Related Items Section */}      
-      <RelatedProducts/>
+      {/* Related Items Section */}
+      <div className="mt-16">
+        <h2 className="text-2xl font-semibold mb-8">Related Products</h2>
+        <RelatedProducts />
+      </div>
     </div>
   );
 };

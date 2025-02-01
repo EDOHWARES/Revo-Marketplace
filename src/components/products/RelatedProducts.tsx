@@ -1,6 +1,8 @@
+'use client';
+
 import { Product } from '@/types/product'
 import Image from 'next/image'
-import React from 'react'
+import { useState } from 'react'
 
 const products: Product[] = [
   {
@@ -129,31 +131,87 @@ const products: Product[] = [
   }
 ];
 
+const ProductCard = ({ product }: { product: Product }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  
+  return (
+    <div 
+      className="relative bg-gray-50 rounded-lg overflow-hidden group"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Discount Badge */}
+      {product.discount > 0 && (
+        <div className="absolute top-3 left-3 z-10">
+          <span className="bg-green-700 text-white text-xs px-2 py-1 rounded">
+            -{product.discount}%
+          </span>
+        </div>
+      )}
+      
+      {/* Wishlist & Quick View */}
+      <div className="absolute top-3 right-3 z-10 flex flex-col gap-2">
+        <button className="bg-white p-2 rounded-full shadow-md hover:bg-gray-50">
+          ♡
+        </button>
+        <button className="bg-white p-2 rounded-full shadow-md hover:bg-gray-50">
+          👁
+        </button>
+      </div>
+
+      {/* Product Image */}
+      <div className="aspect-square relative">
+        <Image 
+          src={product.images[0]} 
+          alt={product.name}
+          fill
+          className="object-cover"
+        />
+      </div>
+
+      {/* Product Info */}
+      <div className="p-4">
+        <h3 className="font-medium">{product.name}</h3>
+        
+        <div className="flex items-center gap-2 mt-2">
+          <span className="text-lg font-semibold">${product.price.amount}</span>
+          {product.discount > 0 && (
+            <span className="text-gray-400 line-through text-sm">
+              ${(product.price.amount * (1 + product.discount/100)).toFixed(2)}
+            </span>
+          )}
+        </div>
+
+        <div className="flex items-center gap-1 mt-2">
+          <div className="flex text-yellow-400">
+            {'★'.repeat(Math.floor(product.rating))}
+            {'☆'.repeat(5 - Math.floor(product.rating))}
+          </div>
+          <span className="text-gray-500 text-sm">({product.rating})</span>
+        </div>
+
+        {/* Add to Cart Button - Hidden by default, shown on hover */}
+        <div className={`
+          transition-all duration-300 ease-in-out
+          ${isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}
+        `}>
+          <button className="w-full bg-green-700 text-white py-2 rounded-md mt-3 hover:bg-green-800">
+            Add To Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const RelatedProducts = () => {
-    return (
-        <>
-            <h2 className="text-lg font-semibold mt-8">Related Items</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-4">
-                {products.map((product) => (
-                    <div key={product.id} className="relative border p-4 rounded-lg shadow">
-                        <span className="absolute top-2 left-2 bg-green-600 text-white px-2 py-1 text-xs rounded">-{product.discount}%</span>
-                        <div className="flex flex-col items-center">
-                            <Image src={product.images[0]} width={100} height={100} alt={product.name} className="rounded-lg" />
-                            <p className="text-center mt-2">{product.name}</p>
-                            <p className="text-gray-600">${product.price.amount} <span className="line-through text-gray-400">${product.price.amount * 1.1}</span></p>
-                            <div className="flex items-center gap-1 mt-2 text-yellow-500">
-                                {[...Array(5)].map((_, i) => (
-                                    <span key={i} className="w-4 h-4">⭐️</span>
-                                ))}
-                                <span className="text-gray-600 text-sm">({product.rating})</span>
-                            </div>
-                            <button className="mt-2 bg-green-700 text-white w-full py-2 rounded">Add To Cart</button>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </>
-    )
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))}
+    </div>
+  );
 }
 
 export default RelatedProducts
