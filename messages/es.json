@@ -81,6 +81,34 @@
     "pagination": {
       "previous": "Anterior",
       "next": "Siguiente"
+    },
+    "breadcrumb": {
+      "home": "Inicio"
+    },
+    "productName": "Café",
+    "rating": {
+      "aria": "Producto calificado con 4 de 5 estrellas",
+      "reviews": "({count} Reseñas)"
+    },
+    "stock": {
+      "inStock": "En Stock",
+      "outOfStock": "Agotado"
+    },
+    "buttons": {
+      "buyNow": "Comprar Ahora",
+      "addToCart": "Agregar al Carrito"
+    },
+    "delivery": {
+      "free": "Envío Gratis",
+      "checkPostalCode": "Ingresa tu código postal para verificar disponibilidad de envío"
+    },
+    "returns": {
+      "title": "Devolución",
+      "description": "Devoluciones gratuitas dentro de 30 días.",
+      "details": "Detalles"
+    },
+    "quantity": {
+      "label": "Cantidad"
     }
   },
   "notFound": {
