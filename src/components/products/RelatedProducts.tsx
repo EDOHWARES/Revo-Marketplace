@@ -136,17 +136,25 @@ const products: Product[] = [
 
 const ProductCard = ({ product }: { product: Product }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [isHoveredHeart, setIsHoveredHeart] = useState(false);
-  const [isHoveredEye, setIsHoveredEye] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [isViewed, setIsViewed] = useState(false);
+  const [isHoveredHeart, setIsHoveredHeart] = useState(false);
+  const [isHoveredEye, setIsHoveredEye] = useState(false);
 
   const ICONS = [
     {
       id: 'like',
-      icon: <HeartIcon className={`w-[16px] h-[16px] transition-colors duration-200 ${
-        isHoveredHeart ? 'text-white-dark' : isLiked ? 'text-white-dark' : 'text-black'
-      }`} />,
+      icon: <HeartIcon className={`
+        w-[16px] h-[16px] transition-colors duration-300
+        ${isLiked
+          ? isHoveredHeart
+            ? 'text-[#375B42]'  // Activo + hover
+            : 'text-white-dark' // Activo sin hover
+          : isHoveredHeart
+            ? 'text-white-dark' // No activo + hover
+            : 'text-black'      // No activo sin hover
+        }
+      `} />,
       isActive: isLiked,
       isHovered: isHoveredHeart,
       onClick: () => setIsLiked(!isLiked),
@@ -156,15 +164,23 @@ const ProductCard = ({ product }: { product: Product }) => {
     },
     {
       id: 'view',
-      icon: <EyeOpenIcon className={`w-[16px] h-[16px] transition-colors duration-200 ${
-        isHoveredEye ? 'text-white-dark' : isViewed ? 'text-white-dark' : 'text-black'
-      }`} />,
+      icon: <EyeOpenIcon className={`
+        w-[16px] h-[16px] transition-colors duration-300
+        ${isViewed
+          ? isHoveredEye
+            ? 'text-[#375B42]'  // Activo + hover
+            : 'text-white-dark' // Activo sin hover
+          : isHoveredEye
+            ? 'text-white-dark' // No activo + hover
+            : 'text-black'      // No activo sin hover
+        }
+      `} />,
       isActive: isViewed,
       isHovered: isHoveredEye,
       onClick: () => setIsViewed(!isViewed),
       onMouseEnter: () => setIsHoveredEye(true),
       onMouseLeave: () => setIsHoveredEye(false),
-      ariaLabel: isViewed ? 'Mark as unviewed' : 'Mark as viewed'
+      ariaLabel: isViewed ? 'Hide product details' : 'View product details'
     }
   ];
 
@@ -188,17 +204,17 @@ const ProductCard = ({ product }: { product: Product }) => {
           <button
             key={icon.id}
             onClick={icon.onClick}
+            onMouseEnter={icon.onMouseEnter}
+            onMouseLeave={icon.onMouseLeave}
             aria-label={icon.ariaLabel}
             className={`
               flex justify-center items-center rounded-full shadow-md
-              w-[34px] h-[34px] transition-all duration-200
-              ${icon.isActive || icon.isHovered
-                ? 'bg-[#375B42]' 
-                : 'bg-white hover:bg-[#375B42]'
+              w-[34px] h-[34px] transition-all duration-300
+              ${icon.isActive
+                ? 'bg-[#375B42] border-[#375B42] hover:bg-white hover:border-[#375B42] border' 
+                : 'bg-white border-gray-300 hover:bg-[#375B42] hover:border-[#375B42] border'
               }
             `}
-            onMouseEnter={icon.onMouseEnter}
-            onMouseLeave={icon.onMouseLeave}
           >
             {icon.icon}
           </button>

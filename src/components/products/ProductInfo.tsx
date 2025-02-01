@@ -1,45 +1,62 @@
 'use client';
 
 import { useState } from 'react';
+import { Rating } from '../ui/rating';
+import { HeartIcon, UpdateIcon } from '@radix-ui/react-icons';
+import { TruckIcon } from 'lucide-react';
 
 const ProductInfo = () => {
     const [quantity, setQuantity] = useState(1);
+    const [isWishlist, setIsWishlist] = useState(false);
+    const [isHover, setIsHover] = useState(false);
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-4">
             {/* Title */}
-            <h1 className="text-2xl font-semibold">Café</h1>
-            
-            {/* Rating and Stock */}
-            <div className="flex items-center gap-2 text-sm text-gray-500">
-                <div className="flex items-center gap-1">
-                    <div className="flex text-yellow-400">
-                        {'★'.repeat(4)}{'☆'.repeat(1)}
-                    </div>
-                    <span>(150 Reviews)</span>
+            <h1 className="text-2xl font-medium text-black">Café</h1>
+
+            {/* Rating and Stock Status */}
+            <div className="flex items-center gap-3 text-sm">
+                <div className="flex items-center gap-2">
+                    <Rating
+                        value={4 as number & { __brand: 'ValidRating' }}
+                        max={5}
+                        readOnly
+                        aria-label="Product rated 4 out of 5 stars"
+                    />
+                    <span className="text-gray-500">(150 Reviews)</span>
                 </div>
-                <span>|</span>
-                <span>In Stock</span>
+                <span className="text-gray-300">|</span>
+                <span className="text-gray-500">In Stock</span>
             </div>
 
             {/* Price */}
-            <div className="text-2xl">$192.00</div>
+            <div className="text-2xl font-medium text-black">
+                $192.00
+            </div>
 
             {/* Description */}
-            <p className="text-gray-600 text-sm leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitatio.
-            </p>
+            <div className="border-b border-gray-200">
+                <p className="text-gray-500 text-sm leading-relaxed">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitatio.
+                </p>
+            </div>
 
             {/* Quantity and Actions */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 ">
                 {/* Quantity Selector */}
-                <div className="flex items-center border border-gray-300 rounded">
-                    <button 
-                        className="px-4 py-2 text-gray-600 hover:bg-gray-50"
+                <div className="flex items-center mt-[8rem]">
+                    <button
                         onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                        className={`
+                            w-10 h-10 flex items-center justify-center border border-r-2 border-gray-300 rounded-l hover:bg-gray-50
+                            ${quantity === 1 ? 'opacity-50 cursor-not-allowed' : ''}
+                        `}
+                        disabled={quantity === 1}
                     >
                         −
                     </button>
+
                     <input
                         type="text"
                         value={quantity}
@@ -47,55 +64,87 @@ const ProductInfo = () => {
                             const val = parseInt(e.target.value);
                             if (!isNaN(val)) setQuantity(Math.max(1, val));
                         }}
-                        className="w-12 text-center border-x border-gray-300 py-2"
+                        className="w-12 h-10 border-y border-gray-300 text-center [-moz-appearance:_textfield] [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
                     />
-                    <button 
-                        className="px-4 py-2 text-gray-600 hover:bg-gray-50"
+                    <button
                         onClick={() => setQuantity(quantity + 1)}
+                        className={`
+                            w-10 h-10 flex items-center justify-center border border-l-2 border-gray-300 rounded-r hover:bg-gray-50
+                            ${quantity > 1 ? 'bg-[#375B42] text-white-dark hover:bg-[#375B42]/90' : ''}
+                        `}
                     >
                         +
+
                     </button>
                 </div>
 
                 {/* Buy Now Button */}
-                <button className="flex-1 bg-green-700 text-white py-2 px-6 rounded hover:bg-green-800">
+                <button className="mt-[8rem] flex-1 h-10 bg-[#375B42] text-white-dark rounded hover:bg-[#375B42]/90 transition-colors">
                     Buy Now
                 </button>
 
                 {/* Wishlist Button */}
-                <button className="p-2 border border-gray-300 rounded hover:bg-gray-50">
-                    ♡
+                <button
+                    onMouseEnter={() => setIsHover(true)}
+                    onMouseLeave={() => setIsHover(false)}
+                    onClick={() => setIsWishlist(!isWishlist)}
+                    className={`
+                        w-10 h-10 flex items-center justify-center rounded
+                        transition-all duration-300 mt-[8rem]
+                        ${isWishlist 
+                          ? 'bg-[#375B42] border-[#375B42] hover:bg-white hover:border-[#375B42] border' 
+                          : 'bg-white border-gray-300 hover:bg-[#375B42] hover:border-[#375B42] border'
+                        }
+                    `}
+                >
+                    <HeartIcon 
+                        className={`
+                            w-5 h-5 transition-colors duration-300
+                            ${isWishlist
+
+                                ? isHover 
+                                  ? 'text-[#375B42]'  // Wishlist activo + hover
+                                  : 'text-white-dark' // Wishlist activo sin hover
+                                : isHover
+                                  ? 'text-white-dark' // No activo + hover
+                                  : 'text-[#000000]'  // No activo sin hover
+                            }
+                        `}
+                    />
+                </button>
+
+            </div>
+
+
+            {/* Delivery Info */}
+            <div className="">
+    {/* Free Delivery */}
+    <div className="border border-gray-200 rounded-lg p-4 mt-12">
+        <div className="flex items-center gap-4">
+            <TruckIcon className="w-10 h-10 ml-1" />
+            <div className='flex flex-col gap-1'>
+                <h3 className="font-medium text-black">Free Delivery</h3>
+                <button className="text-black text-left underline hover:no-underline text-xs">
+                    Enter your postal code for Delivery Availability
                 </button>
             </div>
+        </div>
+    </div>
 
-            {/* Delivery Info Cards */}
-            <div className="space-y-3 pt-6">
-                {/* Free Delivery */}
-                <div className="border border-gray-200 rounded p-4">
-                    <div className="flex items-center gap-3">
-                        <span className="text-xl">🚚</span>
-                        <div>
-                            <h3 className="font-medium">Free Delivery</h3>
-                            <p className="text-sm text-gray-500">
-                                Enter your postal code for Delivery Availability
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Return Delivery */}
-                <div className="border border-gray-200 rounded p-4">
-                    <div className="flex items-center gap-3">
-                        <span className="text-xl">↩️</span>
-                        <div>
-                            <h3 className="font-medium">Return Delivery</h3>
-                            <div className="text-sm text-gray-500">
-                                Free 30 Days Delivery Returns. <span className="text-gray-800 underline cursor-pointer">Details</span>
-                            </div>
-                        </div>
-                    </div>
+    {/* Return Delivery */}
+    <div className="border border-gray-200 rounded-lg p-4">
+        <div className="flex items-center gap-4">
+            <UpdateIcon className="w-10 h-10 ml-1" />
+            <div className='flex flex-col gap-1'>
+                <h3 className="font-medium text-black">Return Delivery</h3>
+                <div className="text-sm">
+                    <span className="text-gray-500">Free 30 Days Delivery Returns. </span>
+                    <button className="text-black underline hover:no-underline text-xs">Details</button>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
         </div>
     );
 };
