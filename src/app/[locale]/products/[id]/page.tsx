@@ -1,21 +1,22 @@
 import ProductGallery from "@/components/products/ProductGallery";
 import ProductInfo from "@/components/products/ProductInfo";
 import RelatedProducts from "@/components/products/RelatedProducts";
+import Breadcrumb from "@/components/shared/Breadcrumb";
 import { useTranslations } from "next-intl";
 
 const ProductPage = () => {
   const t = useTranslations('Products');
+  
+  const breadcrumbItems = [
+    { label: 'Home', href: '/' },
+    { label: t('title'), href: '/products' },
+    { label: 'cafe', href: '', isCurrent: true }
+  ];
+
   return (
     <div className="container mx-auto px-4 py-8 max-w-7xl font-sans" aria-label="Products">
-      {/* Breadcrumb */}
-      <div className="text-gray-600 text-sm mb-6 overflow-x-auto whitespace-nowrap">
-        <span className="hover:text-gray-900 cursor-pointer">Home</span> 
-        <span className="mx-2">/</span> 
-        <span className="hover:text-gray-900 cursor-pointer">{t('title')}</span>
-        <span className="mx-2">/</span>
-        <span className="text-gray-900">cafe</span>
-      </div>
-
+      <Breadcrumb items={breadcrumbItems} />
+      
       {/* Product Layout - Ajustado para mejor responsive */}
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-8 xl:gap-12">
         <div className="w-full">
