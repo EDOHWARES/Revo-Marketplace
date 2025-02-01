@@ -27,7 +27,11 @@ interface  CartItem {
 const CartItem = () => {
   const {Items,  updateQuantity} = useCartStore((state) => state)
   const handleQuantityChange = (id: number, quantity: number) => {
-    updateQuantity(id, quantity); // Call the store's updateQuantity method
+    try {
+        updateQuantity(id, quantity);
+       } catch (err) {
+        console.error(`Failed to update quantity for item ${id}:`, err);  
+      }
   };
 
   return (
@@ -53,7 +57,8 @@ const CartItem = () => {
 
       <div>
         {Items.length > 0 ? (Items.map((item) => (
-              <Card className="flex items-center justify-between px-8 py-4 mb-4">
+          
+              <Card key={item.id} className="flex items-center justify-between px-8 py-4 mb-4">
                 <div className="flex md:flex-row items-center">
                     <img src={item.images} alt='product image'  className="h-16 w-16 rounded-md object-cover"/>
                     <p>{item.name}</p>
