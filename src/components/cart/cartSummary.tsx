@@ -6,7 +6,21 @@ import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/store/cartStore/store";
 
 const CartSummary = () => {
-  const { subtotal, shipping, total, calculateSummary } = useCartStore();
+  const { subtotal, shipping, total, loading, setLoading, calculateSummary } = useCartStore();
+
+
+
+  const handleCheckout = async () => {
+    setLoading(true);
+    try {
+      // Add your checkout logic here (e.g., navigate to checkout page or call API)
+      console.log("Redirecting to checkout...");
+    } catch (error) {
+      console.error("Checkout failed:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // TO Ensure the summary is recalculated when the component loads
   React.useEffect(() => {
@@ -33,7 +47,7 @@ const CartSummary = () => {
         </div>
       </CardContent>
       <CardFooter>
-        <Button className="w-full bg-[#375B42]">Proceed to Checkout</Button>
+        <Button className="w-full bg-[#375B42]"onClick={handleCheckout} disabled={loading || total === 0}>{loading ? 'Processing...' : 'Proceed to Checkout'}</Button>
       </CardFooter>
     </Card>
   );

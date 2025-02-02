@@ -8,7 +8,8 @@ import { Card, CardContent, CardHeader, CardFooter, } from "@/components/ui/card
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Image from "next/image";
 import { useCartStore } from "@/store/cartStore/store";
-import { IncrementalCache } from "next/dist/server/lib/incremental-cache";
+
+
 
 
 interface  CartItem {
@@ -60,7 +61,12 @@ const CartItem = () => {
           
               <Card key={item.id} className="flex items-center justify-between px-8 py-4 mb-4">
                 <div className="flex md:flex-row items-center">
-                    <img src={item.images} alt='product image'  className="h-16 w-16 rounded-md object-cover"/>
+                    {/*<img src={item.images} alt='product image'  className="h-16 w-16 rounded-md object-cover"/>*/}
+                    <Image 
+                      src={item.images} 
+                      alt={`${item.name} image`}
+                      className="rounded-md object-cover h-16 w-16"
+                    />
                     <p>{item.name}</p>
 
                 </div>
