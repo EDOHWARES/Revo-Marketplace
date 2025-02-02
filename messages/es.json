@@ -113,6 +113,30 @@
       "label": "Cantidad"
     }
   },
+  "Marketplace": {
+    "navigation": {
+      "home": "Inicio",
+      "products": "Productos"
+    },
+    "search": {
+      "placeholder": "Buscar productos..."
+    },
+    "cart": {
+      "title": "Carrito de Compras",
+      "empty": "Tu carrito está vacío",
+      "quantity": "Cant: {count}",
+      "total": "Total",
+      "checkout": "Pagar"
+    },
+    "user": {
+      "connect": "Conectar Billetera",
+      "disconnect": "Desconectar",
+      "wallet": "Billetera Conectada",
+      "profile": "Perfil",
+      "orders": "Mis Pedidos",
+      "settings": "Configuración"
+    }
+  },
   "notFound": {
     "title": "404 No Encontrada",
     "description": "La página que visitaste no fue encontrada. Puedes ir a la página de inicio.",
