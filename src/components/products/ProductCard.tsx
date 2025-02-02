@@ -42,7 +42,7 @@ export function ProductCard({ product, viewMode, onClick, locale = 'en' }: Produ
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      onClick(product.id.toString());
+      onClick(product.id);
     }
   };
 
@@ -51,7 +51,7 @@ export function ProductCard({ product, viewMode, onClick, locale = 'en' }: Produ
       role="button"
       tabIndex={0}
       className={cardClassName}
-      onClick={() => onClick(product.id.toString())}
+      onClick={() => onClick(product.id)}
       onKeyDown={handleKeyDown}
       aria-label={`View details for ${product.name}`}
     >
