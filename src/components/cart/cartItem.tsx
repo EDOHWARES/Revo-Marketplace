@@ -13,7 +13,7 @@ import { useRouter } from 'next/navigation';
 
 
 
-interface  CartItem {
+interface CartItem {
   quantity: number;
   id: number;
   name: string;
@@ -51,7 +51,7 @@ const CartItem = () => {
           <h1>Quantity</h1>
         </div>
         <div className=''>
-          <h1>Sutotal</h1>
+          <h1>Subtotal</h1>
         </div>
   
 
@@ -67,9 +67,10 @@ const CartItem = () => {
                     <Image 
                       src={item.images} 
                       alt={`${item.name} image`}
+                      width={64}
+                      height={64}
                       className="rounded-md object-cover h-16 w-16"
-                      width={100}
-                      height={100}
+              
                     />
                     <p>{item.name}</p>
 
