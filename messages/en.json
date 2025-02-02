@@ -95,6 +95,7 @@
       "outOfStock": "Out of Stock"
     },
     "buttons": {
+      "relatedItems": "Related Items",
       "buyNow": "Buy Now",
       "addToCart": "Add to Cart"
     },

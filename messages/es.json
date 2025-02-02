@@ -95,9 +95,11 @@
       "outOfStock": "Agotado"
     },
     "buttons": {
+      "relatedItems": "Productos Relacionados",
       "buyNow": "Comprar Ahora",
       "addToCart": "Agregar al Carrito"
     },
+
     "delivery": {
       "free": "Envío Gratis",
       "checkPostalCode": "Ingresa tu código postal para verificar disponibilidad de envío"

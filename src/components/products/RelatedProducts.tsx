@@ -213,7 +213,7 @@ const ProductCard = ({ product }: { product: Product }) => {
               flex justify-center items-center rounded-full shadow-md
               w-[34px] h-[34px] transition-all duration-300
               ${icon.isActive
-                ? 'bg-[#375B42] border-[#375B42] hover:bg-white hover:border-[#375B42] border' 
+                ? 'bg-[#375B42] border-[#375B42] hover:bg-white hover:border-[#375B42] border'
                 : 'bg-white border-gray-300 hover:bg-[#375B42] hover:border-[#375B42] border'
               }
             `}
@@ -265,7 +265,7 @@ const ProductCard = ({ product }: { product: Product }) => {
 
         <div className="flex items-center gap-1 mt-2">
           <div className="flex text-yellow-400">
-          <Rating
+            <Rating
               value={product.rating as number & { __brand: 'ValidRating' }}
               max={5}
               readOnly
@@ -281,12 +281,20 @@ const ProductCard = ({ product }: { product: Product }) => {
 };
 
 const RelatedProducts = () => {
+  const t = useTranslations('Products');
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-      {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
-      ))}
-    </div>
+    <>
+      <div className="flex justify-start items-center gap-4 mb-8 lg:mb-[4rem]">
+
+        <div className="w-[12px] lg:w-[20px] h-[30px] lg:h-[40px] rounded bg-[#375B42]"></div>
+        <h2 className="text-base font-semibold text-[#375B42]">{t('buttons.relatedItems')}</h2>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
+    </>
   );
 }
 

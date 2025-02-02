@@ -72,7 +72,7 @@ const ProductInfo = () => {
                         onClick={() => setQuantity(quantity + 1)}
                         className={`
                             w-10 h-10 flex items-center justify-center border border-l-2 border-gray-300 rounded-r hover:bg-gray-50
-                            ${quantity > 1 ? 'bg-[#375B42] text-white-dark hover:bg-[#375B42]/90' : ''}
+                            ${quantity > 1 ? 'bg-[#375B42] text-white-dark hover:bg-[#375B42]/90 hover:text-[#375B42]' : ''}
                         `}
                     >
                         +
