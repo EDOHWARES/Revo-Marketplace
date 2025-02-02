@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardFooter, } from "@/components/ui/card
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Image from "next/image";
 import { useCartStore } from "@/store/cartStore/store";
+import { useRouter } from 'next/navigation';
 
 
 
@@ -26,7 +27,8 @@ interface  CartItem {
 
 
 const CartItem = () => {
-  const {Items,  updateQuantity} = useCartStore((state) => state)
+  const router = useRouter(); 
+  const {Items, updateQuantity, clearCart} = useCartStore((state) => state)
   const handleQuantityChange = (id: number, quantity: number) => {
     try {
         updateQuantity(id, quantity);
@@ -102,8 +104,8 @@ const CartItem = () => {
 
       </div>
       <div className='flex justify-between'>
-      <Button variant="outline" className="px-10 py-6">Return to shop</Button>
-      <Button variant="outline" className="px-10 py-6">Update Cart</Button>
+      <Button variant="outline" className="px-10 py-6" onClick={() => router.push('/shop')}>Return to shop</Button>
+      <Button variant="outline" className="px-10 py-6"  onClick={() => clearCart()}>Update Cart</Button>
       </div>
     </div>
   );
