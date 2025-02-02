@@ -47,19 +47,20 @@
       "engagementId": {
         "label": "Compromiso",
         "placeholder": "Ingresa el compromiso"
-      },
-      "cart": {
-        "title": "Carrito de Compras",
-        "subtotal": "Subtotal",
-        "shipping": "Envío",
-        "total": "Total",
-        "clear": "Vaciar Carrito",
-        "remove": "Eliminar Artículo",
-        "checkout": "Proceder al Pago"
       }
     },
     "submitButtonText": "Financiar fideicomiso"
+  
   },
+    "cart": {
+      "title": "Carrito de Compras",
+      "subtotal": "Subtotal",
+      "shipping": "Envío",
+      "total": "Total",
+      "clear": "Vaciar Carrito",
+      "remove": "Eliminar Artículo",
+      "checkout": "Proceder al Pago"
+    },
   "notFound": {
     "title": "404 No Encontrada",
     "description": "La página que visitaste no fue encontrada. Puedes ir a la página de inicio.",
