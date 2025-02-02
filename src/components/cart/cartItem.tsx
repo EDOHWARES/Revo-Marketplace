@@ -68,6 +68,8 @@ const CartItem = () => {
                       src={item.images} 
                       alt={`${item.name} image`}
                       className="rounded-md object-cover h-16 w-16"
+                      width={100}
+                      height={100}
                     />
                     <p>{item.name}</p>
 
