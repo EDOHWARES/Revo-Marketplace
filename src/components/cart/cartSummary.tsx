@@ -4,6 +4,7 @@ import React from 'react';
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/store/cartStore/store";
+import { toast } from 'react-toastify';
 
 const CartSummary = () => {
   const { subtotal, shipping, total, loading, setLoading, calculateSummary } = useCartStore();
@@ -17,6 +18,8 @@ const CartSummary = () => {
       console.log("Redirecting to checkout...");
     } catch (error) {
       console.error("Checkout failed:", error);
+      // Show error toast/alert
+      toast.error("Checkout failed. Please try again.");
     } finally {
       setLoading(false);
     }
