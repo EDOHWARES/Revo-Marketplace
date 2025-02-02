@@ -61,12 +61,142 @@
       "remove": "Eliminar Artículo",
       "checkout": "Proceder al Pago"
     },
+  "Products": {
+    "title": "Productos",
+    "description": "Explora nuestra amplia gama de productos, cuidadosamente seleccionados para satisfacer tus necesidades y preferencias.",
+    "filters": {
+      "label": "Filtros",
+      "price": "Precio",
+      "category": "Categoría",
+      "farmingMethod": "Método de Cultivo",
+      "delivery": "Opciones de Entrega",
+      "search": "Buscar productos...",
+      "apply": "Aplicar Filtro",
+      "clear": "Limpiar Filtros"
+    },
+    "sortBy": {
+      "showing": "Mostrando",
+      "of": "de",
+      "products": "Productos",
+      "label": "Ordenar por",
+      "price": "Precio",
+      "date": "Fecha de Cosecha",
+      "stock": "Stock"
+    },
+    "empty": {
+      "title": "No se encontraron productos",
+      "description": "Intenta ajustar tus filtros o criterios de búsqueda para encontrar lo que buscas."
+    },
+    "pagination": {
+      "previous": "Anterior",
+      "next": "Siguiente"
+    }
+  },
+  "Marketplace": {
+    "navigation": {
+      "home": "Inicio",
+      "products": "Productos"
+    },
+    "search": {
+      "placeholder": "Buscar productos..."
+    },
+    "cart": {
+      "title": "Carrito de Compras",
+      "empty": "Tu carrito está vacío",
+      "quantity": "Cant: {count}",
+      "total": "Total",
+      "checkout": "Pagar"
+    },
+    "user": {
+      "connect": "Conectar Billetera",
+      "disconnect": "Desconectar",
+      "wallet": "Billetera Conectada",
+      "profile": "Perfil",
+      "orders": "Mis Pedidos",
+      "settings": "Configuración"
+    }
+  },
   "notFound": {
     "title": "404 No Encontrada",
     "description": "La página que visitaste no fue encontrada. Puedes ir a la página de inicio.",
     "buttonText": "Volver al inicio"
+  },
+  "footer": {
+    "copyright": "© Copyright Revolutionary Farmer {year}. Todos los derechos reservados.",
+    "Support": "Soporte",
+    "Account": "Cuenta",
+    "Quick Links": "Enlaces Rápidos",
+    "Download App": "Descargar App",
+    "My Account": "Mi Cuenta",
+    "Login / Register": "Iniciar Sesión / Registrarse",
+    "Cart": "Carrito",
+    "Wishlist": "Lista de Deseos",
+    "Shop": "Tienda",
+    "Privacy Policy": "Política de Privacidad",
+    "Terms of Use": "Términos de Uso",
+    "FAQ": "Preguntas Frecuentes",
+    "Contact": "Contacto",
+    "Documentation": "Documentación",
+    "Barcode": "Código QR",
+    "Play store": "Descargar en Play Store",
+    "Twitter": "Twitter",
+    "LinkedIn": "LinkedIn",
+    "Github": "GitHub"
+  },
+  "SignUp": {
+    "title": "Crear una cuenta",
+    "subtitle": "Ingresa tus datos a continuación",
+    "nameLabel": "Nombre",
+    "emailLabel": "Correo electrónico",
+    "passwordLabel": "Contraseña",
+    "submit": "Crear Cuenta",
+    "submitting": "Creando...",
+    "successTitle": "¡Éxito!",
+    "successMessage": "Tu cuenta ha sido creada. Redirigiendo al inicio de sesión...",
+    "errorTitle": "Error",
+    "errorMessage": "Algo salió mal. Por favor, inténtalo de nuevo.",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "login": "Iniciar sesión"
+  },
+  "SignIn": {
+    "title": "Iniciar Sesión",
+    "subtitle": "Ingresa tus datos a continuación",
+    "emailLabel": "Correo electrónico o Número de teléfono",
+    "passwordLabel": "Contraseña",
+    "submit": "Iniciar Sesión",
+    "submitting": "Iniciando Sesión...",
+    "successTitle": "Hecho!",
+    "successMessage": "Se ha Iniciado Sesión. Redirigiendo a la página principal...",
+    "errorTitle": "Error",
+    "errorMessage": "Algo salió mal. Por favor intente de nuevo.",
+    "forgetPassword": "Olvidaste tu Contraseña?",
+    "emailValidation": "Por favor ingrese un correo válido.",
+    "passwordLength": "La contraseña debe tener al menos 8 caracteres.",
+    "passwordPattern": "La contraseña debe conterner una letra mayúscula, una minúscula y números."
+  },
+  "Checkout": {
+    "billingDetails": "Detalles de Facturación",
+    "form": {
+      "firstName": "Nombre",
+      "companyName": "Nombre de la Empresa",
+      "streetAddress": "Dirección",
+      "apartment": "Apartamento, piso, etc. (opcional)",
+      "town": "Ciudad/Pueblo",
+      "phoneNumber": "Número de Teléfono",
+      "email": "Correo Electrónico",
+      "errors": {
+        "firstName": "El nombre es obligatorio",
+        "streetAddress": "La dirección es obligatoria",
+        "town": "La ciudad es obligatoria",
+        "phoneNumber": "El número de teléfono debe tener al menos 9 dígitos",
+        "email": "Dirección de correo electrónico no válida"
+      }
+    },
+    "subTotal": "Subtotal:",
+    "shipping": "Envío",
+    "free": "Gratis",
+    "total": "Total",
+    "processing": "Procesando",
+    "placeOrder": "Realizar Pedido"
   }
-
-  
 }
-
