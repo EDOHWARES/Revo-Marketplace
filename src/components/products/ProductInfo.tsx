@@ -21,7 +21,7 @@ const ProductInfo = () => {
             <div className="flex items-center gap-3 text-sm">
                 <div className="flex items-center gap-2">
                     <Rating
-                        value={4 as number & { __brand: 'ValidRating' }}
+                        value={3 as number & { __brand: 'ValidRating' }}
                         max={5}
                         readOnly
                         aria-label={t('rating.aria')}
