@@ -3,25 +3,27 @@
 import Image from 'next/image';
 import { useState, useCallback } from 'react';
 
-interface ProductGalleryProps {
-  images: string[];
-}
-
-const ProductGallery = ({ images }: ProductGalleryProps) => {
+const ProductGallery = () => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [isChanging, setIsChanging] = useState(false);
   const [isZoomed, setIsZoomed] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
+  const images = [
+    '/images/tomatoes.jpg',
+    '/images/eggs.jpg',
+    '/images/tomatoes.jpg',
+    '/images/eggs.jpg',
+  ];
+
   const handleImageChange = useCallback((index: number) => {
     if (index === selectedImage) return;
     
     setIsChanging(true);
-    const timeoutId = setTimeout(() => {
+    setTimeout(() => {
       setSelectedImage(index);
       setIsChanging(false);
-    }, 150);
-    return () => clearTimeout(timeoutId);
+    }, 150); // Mitad de la duración de la transición
   }, [selectedImage]);
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {

@@ -6,14 +6,7 @@ import { HeartIcon, UpdateIcon } from '@radix-ui/react-icons';
 import { TruckIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
-interface ProductInfoProps {
-  price: number;
-  description: string;
-  rating: number;
-  reviews: number;
-}
-
-const ProductInfo = ({ price, description, rating, reviews }: ProductInfoProps) => {
+const ProductInfo = () => {
     const [quantity, setQuantity] = useState(1);
     const [isWishlist, setIsWishlist] = useState(false);
     const [isHover, setIsHover] = useState(false);
@@ -41,7 +34,7 @@ const ProductInfo = ({ price, description, rating, reviews }: ProductInfoProps) 
 
             {/* Price */}
             <div className="text-2xl font-medium text-black">
-                ${price.toFixed(2)}
+                $192.00
             </div>
 
             {/* Description */}
@@ -71,8 +64,7 @@ const ProductInfo = ({ price, description, rating, reviews }: ProductInfoProps) 
                         value={quantity}
                         onChange={(e) => {
                             const val = parseInt(e.target.value);
-                            if (Number.isNaN(val)) return;
-                            setQuantity(Math.max(1, val));
+                            if (!isNaN(val)) setQuantity(Math.max(1, val));
                         }}
                         className="w-12 h-10 border-y border-gray-300 text-center [-moz-appearance:_textfield] [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
                     />
