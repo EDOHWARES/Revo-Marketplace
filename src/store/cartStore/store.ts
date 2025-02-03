@@ -57,7 +57,7 @@ export const useCartStore = create<CartState>()(
             unit: "$",
           },
           quantity: 1,
-          images: "/public/images/tomatoes.jpg?height=80&width=80",
+          images: "/images/tomatoes.jpg?height=80&width=80",
         },
         {
           id: 2,
@@ -67,7 +67,7 @@ export const useCartStore = create<CartState>()(
             unit: "$",
           },
           quantity: 2,
-          images: "/public/images/eggs.jpg?height=80&width=80",
+          images: "/images/eggs.jpg?height=80&width=80",
         },
       ],
       subtotal: 0,
