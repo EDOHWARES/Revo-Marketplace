@@ -41,7 +41,7 @@ const ProductInfo = ({ price, description, rating, reviews }: ProductInfoProps) 
 
             {/* Price */}
             <div className="text-2xl font-medium text-black">
-                $192.00
+                ${price.toFixed(2)}
             </div>
 
             {/* Description */}
