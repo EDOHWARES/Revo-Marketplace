@@ -11,6 +11,8 @@ import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { ArrowLeft } from "../icons/ArrowLeft";
 import { ArrowRight } from "../icons/ArrowRight";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface ProductGridProps {
   products: Product[];
@@ -40,6 +42,8 @@ export function ProductGrid({
   onPageChange
 }: ProductGridProps) {
   const t = useTranslations('Products');
+  const pathname = usePathname();
+
   const { ref, inView } = useInView({
     threshold: 0.5,
     delay: 100
@@ -56,7 +60,14 @@ export function ProductGrid({
   }, [handleInView]);
 
   const gridClassName = viewMode === 'grid'
-    ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'
+    ? cn(
+      "grid gap-8",
+      "grid-cols-1",
+      "sm:grid-cols-2",
+      "lg:grid-cols-3",
+      "justify-items-center",
+      isFilterLoading ? 'opacity-50' : ''
+    )
     : 'flex flex-col gap-4';
 
   const renderPagination = () => {
@@ -182,15 +193,18 @@ export function ProductGrid({
 
   if (isLoading) {
     return (
-      <div
-        className={gridClassName}
-        aria-busy="true"
-        role="grid"
-        aria-label="Loading products"
-      >
-        {Array.from({ length: 8 }).map((_, index) => (
-          <ProductSkeleton key={index} />
-        ))}
+      <div className="space-y-6 max-w-[1440px] w-[56vw] mx-auto">
+        <div
+          className={gridClassName}
+          aria-busy="true"
+          role="grid"
+          aria-label="Loading products"
+
+        >
+          {Array.from({ length: 8 }).map((_, index) => (
+            <ProductSkeleton key={index} />
+          ))}
+        </div>
       </div>
     );
   }
@@ -225,14 +239,16 @@ export function ProductGrid({
         aria-busy={isFilterLoading}
       >
         {products.map((product, index) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            viewMode={viewMode}
-            onClick={onProductClick}
-            aria-setsize={products.length}
-            aria-posinset={index + 1}
-          />
+          <Link href={`${pathname}/${product.id}`} key={product.id}>
+            <ProductCard
+              product={product}
+              viewMode={viewMode}
+              onClick={onProductClick}
+              aria-setsize={products.length}
+              aria-posinset={index + 1}
+
+            />
+          </Link>
         ))}
       </div>
 
