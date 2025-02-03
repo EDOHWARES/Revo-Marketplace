@@ -3,6 +3,7 @@ import ProductInfo from "@/components/products/ProductInfo";
 import RelatedProducts from "@/components/products/RelatedProducts";
 import Breadcrumb from "@/components/shared/Breadcrumb";
 import { useTranslations } from "next-intl";
+import { Metadata } from 'next';
 
 const ProductPage = () => {
   const t = useTranslations('Products');
@@ -20,11 +21,11 @@ const ProductPage = () => {
       {/* Product Layout - Ajustado para mejor responsive */}
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-8 xl:gap-12">
         <div className="w-full">
-          <ProductGallery />
+          <ProductGallery images={[]} />
         </div>
 
         <div className="w-full">
-          <ProductInfo />
+          <ProductInfo price={0} description={''} rating={0} reviews={0} />
         </div>
       </div>
 
@@ -41,3 +42,14 @@ const ProductPage = () => {
 };
 
 export default ProductPage;
+
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+  return {
+    title: 'Product Details | Revolutionary Farmers',
+    description: 'View detailed information about our products',
+    openGraph: {
+      title: 'Product Details | Revolutionary Farmers',
+      description: 'View detailed information about our products',
+    },
+  };
+}

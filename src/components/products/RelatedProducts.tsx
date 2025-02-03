@@ -134,6 +134,9 @@ const products: Product[] = [
   }
 ];
 
+const isValidRating = (rating: number): rating is number & { __brand: 'ValidRating' } => {
+  return rating >= 0 && rating <= 5;
+};
 
 const ProductCard = ({ product }: { product: Product }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -185,6 +188,8 @@ const ProductCard = ({ product }: { product: Product }) => {
       ariaLabel: isViewed ? 'Hide product details' : 'View product details'
     }
   ];
+
+  const rating = isValidRating(product.rating) ? product.rating : 0;
 
   return (
     <div
@@ -266,11 +271,10 @@ const ProductCard = ({ product }: { product: Product }) => {
         <div className="flex items-center gap-1 mt-2">
           <div className="flex text-yellow-400">
           <Rating
-              value={product.rating as number & { __brand: 'ValidRating' }}
+              value={rating as number & { __brand: 'ValidRating' }}
               max={5}
               readOnly
               aria-label={`Product rated ${product.rating} out of 5 stars`}
-
             />
           </div>
           <span className="opacity-50 text-black text-sm font-semibold">({product.rating})</span>
