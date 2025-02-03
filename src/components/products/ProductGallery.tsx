@@ -20,10 +20,11 @@ const ProductGallery = () => {
     if (index === selectedImage) return;
     
     setIsChanging(true);
-    setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       setSelectedImage(index);
       setIsChanging(false);
     }, 150); // Mitad de la duración de la transición
+    return () => clearTimeout(timeoutId);
   }, [selectedImage]);
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
@@ -57,7 +58,11 @@ const ProductGallery = () => {
                 src={image}
                 alt={`Product view ${index + 1}`}
                 fill
+                sizes="(max-width: 768px) 100vw, 173px"
                 className="object-cover"
+                onError={(e) => { e.currentTarget.src = '/images/placeholder.jpg'; }}
+                placeholder="blur"
+                blurDataURL='/images/placeholder.jpg'
               />
             </div>
           </button>
@@ -81,6 +86,10 @@ const ProductGallery = () => {
             src={images[selectedImage]}
             alt="Product main view"
             fill
+             sizes="(max-width: 768px) 100vw, 173px"
+            onError={(e) => { e.currentTarget.src = '/images/placeholder.jpg'; }}
+            placeholder="blur"
+            blurDataURL='/images/placeholder.jpg'
             className={`
               object-contain transition-transform duration-200
               ${isZoomed ? 'scale-150' : 'scale-100'}

@@ -6,7 +6,14 @@ import { HeartIcon, UpdateIcon } from '@radix-ui/react-icons';
 import { TruckIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
-const ProductInfo = () => {
+interface ProductInfoProps {
+    price: number;
+    description: string;
+    rating: number;
+    reviews: number;
+}
+
+const ProductInfo = ({ price, description, rating, reviews }: ProductInfoProps) => {
     const t = useTranslations('Products');
     const [quantity, setQuantity] = useState(1);
     const [isWishlist, setIsWishlist] = useState(false);
@@ -63,7 +70,8 @@ const ProductInfo = () => {
                         value={quantity}
                         onChange={(e) => {
                             const val = parseInt(e.target.value);
-                            if (!isNaN(val)) setQuantity(Math.max(1, val));
+                            if (!isNaN(val)) return;
+                            setQuantity(Math.max(1, val));
                         }}
                         className="w-12 h-10 border-y border-gray-300 text-center [-moz-appearance:_textfield] [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
                     />

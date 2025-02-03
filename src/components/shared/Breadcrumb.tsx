@@ -15,7 +15,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
   const getCurrentTranslation = (pathname: string) => {
     const pathParts = pathname.split('/');
     const translationPath = pathParts.filter(part => part === "es" || part === "en");
-    return translationPath[0];
+    return translationPath[0] || "en";
   }
 
   console.log(getCurrentTranslation(pathname));
