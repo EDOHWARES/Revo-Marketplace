@@ -193,5 +193,104 @@
     "emailValidation": "Please enter a valid email address.",
     "passwordLength": "Password must be at least 8 characters.",
     "passwordPattern": "Password must contain uppercase, lowercase and numbers."
+  },
+  "Checkout": {
+    "billingDetails": "Billing Details",
+    "form": {
+      "firstName": "First Name",
+      "companyName": "Company Name",
+      "streetAddress": "Street Address",
+      "apartment": "Apartment, floor, etc. (optional)",
+      "town": "Town/City",
+      "phoneNumber": "Phone Number",
+      "email": "Email Address",
+      "errors": {
+        "firstName": "First name is required",
+        "streetAddress": "Street address is required",
+        "town": "Town/City is required",
+        "phoneNumber": "Phone number must be at least 9 digits",
+        "email": "Invalid email address"
+      }
+    },
+    "subTotal": "Subtotal:",
+    "shipping": "Shipping:",
+    "free": "Free",
+    "total": "Total:",
+    "processing": "Processing",
+    "placeOrder": "Place Order"
+  },
+  "Account": {
+    "title": "Edit Your Profile",
+    "validation": {
+      "firstName": {
+        "min": "First name must be at least 2 characters long",
+        "max": "First name cannot exceed 50 characters"
+      },
+      "lastName": {
+        "min": "Last name must be at least 2 characters long",
+        "max": "Last name cannot exceed 50 characters"
+      },
+      "email": "Please enter a valid email address",
+      "address": {
+        "min": "Address must be at least 5 characters long",
+        "max": "Address cannot exceed 200 characters"
+      },
+      "password": {
+        "requirements": "Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character",
+        "match": "New passwords must match and current password is required to change password"
+      }
+    },
+    "labels": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "stellarWallet": "Stellar Wallet",
+      "email": "Email",
+      "address": "Address",
+      "passwordChanges": "Password Changes",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm New Password"
+    },
+    "placeholders": {
+      "firstName": "Enter your first name",
+      "lastName": "Enter your last name",
+      "email": "Enter your email",
+      "address": "Enter your address",
+      "currentPassword": "Enter current password",
+      "newPassword": "Enter new password",
+      "confirmPassword": "Confirm new password"
+    },
+    "wallet": {
+      "processing": "Processing...",
+      "connect": "Connect Wallet",
+      "disconnect": "Disconnect Wallet",
+      "connected": "Connected Wallet:",
+      "via": "via"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "saving": "Saving...",
+      "save": "Save Changes"
+    },
+    "page": {
+      "breadcrumb": {
+        "home": "Home",
+        "account": "My Account"
+      },
+      "welcome": "Welcome! {name}",
+      "navigation": {
+        "manageAccount": {
+          "title": "Manage My Account",
+          "profile": "My Profile",
+          "address": "Address Book"
+        },
+        "orders": {
+          "title": "My Orders",
+          "returns": "My Returns",
+          "cancellations": "My Cancellations"
+        }
+      },
+      "title": "Edit Your Profile"
+    }
   }
 }
