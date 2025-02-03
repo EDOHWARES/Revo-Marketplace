@@ -7,11 +7,10 @@ import { TruckIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 const ProductInfo = () => {
+    const t = useTranslations('Products');
     const [quantity, setQuantity] = useState(1);
     const [isWishlist, setIsWishlist] = useState(false);
     const [isHover, setIsHover] = useState(false);
-    const t = useTranslations('Products');
-
     return (
         <div className="space-y-4">
             {/* Title */}
@@ -21,7 +20,7 @@ const ProductInfo = () => {
             <div className="flex items-center gap-3 text-sm">
                 <div className="flex items-center gap-2">
                     <Rating
-                        value={4 as number & { __brand: 'ValidRating' }}
+                        value={3 as number & { __brand: 'ValidRating' }}
                         max={5}
                         readOnly
                         aria-label={t('rating.aria')}
@@ -72,7 +71,7 @@ const ProductInfo = () => {
                         onClick={() => setQuantity(quantity + 1)}
                         className={`
                             w-10 h-10 flex items-center justify-center border border-l-2 border-gray-300 rounded-r hover:bg-gray-50
-                            ${quantity > 1 ? 'bg-[#375B42] text-white-dark hover:bg-[#375B42]/90' : ''}
+                            ${quantity > 1 ? 'bg-[#375B42] text-white-dark hover:bg-[#375B42]/90 hover:text-[#375B42]' : ''}
                         `}
                     >
                         +
@@ -93,23 +92,23 @@ const ProductInfo = () => {
                     className={`
                         w-10 h-10 flex items-center justify-center rounded
                         transition-all duration-300 mt-[8rem]
-                        ${isWishlist 
-                          ? 'bg-[#375B42] border-[#375B42] hover:bg-white hover:border-[#375B42] border' 
-                          : 'bg-white border-gray-300 hover:bg-[#375B42] hover:border-[#375B42] border'
+                        ${isWishlist
+                            ? 'bg-[#375B42] border-[#375B42] hover:bg-white hover:border-[#375B42] border'
+                            : 'bg-white border-gray-300 hover:bg-[#375B42] hover:border-[#375B42] border'
                         }
                     `}
                 >
-                    <HeartIcon 
+                    <HeartIcon
                         className={`
                             w-5 h-5 transition-colors duration-300
                             ${isWishlist
 
-                                ? isHover 
-                                  ? 'text-[#375B42]'  // Wishlist activo + hover
-                                  : 'text-white-dark' // Wishlist activo sin hover
+                                ? isHover
+                                    ? 'text-[#375B42]'  // Wishlist activo + hover
+                                    : 'text-white-dark' // Wishlist activo sin hover
                                 : isHover
-                                  ? 'text-white-dark' // No activo + hover
-                                  : 'text-[#000000]'  // No activo sin hover
+                                    ? 'text-white-dark' // No activo + hover
+                                    : 'text-[#000000]'  // No activo sin hover
                             }
                         `}
                     />
@@ -120,25 +119,34 @@ const ProductInfo = () => {
 
             {/* Delivery Info */}
             <div className="">
-    {/* Free Delivery */}
-    <div className="border border-gray-200 rounded-lg p-4 mt-12">
-        <h3 className="font-medium text-black">{t('delivery.free')}</h3>
-        <button className="text-black text-left underline hover:no-underline text-xs">
-            {t('delivery.checkPostalCode')}
-        </button>
-    </div>
+                {/* Free Delivery */}
+                <div className="flex gap-4 items-center border border-gray-200 rounded-lg p-4 mt-12">
+                    <TruckIcon className='w-11 h-11' />
+                    <div>
+                        <h3 className="font-medium text-black">{t('delivery.free')}</h3>
+                        <button className="text-black text-left underline hover:no-underline text-xs">
+                            {t('delivery.checkPostalCode')}
 
-    {/* Return Delivery */}
-    <div className="border border-gray-200 rounded-lg p-4">
-        <h3 className="font-medium text-black">{t('returns.title')}</h3>
-        <div className="text-sm">
-            <span className="text-gray-500">{t('returns.description')} </span>
-            <button className="text-black underline hover:no-underline text-xs">
-                {t('returns.details')}
-            </button>
-        </div>
-    </div>
-</div>
+                        </button>
+                    </div>
+                </div>
+
+                {/* Return Delivery */}
+                <div className="flex gap-4 items-center border border-gray-200 rounded-lg p-4">
+                    <UpdateIcon className='w-11 h-11' />
+                    <div>
+                        <h3 className="font-medium text-black">{t('returns.title')}</h3>
+                        <div className="text-sm">
+                            <span className="text-gray-500">{t('returns.description')} </span>
+
+                            <button className="text-black underline hover:no-underline text-xs">
+                                {t('returns.details')}
+
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
