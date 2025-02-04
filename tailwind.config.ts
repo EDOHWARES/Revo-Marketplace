@@ -48,6 +48,14 @@ const config: Config = {
           DEFAULT: '#A0D911',
           foreground: '#FFFFFF',
         },
+        filter_active: {
+          DEFAULT: '#375B42',
+          foreground: '#FFFFFF',
+        },
+        clear_filter: {
+          DEFAULT: '#FF8A33',
+          foreground: '#FFFFFF',
+        },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',

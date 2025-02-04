@@ -53,11 +53,16 @@
   },
   "Products": {
     "title": "Products",
+    "description": "Explore our wide range of products, carefully curated to meet your needs and preferences.",
     "filters": {
+      "label": "Filters",
+      "price": "Price",
       "category": "Category",
       "farmingMethod": "Farming Method",
       "delivery": "Delivery Options",
-      "search": "Search products..."
+      "search": "Search products...",
+      "apply": "Apply Filter",
+      "clear": "Clear filters"
     },
     "cart": {
         "title": "Shopping Cart",
@@ -69,19 +74,128 @@
         "checkout": "Proceed to Checkout"
       },
     "sortBy": {
+      "showing": "Showing",
+      "of": "of",
+      "products": "Products",
       "label": "Sort by",
       "price": "Price",
       "date": "Harvest Date",
       "stock": "Stock"
     },
-    "viewMode": {
-      "grid": "Grid view",
-      "list": "List view"
+    "empty": {
+      "title": "No products found",
+      "description": "Try adjusting your filters or search criteria to find what you're looking for."
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
+    }
+  },
+  "Marketplace": {
+    "navigation": {
+      "home": "Home",
+      "products": "Products"
+    },
+    "search": {
+      "placeholder": "Search for products..."
+    },
+    "cart": {
+      "title": "Shopping Cart",
+      "empty": "Your cart is empty",
+      "quantity": "Qty: {count}",
+      "total": "Total",
+      "checkout": "Checkout"
+    },
+    "user": {
+      "connect": "Connect Wallet",
+      "disconnect": "Disconnect",
+      "wallet": "Connected Wallet",
+      "profile": "Profile",
+      "orders": "My Orders",
+      "settings": "Settings"
     }
   },
   "notFound": {
     "title": "404 Not Found",
     "description": "The page you visited was not found. You may go to the home page.",
     "buttonText": "Back to home page"
+  },
+  "footer": {
+    "copyright": "© Copyright Revolutionary Farmer {year}. All rights reserved.",
+    "Support": "Support",
+    "Account": "Account",
+    "Quick Links": "Quick Links",
+    "Download App": "Download App",
+    "My Account": "My Account",
+    "Login / Register": "Login / Register",
+    "Cart": "Cart",
+    "Wishlist": "Wishlist",
+    "Shop": "Shop",
+    "Privacy Policy": "Privacy Policy",
+    "Terms of Use": "Terms of Use",
+    "FAQ": "FAQ",
+    "Contact": "Contact",
+    "Documentation": "Documentation",
+    "Barcode": "QR Code",
+    "Play store": "Get on Play Store",
+    "Twitter": "Twitter",
+    "LinkedIn": "LinkedIn",
+    "Github": "GitHub"
+  },
+  "SignUp": {
+    "title": "Create an account",
+    "subtitle": "Enter your details below",
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "submit": "Create Account",
+    "submitting": "Creating...",
+    "successTitle": "Success!",
+    "successMessage": "Your account has been created. Redirecting to login...",
+    "errorTitle": "Error",
+    "errorMessage": "Something went wrong. Please try again.",
+    "alreadyHaveAccount": "Already have an account?",
+    "login": "Log in"
+  },
+  "SignIn": {
+    "title": "Log in to Exclusive",
+    "subtitle": "Enter your details below",
+    "emailLabel": "Email or Phone Number",
+    "passwordLabel": "Password",
+    "submit": "Log In",
+    "submitting": "Loging...",
+    "successTitle": "Success!",
+    "successMessage": "Loged In. Redirecting to main page...",
+    "errorTitle": "Error",
+    "errorMessage": "Something went wrong. Please try again.",
+    "forgetPassword": "Forget Password?",
+    "emailValidation": "Please enter a valid email address.",
+    "passwordLength": "Password must be at least 8 characters.",
+    "passwordPattern": "Password must contain uppercase, lowercase and numbers."
+  },
+  "Checkout": {
+    "billingDetails": "Billing Details",
+    "form": {
+      "firstName": "First Name",
+      "companyName": "Company Name",
+      "streetAddress": "Street Address",
+      "apartment": "Apartment, floor, etc. (optional)",
+      "town": "Town/City",
+      "phoneNumber": "Phone Number",
+      "email": "Email Address",
+      "errors": {
+        "firstName": "First name is required",
+        "streetAddress": "Street address is required",
+        "town": "Town/City is required",
+        "phoneNumber": "Phone number must be at least 9 digits",
+        "email": "Invalid email address"
+      }
+    },
+    "subTotal": "Subtotal:",
+    "shipping": "Shipping:",
+    "free": "Free",
+    "total": "Total:",
+    "processing": "Processing",
+    "placeOrder": "Place Order"
   }
 }

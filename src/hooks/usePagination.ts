@@ -27,7 +27,7 @@ export function usePagination({ items, itemsPerPage, infinite = false }: UsePagi
       setIsLoading(true);
       if (infinite) {
         const end = currentPage * itemsPerPage;
-        setPaginatedItems(prevItems => {
+        setPaginatedItems((prevItems) => {
           const newItems = items.slice(0, end);
           return newItems;
         });
@@ -48,21 +48,24 @@ export function usePagination({ items, itemsPerPage, infinite = false }: UsePagi
     if (isLoading) return;
     if (currentPage < totalPages) {
       try {
-        setCurrentPage(prev => prev + 1);
+        setCurrentPage((prev) => prev + 1);
       } catch (err) {
         setError(err instanceof Error ? err : new Error('Failed to load more items'));
       }
     }
   }, [currentPage, totalPages, isLoading]);
 
-  const goToPage = useCallback((page: number) => {
-    if (page < 1 || page > totalPages || isLoading) return;
-    try {
-      setCurrentPage(page);
-    } catch (err) {
-      setError(err instanceof Error ? err : new Error('Failed to navigate to page'));
-    }
-  }, [totalPages, isLoading]);
+  const goToPage = useCallback(
+    (page: number) => {
+      if (page < 1 || page > totalPages || isLoading) return;
+      try {
+        setCurrentPage(page);
+      } catch (err) {
+        setError(err instanceof Error ? err : new Error('Failed to navigate to page'));
+      }
+    },
+    [totalPages, isLoading]
+  );
 
   return {
     items: paginatedItems,
@@ -72,6 +75,6 @@ export function usePagination({ items, itemsPerPage, infinite = false }: UsePagi
     loadMore,
     goToPage,
     isLoading,
-    error
+    error,
   };
-} 
+}

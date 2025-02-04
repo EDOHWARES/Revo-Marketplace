@@ -1,8 +1,7 @@
-'use client';
-
 import { useLanguageStore } from '@/store/languageStore';
 import { usePathname, useRouter } from 'next/navigation';
 import React, { useState, useEffect, useRef } from 'react';
+import { ChevronDown } from 'lucide-react';
 
 const LanguageSwitcher = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -38,42 +37,34 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <div className="relative bg-white px-[0.2rem] py-[0.2rem] rounded-sm" ref={dropdownRef}>
+    <div className="relative z-50" ref={dropdownRef}>
       <button
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-        className="flex items-center gap-0 w-16 h-6 bg-white rounded-full focus:outline-none"
+        className="flex items-center gap-2 text-white hover:text-white/90 transition-colors"
       >
-        <div className="flex items-center justify-center w-1/2 h-full bg-white">
-          <span className="text-black font-bold text-lg">A</span>
-        </div>
-        <div className="flex items-center justify-center w-1/2 h-full bg-black">
-        <span className="languageIcon text-white font-bold text-lg">文</span> {/* languageIcon was added to the beginning of the className*/}
-        </div>
+        <span className="text-[#FFFFFF]">
+          {language === 'en' ? 'English' : 'Español'}
+        </span>
+        <ChevronDown className="w-4 h-4 text-[#FFFFFF]" />
       </button>
 
       {isDropdownOpen && (
-        <div className="absolute top-10 right-[-2rem] w-32 bg-white rounded-lg overflow-hidden shadow-md">
+        <div className="absolute top-full right-0 mt-1 w-32 bg-white rounded-md shadow-lg overflow-hidden">
           <button
             onClick={() => changeLanguage('en')}
-            className={`flex items-center gap-2 w-full px-2 py-2 text-left text-sm text-black hover:bg-gray-100 ${
-              language === 'en' ? 'font-bold' : ''
+            className={`flex items-center w-full px-4 py-2 text-sm text-gray-900 hover:bg-gray-100 ${
+              language === 'en' ? 'font-medium' : ''
             }`}
           >
-            <div className="flex items-center justify-center w-8 h-8 bg-black rounded">
-              <span className="text-white font-bold">EN</span>
-            </div>
             English
           </button>
           <div className="h-[1px] bg-black my-1 mx-2"></div>
           <button
             onClick={() => changeLanguage('es')}
-            className={`flex items-center gap-2 w-full px-2 py-2 text-left text-sm text-black hover:bg-gray-100 ${
-              language === 'es' ? 'font-bold' : ''
+            className={`flex items-center w-full px-4 py-2 text-sm text-gray-900 hover:bg-gray-100 ${
+              language === 'es' ? 'font-medium' : ''
             }`}
           >
-            <div className="flex items-center justify-center w-8 h-8 bg-black rounded">
-              <span className="text-white font-bold">ES</span>
-            </div>
             Español
           </button>
         </div>
