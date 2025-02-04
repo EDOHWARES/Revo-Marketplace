@@ -7,14 +7,16 @@ import { useWalletStore } from '@/store/walletStore';
 export default function WithAuthProtect(Component: any) {
   return function WithAuthProtect(props: any) {
     const { address } = useWalletStore();
+    const isDevelopment = process.env.NODE_ENV === 'development';
 
     useEffect(() => {
-      if (!address) {
+  
+      if (!address && !isDevelopment) {
         redirect('/');
       }
-    }, []);
+    }, [address]);
 
-    if (!address) {
+    if (!address && !isDevelopment) {
       return null;
     }
 

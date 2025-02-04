@@ -183,7 +183,7 @@ export default function ProductsPage() {
                 <div className="bg-white rounded-lg shadow-sm h-full">
                   <ProductGrid
                     products={currentProducts}
-                    viewMode={viewMode}
+                    viewMode={'grid'}
                     onProductClick={handleProductClick}
                     currentPage={currentPage}
                     totalPages={totalPages}
@@ -195,7 +195,7 @@ export default function ProductsPage() {
               ) : (
                 <ProductGrid
                   products={currentProducts}
-                  viewMode={viewMode}
+                  viewMode={'grid'}
                   onProductClick={handleProductClick}
                   currentPage={currentPage}
                   totalPages={totalPages}

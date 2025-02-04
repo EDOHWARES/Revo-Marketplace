@@ -64,6 +64,7 @@
   "Products": {
     "title": "Productos",
     "description": "Explora nuestra amplia gama de productos, cuidadosamente seleccionados para satisfacer tus necesidades y preferencias.",
+    "relatedItems": "Productos Relacionados",
     "filters": {
       "label": "Filtros",
       "price": "Precio",
@@ -90,6 +91,36 @@
     "pagination": {
       "previous": "Anterior",
       "next": "Siguiente"
+    },
+    "breadcrumb": {
+      "home": "Inicio"
+    },
+    "productName": "Café",
+    "rating": {
+      "aria": "Producto calificado con 4 de 5 estrellas",
+      "reviews": "({count} Reseñas)"
+    },
+    "stock": {
+      "inStock": "En Stock",
+      "outOfStock": "Agotado"
+    },
+    "buttons": {
+      "relatedItems": "Productos Relacionados",
+      "buyNow": "Comprar Ahora",
+      "addToCart": "Agregar al Carrito"
+    },
+
+    "delivery": {
+      "free": "Envío Gratis",
+      "checkPostalCode": "Ingresa tu código postal para verificar disponibilidad de envío"
+    },
+    "returns": {
+      "title": "Devolución",
+      "description": "Devoluciones gratuitas dentro de 30 días.",
+      "details": "Detalles"
+    },
+    "quantity": {
+      "label": "Cantidad"
     }
   },
   "Marketplace": {
@@ -198,5 +229,79 @@
     "total": "Total",
     "processing": "Procesando",
     "placeOrder": "Realizar Pedido"
+  },
+  "Account": {
+    "title": "Editar Tu Perfil",
+    "validation": {
+      "firstName": {
+        "min": "El nombre debe tener al menos 2 caracteres",
+        "max": "El nombre no puede exceder los 50 caracteres"
+      },
+      "lastName": {
+        "min": "El apellido debe tener al menos 2 caracteres",
+        "max": "El apellido no puede exceder los 50 caracteres"
+      },
+      "email": "Por favor ingresa un correo electrónico válido",
+      "address": {
+        "min": "La dirección debe tener al menos 5 caracteres",
+        "max": "La dirección no puede exceder los 200 caracteres"
+      },
+      "password": {
+        "requirements": "La contraseña debe contener al menos 8 caracteres, una letra mayúscula, una minúscula, un número y un carácter especial",
+        "match": "Las contraseñas nuevas deben coincidir y se requiere la contraseña actual para cambiarla"
+      }
+    },
+    "labels": {
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "stellarWallet": "Billetera Stellar",
+      "email": "Correo Electrónico",
+      "address": "Dirección",
+      "passwordChanges": "Cambios de Contraseña",
+      "currentPassword": "Contraseña Actual",
+      "newPassword": "Nueva Contraseña",
+      "confirmPassword": "Confirmar Nueva Contraseña"
+    },
+    "placeholders": {
+      "firstName": "Ingresa tu nombre",
+      "lastName": "Ingresa tu apellido",
+      "email": "Ingresa tu correo electrónico",
+      "address": "Ingresa tu dirección",
+      "currentPassword": "Ingresa tu contraseña actual",
+      "newPassword": "Ingresa tu nueva contraseña",
+      "confirmPassword": "Confirma tu nueva contraseña"
+    },
+    "wallet": {
+      "processing": "Procesando...",
+      "connect": "Conectar Billetera",
+      "disconnect": "Desconectar Billetera",
+      "connected": "Billetera Conectada:",
+      "via": "vía"
+    },
+    "buttons": {
+      "cancel": "Cancelar",
+      "saving": "Guardando...",
+      "save": "Guardar Cambios"
+    },
+    "page": {
+      "breadcrumb": {
+        "home": "Inicio",
+        "account": "Mi Cuenta"
+      },
+      "welcome": "¡Bienvenido! {name}",
+      "navigation": {
+        "manageAccount": {
+          "title": "Administrar Mi Cuenta",
+          "profile": "Mi Perfil",
+          "address": "Libreta de Direcciones"
+        },
+        "orders": {
+          "title": "Mis Pedidos",
+          "returns": "Mis Devoluciones",
+          "cancellations": "Mis Cancelaciones"
+        }
+      },
+      "title": "Editar Tu Perfil"
+    }
   }
 }

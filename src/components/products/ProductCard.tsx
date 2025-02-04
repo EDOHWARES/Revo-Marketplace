@@ -84,7 +84,7 @@ export function ProductCard({ product, viewMode, onClick, locale = 'en' }: Produ
           <h3 className="text-base font-medium line-clamp-2">{product.name}</h3>
           <div className="flex items-center gap-1">
             <Rating
-              value={product.rating}
+              value={product.rating as number & { __brand: 'ValidRating' }}
               max={5}
               readOnly
               aria-label={`Product rated ${product.rating} out of 5 stars`}

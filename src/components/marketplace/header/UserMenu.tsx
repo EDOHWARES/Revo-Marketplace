@@ -68,7 +68,7 @@ const UserMenu = ({ className }: UserMenuProps) => {
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={() => router.push(`/${language}/profile`)}>
+            <DropdownMenuItem onClick={() => router.push(`/${language}/account`)}>
               {t('profile')}
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => router.push(`/${language}/orders`)}>
