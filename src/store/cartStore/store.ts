@@ -79,6 +79,9 @@ export const useCartStore = create<CartState>()(
       setError: (error) => set({ error }),
       updateQuantity: async (id: number, quantity: number) => {
         try {
+            if (quantity <= 0) {
+            throw new Error("Quantity must be greater than zero");
+               }
           set({ loading: true, error: null });
           // Simulate async operation
           await new Promise((resolve) => setTimeout(resolve, 500));
