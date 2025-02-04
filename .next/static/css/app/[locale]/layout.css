@@ -715,6 +715,9 @@ video {
 .z-\[1\] {
   z-index: 1;
 }
+.col-span-4 {
+  grid-column: span 4 / span 4;
+}
 .-mx-1 {
   margin-left: -0.25rem;
   margin-right: -0.25rem;
@@ -857,6 +860,9 @@ video {
 .h-14 {
   height: 3.5rem;
 }
+.h-16 {
+  height: 4rem;
+}
 .h-2 {
   height: 0.5rem;
 }
@@ -893,6 +899,11 @@ video {
 .h-\[1px\] {
   height: 1px;
 }
+
+.h-\[50px\] {
+  height: 50px;
+}
+
 .h-\[250px\] {
   height: 250px;
 }
@@ -914,6 +925,7 @@ video {
 .h-\[80px\] {
   height: 80px;
 }
+
 .h-\[calc\(100vh-300px\)\] {
   height: calc(100vh - 300px);
 }
@@ -959,6 +971,10 @@ video {
 .w-1\/6 {
   width: 16.666667%;
 }
+
+.w-16 {
+  width: 4rem;
+
 .w-10 {
   width: 2.5rem;
 }
@@ -967,9 +983,13 @@ video {
 }
 .w-12 {
   width: 3rem;
+
 }
 .w-2 {
   width: 0.5rem;
+}
+.w-20 {
+  width: 5rem;
 }
 .w-3 {
   width: 0.75rem;
@@ -1082,9 +1102,12 @@ video {
 .max-w-\[295px\] {
   max-width: 295px;
 }
+
+
 .max-w-\[400px\] {
   max-width: 400px;
 }
+
 .max-w-\[426px\] {
   max-width: 426px;
 }
@@ -1386,9 +1409,14 @@ video {
 .border-0 {
   border-width: 0px;
 }
+
+.border-4 {
+  border-width: 4px;
+
 .border-y {
   border-top-width: 1px;
   border-bottom-width: 1px;
+
 }
 .\!border-b {
   border-bottom-width: 1px !important;
@@ -1419,10 +1447,12 @@ video {
   --tw-border-opacity: 1;
   border-color: rgb(55 91 66 / var(--tw-border-opacity, 1));
 }
+
 .border-\[\#E0E0E0\] {
   --tw-border-opacity: 1;
   border-color: rgb(224 224 224 / var(--tw-border-opacity, 1));
 }
+
 .border-black {
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity, 1));
@@ -1823,9 +1853,12 @@ video {
 .leading-none {
   line-height: 1;
 }
+
+
 .leading-relaxed {
   line-height: 1.625;
 }
+
 .tracking-\[0\.32px\] {
   letter-spacing: 0.32px;
 }
@@ -2225,10 +2258,12 @@ body {
   background-color: rgb(36 88 66 / var(--tw-bg-opacity, 1));
 }
 
+
 .hover\:bg-\[\#2A4632\]:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(42 70 50 / var(--tw-bg-opacity, 1));
 }
+
 
 .hover\:bg-\[\#2e4a36\]:hover {
   --tw-bg-opacity: 1;
@@ -2895,8 +2930,13 @@ body {
     top: auto;
   }
 
+
+  .sm\:ml-0 {
+    margin-left: 0px;
+
   .sm\:h-\[220px\] {
     height: 220px;
+
   }
 
   .sm\:max-w-sm {
@@ -2968,6 +3008,10 @@ body {
 
   .md\:m-0 {
     margin: 0px;
+  }
+
+  .md\:ml-10 {
+    margin-left: 2.5rem;
   }
 
   .md\:mt-20 {
@@ -3172,17 +3216,23 @@ body {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
+
+
   .lg\:grid-cols-\[1fr_400px\] {
     grid-template-columns: 1fr 400px;
   }
+
 
   .lg\:flex-row {
     flex-direction: row;
   }
 
+
+
   .lg\:gap-8 {
     gap: 2rem;
   }
+
 
   .lg\:p-16 {
     padding: 4rem;
@@ -3203,9 +3253,12 @@ body {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
+
+
   .xl\:gap-12 {
     gap: 3rem;
   }
+
 
   .xl\:px-0 {
     padding-left: 0px;
@@ -3323,9 +3376,15 @@ body {
 }
   
 
+
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[14].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"src\\app\\[locale]\\layout.tsx","import":"","arguments":[{"src":"./fonts/GeistVF.woff","variable":"--font-geist-sans","weight":"100 900"}],"variableName":"geistSans"} ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[14].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"src/app/[locale]/layout.tsx","import":"","arguments":[{"src":"./fonts/GeistVF.woff","variable":"--font-geist-sans","weight":"100 900"}],"variableName":"geistSans"} ***!
   \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+
 @font-face {
 font-family: '__geistSans_1e4310';
 src: url(/_next/static/media/4473ecc91f70f139-s.p.woff) format('woff');
@@ -3336,9 +3395,15 @@ font-weight: 100 900;
 }.__variable_1e4310 {--font-geist-sans: '__geistSans_1e4310', '__geistSans_Fallback_1e4310'
 }
 
+
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[14].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"src\\app\\[locale]\\layout.tsx","import":"","arguments":[{"src":"./fonts/GeistMonoVF.woff","variable":"--font-geist-mono","weight":"100 900"}],"variableName":"geistMono"} ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[14].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"src/app/[locale]/layout.tsx","import":"","arguments":[{"src":"./fonts/GeistMonoVF.woff","variable":"--font-geist-mono","weight":"100 900"}],"variableName":"geistMono"} ***!
   \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+
 @font-face {
 font-family: '__geistMono_c3aa02';
 src: url(/_next/static/media/463dafcda517f24f-s.p.woff) format('woff');

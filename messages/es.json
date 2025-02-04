@@ -50,7 +50,17 @@
       }
     },
     "submitButtonText": "Financiar fideicomiso"
+  
   },
+    "cart": {
+      "title": "Carrito de Compras",
+      "subtotal": "Subtotal",
+      "shipping": "Envío",
+      "total": "Total",
+      "clear": "Vaciar Carrito",
+      "remove": "Eliminar Artículo",
+      "checkout": "Proceder al Pago"
+    },
   "Products": {
     "title": "Productos",
     "description": "Explora nuestra amplia gama de productos, cuidadosamente seleccionados para satisfacer tus necesidades y preferencias.",

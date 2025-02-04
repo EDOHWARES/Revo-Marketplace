@@ -65,6 +65,15 @@
       "apply": "Apply Filter",
       "clear": "Clear filters"
     },
+    "cart": {
+        "title": "Shopping Cart",
+        "subtotal": "Subtotal",
+        "shipping": "Shipping",
+        "total": "Total",
+        "clear": "Clear Cart",
+        "remove": "Remove Item",
+        "checkout": "Proceed to Checkout"
+      },
     "sortBy": {
       "showing": "Showing",
       "of": "of",
