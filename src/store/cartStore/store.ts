@@ -57,7 +57,7 @@ export const useCartStore = create<CartState>()(
             unit: "$",
           },
           quantity: 1,
-          images: "/public/images/tomatoes.jpg?height=80&width=80",
+          images: "/images/tomatoes.jpg?height=80&width=80",
         },
         {
           id: 2,
@@ -67,7 +67,7 @@ export const useCartStore = create<CartState>()(
             unit: "$",
           },
           quantity: 2,
-          images: "/public/images/eggs.jpg?height=80&width=80",
+          images: "/images/eggs.jpg?height=80&width=80",
         },
       ],
       subtotal: 0,
@@ -179,7 +179,6 @@ export const useCartStore = create<CartState>()(
       subtotal: 0,
       shipping: 0,
       total: 0,
-
       addItem: (item) => {
         const existingItem = get().cartItems.find((i) => i.id === item.id);
         if (existingItem) {
@@ -193,14 +192,12 @@ export const useCartStore = create<CartState>()(
         }
         get().calculateTotals();
       },
-
       removeItem: (id) => {
         set((state) => ({
           cartItems: state.cartItems.filter((item) => item.id !== id),
         }));
         get().calculateTotals();
       },
-
       updateItemQuantity: (id, quantity) => {
         if (quantity <= 0) {
           get().removeItem(id);
@@ -213,17 +210,14 @@ export const useCartStore = create<CartState>()(
         }
         get().calculateTotals();
       },
-
       clearCart: () => {
         set({ cartItems: [], subtotal: 0, shipping: 0, total: 0 });
       },
-
       calculateTotals: () => {
         const cartItems = get().cartItems;
         const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
         const shipping = subtotal > 0 ? 10 : 0; // Flat shipping rate for simplicity
         const total = subtotal + shipping;
-
         set({ subtotal, shipping, total });
       },
     }),

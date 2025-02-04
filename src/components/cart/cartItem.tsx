@@ -21,7 +21,7 @@ interface CartItem {
     amount: number;
     unit: string;
   },
-  images:string;
+  images: string;
 }
 
 
@@ -53,13 +53,12 @@ const CartItem = () => {
         <div className=''>
           <h1>Subtotal</h1>
         </div>
-  
-
       </Card>
 
 
       <div>
         {Items.length > 0 ? (Items.map((item) => (
+           
           
               <Card key={item.id} className="flex items-center justify-between px-8 py-4 mb-4">
                 <div className="flex md:flex-row items-center">
@@ -68,7 +67,8 @@ const CartItem = () => {
                       src={item.images} 
                       alt={`${item.name} image`}
                       className="rounded-md object-cover h-16 w-16"
-              
+                      width={100}
+                      height={100}
                     />
                     <p>{item.name}</p>
 
