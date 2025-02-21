@@ -10,6 +10,7 @@ import Header from '@/components/marketplace/header/MarketplaceHeader';
 import './globals.css';
 import AboutUs from '@/components/aboutUs/aboutUs';
 import Footer from '@/components/footer/footer';
+import HowItWorks from '@/components/howItWorks/howItWorks';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -66,6 +67,7 @@ export default function RootLayout({
             <Header />
             {children}
             <AboutUs />
+            <HowItWorks />
             <Footer />
             <Toaster />
           </NextIntlClientProvider>
