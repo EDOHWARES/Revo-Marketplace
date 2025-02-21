@@ -4,6 +4,23 @@
     "subtitle": "Farmers",
     "description": "Escrows for the field of agriculture, and with the objective of benefiting farmers as well as the buyers of the products grown."
   },
+  "AboutUs": {
+    "title": "About Us",
+    "subtitle": "Empowering Farmers, Enriching Lives",
+    "description": "Revolutionary Farmers is dedicated to transforming agriculture through secure and transparent escrow services. Our mission is to support farmers and buyers by providing a trustworthy platform for transactions, ensuring fair trade and sustainability in the agricultural sector.",
+    "mission": {
+      "title": "Our Mission",
+      "content": "To empower farmers with financial security and create a seamless, transparent agricultural marketplace that benefits all stakeholders."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "content": "To revolutionize the agricultural industry by fostering trust, efficiency, and sustainability through innovative escrow solutions."
+    },
+    "values": {
+      "title": "Our Core Values",
+      "list": ["Transparency", "Trust", "Sustainability", "Innovation", "Empowerment"]
+    }
+  },
   "ItemsHeader": {
     "initializeEscrow": "Create Escrow",
     "claimEarnings": "Claim Escrow Earnings"
@@ -66,14 +83,14 @@
       "clear": "Clear filters"
     },
     "cart": {
-        "title": "Shopping Cart",
-        "subtotal": "Subtotal",
-        "shipping": "Shipping",
-        "total": "Total",
-        "clear": "Clear Cart",
-        "remove": "Remove Item",
-        "checkout": "Proceed to Checkout"
-      },
+      "title": "Shopping Cart",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "total": "Total",
+      "clear": "Clear Cart",
+      "remove": "Remove Item",
+      "checkout": "Proceed to Checkout"
+    },
     "sortBy": {
       "showing": "Showing",
       "of": "of",

@@ -8,6 +8,7 @@ import { Toaster } from '@/components/ui/toaster';
 // import Header from '@/components/header/Header';
 import Header from '@/components/marketplace/header/MarketplaceHeader';
 import './globals.css';
+import AboutUs from '@/components/aboutUs/aboutUs';
 import Footer from '@/components/footer/footer';
 
 const geistSans = localFont({
@@ -64,6 +65,7 @@ export default function RootLayout({
           <NextIntlClientProvider locale={currentLocale} messages={messages}>
             <Header />
             {children}
+            <AboutUs />
             <Footer />
             <Toaster />
           </NextIntlClientProvider>
